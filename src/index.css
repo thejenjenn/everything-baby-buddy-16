@@ -38,7 +38,8 @@ All colors MUST be HSL.
 
     /* Custom baby-themed colors */
     --baby-pink: 340 65% 85%;
-    --baby-blue: 200 50% 85%;
+    --baby-blue: 210 50% 85%;
+    --neutral-gray: 220 5% 85%;
     --warm-cream: 35 35% 95%;
     --soft-coral: 15 75% 80%;
     --gentle-lavender: 260 40% 85%;

@@ -139,13 +139,17 @@ const Services = () => {
             and custom packages tailored specifically for your little one.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="default" size="lg" className="gap-2">
-              <Phone className="h-4 w-4" />
-              Call for Consultation
+            <Button variant="default" size="lg" className="gap-2" asChild>
+              <a href="tel:+2347060867150">
+                <Phone className="h-4 w-4" />
+                Call for Consultation
+              </a>
             </Button>
-            <Button variant="outline" size="lg" className="gap-2 bg-background/80">
-              <MessageCircle className="h-4 w-4" />
-              Chat with Us
+            <Button variant="outline" size="lg" className="gap-2 bg-background/80" asChild>
+              <a href="https://wa.me/2347060867150">
+                <MessageCircle className="h-4 w-4" />
+                Chat with Us
+              </a>
             </Button>
           </div>
         </div>

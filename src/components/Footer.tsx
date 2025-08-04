@@ -12,7 +12,7 @@ const Footer = () => {
               <span className="font-bold text-xl">Everything Baby</span>
             </div>
             <p className="text-background/80 text-sm leading-relaxed">
-              Supporting mothers from bump to baby's first birthday. Making motherhood smoother and less daunting, one family at a time.
+              Supporting mothers from bump through their child's precious early years. Making motherhood smoother and less daunting, one family at a time.
             </p>
             <div className="flex items-center space-x-2 text-sm">
               <Heart className="h-4 w-4 text-primary fill-primary" />

@@ -4,14 +4,14 @@ import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative bg-gradient-to-br from-warm-cream via-background to-baby-pink min-h-screen flex items-center">
+    <section id="home" className="relative bg-gradient-to-br from-warm-cream via-neutral-gray to-baby-blue min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Star className="h-4 w-4 fill-primary text-primary" />
-                <span>Supporting mothers from bump to baby's first birthday</span>
+                <span>Supporting mothers from bump through their child's precious early years</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                 Everything{" "}
@@ -44,7 +44,7 @@ const Hero = () => {
                 <div className="text-sm text-muted-foreground">Customer Rating</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">1-12m</div>
+                <div className="text-2xl font-bold text-primary">0-3yrs</div>
                 <div className="text-sm text-muted-foreground">Age Range</div>
               </div>
             </div>

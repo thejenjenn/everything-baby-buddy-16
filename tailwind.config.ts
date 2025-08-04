@@ -54,6 +54,7 @@ export default {
 				},
 				'baby-pink': 'hsl(var(--baby-pink))',
 				'baby-blue': 'hsl(var(--baby-blue))',
+				'neutral-gray': 'hsl(var(--neutral-gray))',
 				'warm-cream': 'hsl(var(--warm-cream))',
 				'soft-coral': 'hsl(var(--soft-coral))',
 				'gentle-lavender': 'hsl(var(--gentle-lavender))',

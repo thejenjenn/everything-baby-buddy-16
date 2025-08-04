@@ -34,8 +34,8 @@ const Contact = () => {
                   <Phone className="h-8 w-8 text-primary mb-4" />
                   <h4 className="font-semibold text-foreground mb-2">Phone</h4>
                   <p className="text-muted-foreground text-sm mb-3">Call us for immediate assistance</p>
-                  <Button variant="soft" size="sm" className="w-full">
-                    Call Now
+                  <Button variant="soft" size="sm" className="w-full" asChild>
+                    <a href="tel:+2347060867150">+234 7060867150</a>
                   </Button>
                 </CardContent>
               </Card>
@@ -45,8 +45,8 @@ const Contact = () => {
                   <MessageCircle className="h-8 w-8 text-primary mb-4" />
                   <h4 className="font-semibold text-foreground mb-2">WhatsApp</h4>
                   <p className="text-muted-foreground text-sm mb-3">Chat with us on WhatsApp</p>
-                  <Button variant="soft" size="sm" className="w-full">
-                    Chat Now
+                  <Button variant="soft" size="sm" className="w-full" asChild>
+                    <a href="https://wa.me/2347060867150">+234 7060867150</a>
                   </Button>
                 </CardContent>
               </Card>
