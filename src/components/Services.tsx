@@ -72,57 +72,59 @@ const Services = () => {
   return (
     <section id="services" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
             Our Services
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-taupe max-w-3xl mx-auto font-body leading-relaxed">
             Supporting mums and their little ones from bump to baby's first birthday with comprehensive packages and personalized care.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="border-border hover:shadow-warm transition-all duration-300 group">
+            <Card key={index} className="border-blush-pink/30 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
               {service.image && (
-                <div className="relative h-48 overflow-hidden rounded-t-lg">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-warm-coral/20 to-transparent"></div>
                 </div>
               )}
               
-              <CardHeader className="space-y-3">
+              <CardHeader className="space-y-4 p-6">
                 <div className="flex items-center justify-between">
-                  <service.icon className="h-8 w-8 text-primary" />
+                  <div className="p-3 bg-gradient-to-br from-powder-blue/20 to-soft-lilac/20 rounded-xl">
+                    <service.icon className="h-6 w-6 text-primary" />
+                  </div>
                   {service.badge && (
-                    <Badge variant="secondary" className="bg-baby-pink text-foreground">
+                    <Badge variant="secondary" className="bg-blush-pink text-charcoal-text font-body rounded-full px-3">
                       {service.badge}
                     </Badge>
                   )}
                 </div>
                 <div>
-                  <CardTitle className="text-xl text-foreground">{service.title}</CardTitle>
-                  <p className="text-sm text-primary font-medium">{service.subtitle}</p>
+                  <CardTitle className="text-xl text-charcoal-text font-heading font-semibold">{service.title}</CardTitle>
+                  <p className="text-sm text-primary font-body font-medium mt-1">{service.subtitle}</p>
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground">{service.description}</p>
+              <CardContent className="space-y-6 p-6 pt-0">
+                <p className="text-muted-taupe font-body leading-relaxed">{service.description}</p>
                 
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-sm text-muted-foreground flex items-center">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2"></div>
+                    <li key={idx} className="text-sm text-muted-taupe font-body flex items-center">
+                      <div className="w-2 h-2 bg-gradient-to-r from-warm-coral to-dusty-rose rounded-full mr-3 flex-shrink-0"></div>
                       {feature}
                     </li>
                   ))}
                 </ul>
 
-                <Button variant="default" className="w-full">
+                <Button variant="default" className="w-full font-body font-medium">
                   {service.cta}
                 </Button>
               </CardContent>
@@ -130,24 +132,24 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-baby-pink to-baby-blue rounded-2xl p-8 text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
+        <div className="mt-20 bg-gradient-to-r from-blush-pink via-powder-blue to-soft-lilac rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up">
+          <h3 className="text-3xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
             Need Personalized Consultation?
           </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <p className="text-muted-taupe mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed">
             Every baby is unique, and so are their needs. Contact us for personalized consultation 
             and custom packages tailored specifically for your little one.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="default" size="lg" className="gap-2" asChild>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button variant="default" size="lg" className="gap-3 font-body font-medium" asChild>
               <a href="tel:+2347060867150">
-                <Phone className="h-4 w-4" />
+                <Phone className="h-5 w-5" />
                 Call for Consultation
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="gap-2 bg-background/80" asChild>
+            <Button variant="outline" size="lg" className="gap-3 bg-white/80 backdrop-blur-sm font-body font-medium" asChild>
               <a href="https://wa.me/2347060867150">
-                <MessageCircle className="h-4 w-4" />
+                <MessageCircle className="h-5 w-5" />
                 Chat with Us
               </a>
             </Button>

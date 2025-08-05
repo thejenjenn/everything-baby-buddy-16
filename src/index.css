@@ -8,52 +8,63 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Background colors */
     --background: 0 0% 100%;
-    --foreground: 25 25% 15%;
-
+    --foreground: 0 0% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 25 25% 15%;
-
+    --card-foreground: 0 0% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 25 25% 15%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 210 100% 50%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 35 35% 92%;
-    --secondary-foreground: 25 25% 15%;
-
-    --muted: 35 20% 95%;
-    --muted-foreground: 25 15% 45%;
-
-    --accent: 200 50% 85%;
-    --accent-foreground: 25 25% 15%;
-
+    /* Primary colors - warm coral theme */
+    --primary: 0 70% 65%;
+    --primary-foreground: 0 0% 98%;
+    
+    /* Secondary colors */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 0 0% 20%;
+    
+    /* Muted colors */
+    --muted: 210 40% 96%;
+    --muted-foreground: 30 8% 65%;
+    
+    /* Accent colors */
+    --accent: 210 40% 96%;
+    --accent-foreground: 0 0% 20%;
+    
+    /* Destructive colors */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+    
+    /* Border and input */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 0 70% 65%;
 
-    --border: 35 20% 90%;
-    --input: 35 20% 95%;
-    --ring: 340 65% 75%;
-
-    /* Custom baby-themed colors */
-    --baby-pink: 340 65% 85%;
-    --baby-blue: 210 50% 85%;
-    --powder-blue: 210 50% 97%;
-    --neutral-gray: 220 5% 85%;
-    --warm-cream: 35 35% 95%;
-    --soft-coral: 15 75% 80%;
-    --gentle-lavender: 260 40% 85%;
+    /* Refined color palette */
+    --blush-pink: 351 94% 97%;
+    --powder-blue: 210 44% 91%;
+    --soft-lilac: 252 50% 95%;
+    --charcoal-text: 0 0% 20%;
+    --muted-taupe: 30 8% 65%;
+    --warm-coral: 0 70% 65%;
+    --dusty-rose: 350 60% 70%;
+    --baby-pink: 349 100% 95%;
+    --baby-blue: 200 100% 95%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--soft-coral)));
-    --gradient-soft: linear-gradient(180deg, hsl(var(--warm-cream)), hsl(var(--background)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--baby-pink)), hsl(var(--baby-blue)));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--warm-coral)), hsl(var(--dusty-rose)));
+    --gradient-soft: linear-gradient(135deg, hsl(var(--blush-pink)), hsl(var(--powder-blue)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--warm-coral) / 0.8), hsl(var(--dusty-rose) / 0.8));
+    --gradient-floating: linear-gradient(135deg, hsl(var(--soft-lilac) / 0.3), hsl(var(--powder-blue) / 0.3));
 
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -8px hsl(var(--primary) / 0.2);
-    --shadow-warm: 0 8px 30px -12px hsl(var(--primary) / 0.3);
+    /* Modern shadows */
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-warm: 0 8px 32px rgba(255, 107, 107, 0.15);
+    --shadow-elegant: 0 10px 30px -10px rgba(255, 107, 107, 0.2);
+    --shadow-glow: 0 0 40px rgba(255, 107, 107, 0.2);
 
+    /* Border radius */
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
