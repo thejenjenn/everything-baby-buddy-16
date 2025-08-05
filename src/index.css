@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 35 20% 98%;
+    --background: 0 0% 100%;
     --foreground: 25 25% 15%;
 
     --card: 0 0% 100%;
@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 25 25% 15%;
 
-    --primary: 340 65% 75%;
+    --primary: 210 100% 50%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 35 35% 92%;
@@ -39,6 +39,7 @@ All colors MUST be HSL.
     /* Custom baby-themed colors */
     --baby-pink: 340 65% 85%;
     --baby-blue: 210 50% 85%;
+    --powder-blue: 210 50% 97%;
     --neutral-gray: 220 5% 85%;
     --warm-cream: 35 35% 95%;
     --soft-coral: 15 75% 80%;

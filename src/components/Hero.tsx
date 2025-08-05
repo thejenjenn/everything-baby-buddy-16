@@ -4,7 +4,7 @@ import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative bg-gradient-to-br from-warm-cream via-neutral-gray to-baby-blue min-h-screen flex items-center">
+    <section id="home" className="relative bg-background min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
@@ -21,7 +21,7 @@ const Hero = () => {
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Making motherhood smoother and less daunting. We walk with you every step of the way, 
-                taking the stress off your shoulders so you can focus on what truly matters—you and your baby.
+                taking the stress off your shoulders so you can focus on what truly matters you and your baby.
               </p>
             </div>
 
