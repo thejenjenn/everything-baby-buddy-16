@@ -26,10 +26,10 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="warm" size="lg" className="text-lg px-8">
+              <Button variant="default" size="lg" className="text-lg px-8">
                 Explore Services
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8">
+              <Button variant="outline" size="lg" className="text-lg px-8 border-2 border-primary/20 hover:border-primary/40">
                 Read My Story
               </Button>
             </div>

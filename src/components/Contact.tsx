@@ -151,7 +151,7 @@ const Contact = () => {
                 />
               </div>
 
-              <Button variant="warm" size="lg" className="w-full">
+              <Button variant="default" size="lg" className="w-full">
                 Send Message
               </Button>
 

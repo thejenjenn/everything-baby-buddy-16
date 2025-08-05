@@ -53,6 +53,11 @@ const About = () => {
                     </p>
                     
                     <p className="text-muted-foreground leading-relaxed">
+                      That's when I realized how many mothers face this same struggle. The endless research, the overwhelming choices, 
+                      the fear of missing something important for your precious little one. It shouldn't be this hard.
+                    </p>
+                    
+                    <p className="text-muted-foreground leading-relaxed">
                       Thankfully, I had amazing mothers around me who helped me create a detailed checklist that guided my shopping. 
                       Even with that, it was still quite stressful trying to gather everything I needed, stick to a budget, and come home to sort it all out.
                     </p>

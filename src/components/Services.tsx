@@ -122,7 +122,7 @@ const Services = () => {
                   ))}
                 </ul>
 
-                <Button variant="soft" className="w-full">
+                <Button variant="default" className="w-full">
                   {service.cta}
                 </Button>
               </CardContent>
