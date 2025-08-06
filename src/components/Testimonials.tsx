@@ -65,29 +65,28 @@ const Testimonials = () => {
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="w-full flex-shrink-0">
                   <Card className="border-0 shadow-lg rounded-3xl overflow-hidden">
-                    {/* Image Section */}
-                    <div className="bg-gradient-to-b from-gray-100 to-gray-200 p-8 pt-12">
-                      <div className="text-center">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name} 
-                          className="w-32 h-32 mx-auto rounded-full object-cover shadow-lg" 
-                        />
-                      </div>
+                    {/* Full Cover Image Section */}
+                    <div className="relative h-80 bg-gradient-to-b from-gray-100 to-gray-200">
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name} 
+                        className="w-full h-full object-cover" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                     </div>
                     
                     {/* Quote Section */}
-                    <div className={`${testimonial.bgColor} p-8`}>
-                      <div className="text-5xl text-gray-400 font-serif mb-4">"</div>
-                      <p className="text-lg font-body leading-relaxed text-gray-800 mb-6">
+                    <div className={`${testimonial.bgColor} p-8 pb-12`}>
+                      <div className="text-6xl text-gray-400 font-serif leading-none mb-4">"</div>
+                      <p className="text-lg font-body leading-relaxed text-gray-800 mb-8 pl-2">
                         {testimonial.text}
                       </p>
                       
-                      <div className="border-l-4 border-gray-400 pl-4">
-                        <h4 className="font-bold text-lg text-gray-900 mb-1">
+                      <div className="border-l-4 border-gray-400 pl-6 ml-2">
+                        <h4 className="font-bold text-xl text-gray-900 mb-1">
                           {testimonial.name}
                         </h4>
-                        <p className="text-gray-600 text-sm font-medium">
+                        <p className="text-gray-600 font-medium">
                           {testimonial.role}
                         </p>
                       </div>
