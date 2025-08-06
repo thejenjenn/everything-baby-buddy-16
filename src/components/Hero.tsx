@@ -7,15 +7,15 @@ const Hero = () => {
     <section id="home" className="relative bg-background min-h-screen flex items-center overflow-hidden">
       {/* Floating background elements - Lovely soft blue and pink bubbles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-48 h-48 bg-gradient-to-br from-baby-blue/40 to-powder-blue/30 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-32 right-16 w-36 h-36 bg-gradient-to-br from-baby-pink/50 to-blush-pink/40 rounded-full blur-lg animate-float" style={{animationDelay: "1s"}}></div>
-        <div className="absolute top-1/3 right-1/4 w-28 h-28 bg-gradient-to-br from-powder-blue/35 to-baby-blue/30 rounded-full blur-md animate-float" style={{animationDelay: "2s"}}></div>
-        <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-light-pink/40 to-baby-pink/50 rounded-full blur-lg animate-float" style={{animationDelay: "3s"}}></div>
-        <div className="absolute bottom-1/4 left-1/5 w-24 h-24 bg-gradient-to-br from-baby-pink/60 to-light-pink-fill/40 rounded-full blur-md animate-float" style={{animationDelay: "2.5s"}}></div>
-        <div className="absolute top-1/4 right-1/3 w-30 h-30 bg-gradient-to-br from-powder-blue/50 to-baby-blue/40 rounded-full blur-lg animate-float" style={{animationDelay: "1.5s"}}></div>
-        <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-baby-pink/45 to-powder-blue/35 rounded-full blur-sm animate-float" style={{animationDelay: "4s"}}></div>
-        <div className="absolute bottom-10 left-1/4 w-40 h-40 bg-gradient-to-br from-baby-blue/30 to-light-pink/35 rounded-full blur-xl animate-float" style={{animationDelay: "0.5s"}}></div>
-        <div className="absolute top-3/4 right-1/5 w-34 h-34 bg-gradient-to-br from-blush-pink/35 to-baby-blue/30 rounded-full blur-lg animate-float" style={{animationDelay: "3.5s"}}></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-baby-pink/50 to-blush-pink/40 rounded-full blur-xl animate-float"></div>
+        <div className="absolute bottom-32 right-16 w-48 h-48 bg-gradient-to-br from-baby-pink/60 to-blush-pink/50 rounded-full blur-lg animate-float" style={{animationDelay: "1s"}}></div>
+        <div className="absolute top-1/3 right-1/4 w-36 h-36 bg-gradient-to-br from-light-pink/50 to-baby-pink/45 rounded-full blur-md animate-float" style={{animationDelay: "2s"}}></div>
+        <div className="absolute top-1/2 left-1/3 w-44 h-44 bg-gradient-to-br from-baby-pink/55 to-blush-pink/45 rounded-full blur-lg animate-float" style={{animationDelay: "3s"}}></div>
+        <div className="absolute bottom-1/4 left-1/5 w-32 h-32 bg-gradient-to-br from-baby-pink/65 to-light-pink-fill/50 rounded-full blur-md animate-float" style={{animationDelay: "2.5s"}}></div>
+        <div className="absolute top-1/4 right-1/3 w-40 h-40 bg-gradient-to-br from-light-pink/55 to-baby-pink/50 rounded-full blur-lg animate-float" style={{animationDelay: "1.5s"}}></div>
+        <div className="absolute top-10 right-10 w-28 h-28 bg-gradient-to-br from-baby-pink/50 to-blush-pink/40 rounded-full blur-sm animate-float" style={{animationDelay: "4s"}}></div>
+        <div className="absolute bottom-10 left-1/4 w-52 h-52 bg-gradient-to-br from-baby-pink/45 to-light-pink/40 rounded-full blur-xl animate-float" style={{animationDelay: "0.5s"}}></div>
+        <div className="absolute top-3/4 right-1/5 w-42 h-42 bg-gradient-to-br from-blush-pink/45 to-baby-pink/40 rounded-full blur-lg animate-float" style={{animationDelay: "3.5s"}}></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">

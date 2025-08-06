@@ -29,34 +29,58 @@ const Contact = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <Card className="border-border hover:shadow-soft transition-all duration-300">
-                <CardContent className="p-6">
+              <Card className="bg-amber-50 backdrop-blur-sm shadow-elegant border-dark-grey/40 rounded-2xl relative overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-amber-200/60 to-orange-200/40 rounded-full"></div>
+                  <div className="absolute bottom-6 left-6 w-6 h-6 bg-gradient-to-br from-pink-200/50 to-rose-200/40 rounded-full"></div>
+                  <div className="absolute top-1/2 right-8 w-4 h-4 bg-gradient-to-br from-yellow-200/60 to-amber-200/50 rounded-full"></div>
+                  <div className="absolute bottom-4 right-1/3 w-5 h-5 bg-gradient-to-br from-orange-200/40 to-amber-200/60 rounded-full"></div>
+                </div>
+                <CardContent className="p-6 relative z-10">
                   <MessageCircle className="h-8 w-8 text-primary mb-4" />
-                  <h4 className="font-semibold text-foreground mb-2">WhatsApp</h4>
-                  <p className="text-muted-foreground text-sm mb-3">Chat with us on WhatsApp</p>
-                  <p className="text-sm font-medium text-foreground">+234 706 086 7150</p>
+                  <h4 className="font-semibold text-foreground mb-2">Personalized Consultation</h4>
+                  <p className="text-muted-foreground text-sm mb-3">Get expert advice tailored to your unique motherhood journey. Our specialists are here to guide you every step of the way.</p>
+                  <Button variant="outline" className="border-2 border-powder-blue text-powder-blue bg-white hover:bg-powder-blue/10 rounded-full transition-all duration-300 font-medium">
+                    <MessageCircle className="h-4 w-4 mr-2 text-powder-blue" />
+                    Chat with us
+                  </Button>
                 </CardContent>
               </Card>
 
-              <Card className="border-border hover:shadow-soft transition-all duration-300">
-                <CardContent className="p-6">
-                  <Mail className="h-8 w-8 text-primary mb-4" />
-                  <h4 className="font-semibold text-foreground mb-2">Email</h4>
-                  <p className="text-muted-foreground text-sm mb-3">Send us your inquiries</p>
-                  <p className="text-sm font-medium text-foreground">everythingbabyworld@gmail.com</p>
+              <Card className="bg-amber-50 backdrop-blur-sm shadow-elegant border-dark-grey/40 rounded-2xl relative overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div className="absolute top-6 left-4 w-7 h-7 bg-gradient-to-br from-blue-200/50 to-indigo-200/40 rounded-full"></div>
+                  <div className="absolute bottom-4 right-6 w-5 h-5 bg-gradient-to-br from-purple-200/50 to-pink-200/40 rounded-full"></div>
+                  <div className="absolute top-1/3 left-8 w-4 h-4 bg-gradient-to-br from-teal-200/60 to-cyan-200/50 rounded-full"></div>
+                  <div className="absolute bottom-1/3 left-1/3 w-6 h-6 bg-gradient-to-br from-green-200/40 to-emerald-200/60 rounded-full"></div>
+                </div>
+                <CardContent className="p-6 relative z-10">
+                  <Clock className="h-8 w-8 text-primary mb-4" />
+                  <h4 className="font-semibold text-foreground mb-2">Quick Response</h4>
+                  <p className="text-muted-foreground text-sm mb-3">We understand motherhood doesn't wait. Expect responses within 2-4 hours during business hours.</p>
+                  <div className="flex items-center space-x-2 text-sm font-medium" style={{color: "#171717"}}>
+                    <Clock className="h-4 w-4 text-primary" />
+                    <span>Average response: 3 hours</span>
+                  </div>
                 </CardContent>
               </Card>
             </div>
 
-            <Card className="border-blush-pink/30 bg-gradient-to-r from-blush-pink/10 via-powder-blue/10 to-soft-lilac/10 backdrop-blur-sm">
+            <Card className="border-border hover:shadow-soft transition-all duration-300">
               <CardContent className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
-                  <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
-                  <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
-                </div>
-                <p className="text-muted-taupe font-body">
-                  We typically respond within 30mins - 2hours during business hours. For urgent matters, please call or message us directly on WhatsApp.
-                </p>
+                <Mail className="h-8 w-8 text-primary mb-4" />
+                <h4 className="font-semibold text-foreground mb-2">Email</h4>
+                <p className="text-muted-foreground text-sm mb-3">Send us your inquiries</p>
+                <p className="text-sm font-medium text-foreground">everythingbabyworld@gmail.com</p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border hover:shadow-soft transition-all duration-300">
+              <CardContent className="p-6">
+                <MessageCircle className="h-8 w-8 text-primary mb-4" />
+                <h4 className="font-semibold text-foreground mb-2">WhatsApp</h4>
+                <p className="text-muted-foreground text-sm mb-3">Chat with us on WhatsApp</p>
+                <p className="text-sm font-medium text-foreground">+234 706 086 7150</p>
               </CardContent>
             </Card>
           </div>
