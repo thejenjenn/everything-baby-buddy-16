@@ -66,38 +66,30 @@ const Testimonials = () => {
                 <div key={index} className="w-full flex-shrink-0">
                   <Card className="border-0 shadow-lg rounded-3xl overflow-hidden">
                     {/* Full Cover Image Section */}
-                    <div className="relative h-80 p-4">
+                    <div className="relative h-80 bg-gradient-to-b from-gray-100 to-gray-200">
                       <img 
                         src={testimonial.image} 
                         alt={testimonial.name} 
-                        className="w-full h-full object-cover rounded-2xl" 
+                        className="w-full h-full object-cover" 
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                     </div>
                     
-                    {/* Quote Section - Matching reference layout */}
-                    <div className={`${testimonial.bgColor} px-8 py-12 text-center relative min-h-[320px] flex flex-col justify-center`}>
-                      {/* Large quote mark */}
-                      <div className="text-6xl text-gray-600 font-serif leading-none mb-6 text-left">"</div>
+                    {/* Quote Section */}
+                    <div className={`${testimonial.bgColor} p-8 pb-12`}>
+                      <div className="text-6xl text-gray-400 font-serif leading-none mb-4">"</div>
+                      <p className="text-lg font-body leading-relaxed text-gray-800 mb-8 pl-2">
+                        {testimonial.text}
+                      </p>
                       
-                      {/* Testimonial text - centered and well spaced */}
-                      <div className="flex-grow flex items-center justify-center">
-                        <p className="text-lg font-body leading-relaxed text-gray-800 max-w-sm mx-auto">
-                          {testimonial.text}
-                        </p>
-                      </div>
-                      
-                      {/* Name and role - bottom section */}
-                      <div className="mt-8 pt-4">
-                        <h4 className="font-bold text-xl text-gray-900 mb-2">
+                      <div className="border-l-4 border-gray-400 pl-6 ml-2">
+                        <h4 className="font-bold text-xl text-gray-900 mb-1">
                           {testimonial.name}
                         </h4>
-                        <p className="text-gray-600 font-medium text-base">
+                        <p className="text-gray-600 font-medium">
                           {testimonial.role}
                         </p>
                       </div>
-                      
-                      {/* Right border accent */}
-                      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1 h-20 bg-gray-400 rounded-l-full"></div>
                     </div>
                   </Card>
                 </div>
@@ -105,14 +97,14 @@ const Testimonials = () => {
             </div>
           </div>
           
-          {/* Dots Indicator - Matching reference style */}
-          <div className="flex justify-center mt-8 space-x-3">
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-6 space-x-2">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-gray-600 w-8' : 'bg-gray-300 w-2'
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex ? 'bg-primary scale-125' : 'bg-gray-300'
                 }`}
               />
             ))}
