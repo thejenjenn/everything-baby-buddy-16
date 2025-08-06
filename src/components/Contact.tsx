@@ -63,80 +63,80 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="border-border shadow-warm">
-            <CardHeader>
-              <CardTitle className="text-2xl text-foreground">Send us a Message</CardTitle>
-              <p className="text-muted-foreground">
-                Fill out the form below and we'll get back to you as soon as possible.
-              </p>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-8 text-white">
+            <div className="relative z-10">
+              <div className="flex justify-between items-start mb-8">
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    First Name
-                  </label>
-                  <Input placeholder="Enter your first name" />
+                  <h2 className="text-3xl md:text-4xl font-bold mb-2">
+                    Get in touch with us
+                  </h2>
+                  <p className="text-purple-100 text-lg">
+                    Fill out the form below and we'll get back to you as soon as possible.
+                  </p>
                 </div>
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Last Name
-                  </label>
-                  <Input placeholder="Enter your last name" />
+                <Button 
+                  variant="outline" 
+                  className="border-white/30 text-white hover:bg-white/10 bg-transparent"
+                >
+                  Quick Call
+                </Button>
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <Input 
+                      placeholder="Full name" 
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40"
+                    />
+                  </div>
+                  <div>
+                    <Input 
+                      type="email" 
+                      placeholder="Email address" 
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Email Address
-                </label>
-                <Input type="email" placeholder="Enter your email" />
-              </div>
+                <Input 
+                  type="tel" 
+                  placeholder="Phone number" 
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40"
+                />
 
-              <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Phone Number
-                </label>
-                <Input type="tel" placeholder="Enter your phone number" />
-              </div>
-
-              <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Service Interest
-                </label>
-                <select className="w-full p-3 border border-input rounded-md bg-background text-foreground">
-                  <option>Select a service</option>
-                  <option>Newborn Package</option>
-                  <option>Curated Meal Plans</option>
-                  <option>Baby Registry</option>
-                  <option>Hospital List</option>
-                  <option>Party Packages</option>
-                  <option>General Consultation</option>
+                <select className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-white/40">
+                  <option value="" className="text-gray-900">Select a service</option>
+                  <option value="newborn" className="text-gray-900">Newborn Package</option>
+                  <option value="meals" className="text-gray-900">Curated Meal Plans</option>
+                  <option value="registry" className="text-gray-900">Baby Registry</option>
+                  <option value="hospital" className="text-gray-900">Hospital List</option>
+                  <option value="party" className="text-gray-900">Party Packages</option>
+                  <option value="consultation" className="text-gray-900">General Consultation</option>
                 </select>
-              </div>
 
-              <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Message
-                </label>
                 <Textarea 
                   placeholder="Tell us about your needs, baby's age, or any specific questions you have..."
                   rows={4}
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40"
                 />
-              </div>
 
-              <Button variant="default" size="lg" className="w-full">
-                Send Message
-              </Button>
+                <Button variant="default" size="lg" className="w-full">
+                  Send Message
+                </Button>
 
-              <div className="text-center pt-4">
-                <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
-                  <Heart className="h-4 w-4 text-primary fill-primary" />
-                  <span>We care about your privacy and will never spam you</span>
+                <div className="text-center pt-4">
+                  <div className="flex items-center justify-center space-x-2 text-sm text-purple-100">
+                    <Heart className="h-4 w-4 text-pink-300 fill-pink-300" />
+                    <span>We care about your privacy and will never spam you</span>
+                  </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+            
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-800/20 via-transparent to-blue-800/20"></div>
+          </div>
         </div>
       </div>
     </section>
