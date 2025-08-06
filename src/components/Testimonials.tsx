@@ -48,7 +48,7 @@ const Testimonials = () => {
                 
                 <div className="flex justify-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+                    <Star key={i} className="h-4 w-4 text-blush-pink fill-blush-pink" />
                   ))}
                 </div>
                 

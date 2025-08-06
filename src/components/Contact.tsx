@@ -48,13 +48,13 @@ const Contact = () => {
               </Card>
             </div>
 
-            <Card className="border-border bg-gradient-to-r from-baby-pink/50 to-baby-blue/50">
+            <Card className="border-blush-pink/30 bg-gradient-to-r from-blush-pink/10 via-powder-blue/10 to-soft-lilac/10 backdrop-blur-sm">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-3 mb-4">
-                  <Clock className="h-6 w-6 text-primary" />
-                  <h4 className="font-semibold text-foreground">Response Time</h4>
+                  <Clock className="h-6 w-6 text-blush-pink" />
+                  <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
                 </div>
-                <p className="text-muted-foreground">
+                <p className="text-muted-taupe font-body">
                   We typically respond within 30mins - 2hours during business hours. For urgent matters, please call or message us directly on WhatsApp.
                 </p>
               </CardContent>

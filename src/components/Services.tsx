@@ -109,7 +109,7 @@ const Services = () => {
                     <service.icon className="h-6 w-6 text-primary" />
                   </div>
                   {service.badge && (
-                    <Badge variant="secondary" className="bg-blush-pink text-charcoal-text font-body rounded-full px-3">
+                    <Badge variant="secondary" className="bg-blush-pink/20 text-muted-taupe font-body rounded-full px-3">
                       {service.badge}
                     </Badge>
                   )}
@@ -126,7 +126,7 @@ const Services = () => {
                 <ul className="space-y-3">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="text-sm text-muted-taupe font-body flex items-center">
-                      <div className="w-2 h-2 bg-gradient-to-r from-warm-coral to-dusty-rose rounded-full mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-blush-pink rounded-full mr-3 flex-shrink-0"></div>
                       {feature}
                     </li>
                   ))}
@@ -140,7 +140,7 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="mt-20 bg-gradient-to-r from-blush-pink via-powder-blue to-soft-lilac rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up">
+        <div className="mt-20 bg-gradient-to-r from-blush-pink/20 via-powder-blue/20 to-soft-lilac/20 rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border border-blush-pink/20">
           <h3 className="text-3xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
             Need Personalized Consultation?
           </h3>
@@ -149,13 +149,13 @@ const Services = () => {
             and custom packages tailored specifically for your little one.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button variant="default" size="lg" className="gap-3 font-body font-medium" asChild>
+            <Button variant="default" size="lg" className="gap-3 font-body font-medium shadow-warm" asChild>
               <a href="tel:+2347060867150">
                 <Phone className="h-5 w-5" />
                 Call for Consultation
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="gap-3 bg-white/80 backdrop-blur-sm font-body font-medium" asChild>
+            <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium border-blush-pink text-blush-pink hover:bg-blush-pink/10" asChild>
               <a href="https://wa.me/2347060867150">
                 <MessageCircle className="h-5 w-5" />
                 Chat with Us
