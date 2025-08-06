@@ -91,7 +91,7 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="border-2 border-blush-pink/50 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+            <Card key={index} className="border-blush-pink/30 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
               {service.image && (
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -105,9 +105,9 @@ const Services = () => {
               
                <CardHeader className="space-y-4 p-6">
                  <div className="flex items-center justify-between">
-                 <div className="w-12 h-12 bg-gradient-to-br from-powder-blue/20 to-soft-lilac/20 rounded-xl flex items-center justify-center">
-                      <service.icon className="w-6 h-6 text-primary" />
-                    </div>
+                   <div className="w-12 h-12 bg-gradient-to-br from-powder-blue/20 to-soft-lilac/20 rounded-xl overflow-hidden flex items-center justify-center">
+                     <img src={service.image} alt={service.title} className="w-8 h-8 object-cover rounded" />
+                   </div>
                    {service.badge && (
                      <Badge variant="secondary" className="font-body rounded-full px-3" style={{backgroundColor: "hsl(var(--light-pink))", color: "black"}}>
                        {service.badge}
@@ -126,7 +126,7 @@ const Services = () => {
                  <ul className="space-y-3">
                    {service.features.map((feature, idx) => (
                      <li key={idx} className="text-sm text-muted-taupe font-body flex items-center">
-                       <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0" style={{backgroundColor: "#171717"}}></div>
+                       <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0 bg-dark-grey"></div>
                        {feature}
                      </li>
                    ))}
@@ -155,7 +155,7 @@ const Services = () => {
                 Call for Consultation
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium border-powder-blue text-powder-blue hover:bg-powder-blue/10" asChild>
+            <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium border-blush-pink text-blush-pink hover:bg-blush-pink/10" asChild>
               <a href="https://wa.me/2347060867150">
                 <MessageCircle className="h-5 w-5" />
                 Chat with Us

@@ -1,26 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { User, Users, Search, TrendingUp } from "lucide-react";
+import personalExperienceIcon from "@/assets/personal-experience-icon.jpg";
+import expertNetworkIcon from "@/assets/expert-network-icon.jpg";
+import extensiveResearchIcon from "@/assets/extensive-research-icon.jpg";
+import provenResultsIcon from "@/assets/proven-results-icon.jpg";
 
 const About = () => {
   const highlights = [
     {
-      icon: User,
+      image: personalExperienceIcon,
       title: "Personal Experience",
       description: "First-time mother who understands the journey"
     },
     {
-      icon: Users,
+      image: expertNetworkIcon,
       title: "Expert Network",
       description: "Backed by nutritionists and pediatricians"
     },
     {
-      icon: Search,
+      image: extensiveResearchIcon,
       title: "Extensive Research",
       description: "Countless hours of study and experimentation"
     },
     {
-      icon: TrendingUp,
+      image: provenResultsIcon,
       title: "Proven Results",
       description: "Supporting families with confidence"
     }
@@ -76,9 +79,9 @@ const About = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{animationDelay: "0.3s"}}>
           {highlights.map((highlight, index) => (
-            <Card key={index} className="border-2 border-white/30 hover:shadow-elegant transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-2xl animate-scale-in shadow-lg" style={{animationDelay: `${index * 0.1}s`, boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'}}>
+            <Card key={index} className="border-white/20 hover:shadow-elegant transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
               <CardContent className="p-6 text-center">
-                <highlight.icon className="h-10 w-10 mx-auto mb-4 text-white" />
+                <img src={highlight.image} alt={highlight.title} className="h-10 w-10 mx-auto mb-4 rounded-lg object-cover" />
                 <h3 className="font-semibold text-white font-heading mb-2">{highlight.title}</h3>
                 <p className="text-sm text-white/80 font-body">{highlight.description}</p>
               </CardContent>

@@ -5,14 +5,11 @@ import heroImage from "@/assets/hero-image.jpg";
 const Hero = () => {
   return (
     <section id="home" className="relative bg-background min-h-screen flex items-center overflow-hidden">
-      {/* Floating background elements - playful bubbles */}
+      {/* Floating background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-soft-lilac/30 to-powder-blue/30 rounded-full blur-xl animate-float"></div>
         <div className="absolute bottom-32 right-16 w-24 h-24 bg-gradient-to-br from-blush-pink/40 to-warm-coral/20 rounded-full blur-lg animate-float" style={{animationDelay: "1s"}}></div>
         <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-gradient-to-br from-powder-blue/25 to-soft-lilac/25 rounded-full blur-md animate-float" style={{animationDelay: "2s"}}></div>
-        <div className="absolute top-1/2 left-1/3 w-20 h-20 bg-gradient-to-br from-warm-coral/30 to-blush-pink/20 rounded-full blur-lg animate-float" style={{animationDelay: "3s"}}></div>
-        <div className="absolute bottom-1/4 left-20 w-14 h-14 bg-gradient-to-br from-soft-lilac/40 to-powder-blue/30 rounded-full blur-md animate-float" style={{animationDelay: "4s"}}></div>
-        <div className="absolute top-10 right-1/3 w-18 h-18 bg-gradient-to-br from-blush-pink/25 to-warm-coral/15 rounded-full blur-sm animate-float" style={{animationDelay: "2.5s"}}></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
@@ -38,22 +35,22 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="text-lg px-10 py-4 font-body font-medium group animate-scale-in border-2 bg-white rounded-full transition-colors duration-300" 
+                className="text-lg px-10 py-4 font-body font-medium group animate-scale-in border-2 bg-white rounded-lg transition-colors duration-300" 
                 style={{
                   animationDelay: "0.8s",
-                  borderColor: "hsl(var(--powder-blue))",
-                  color: "hsl(var(--powder-blue))"
+                  borderColor: "#000000",
+                  color: "#000000"
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "hsl(var(--powder-blue))";
-                  e.currentTarget.style.color = "hsl(var(--powder-blue))";
+                  e.currentTarget.style.borderColor = "#333333";
+                  e.currentTarget.style.color = "#333333";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "hsl(var(--powder-blue))";
-                  e.currentTarget.style.color = "hsl(var(--powder-blue))";
+                  e.currentTarget.style.borderColor = "#000000";
+                  e.currentTarget.style.color = "#000000";
                 }}
               >
-                <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" style={{color: "white"}} />
+                <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
                 Read My Story
               </Button>
             </div>
@@ -73,20 +70,20 @@ const Hero = () => {
 
         {/* Stats Section - Moved below hero content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: "1s"}}>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border-2" style={{borderColor: "#171717", boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)'}}>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
             <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary" />
             <div className="text-3xl font-bold text-primary font-heading">5.0</div>
-            <div className="text-sm font-body" style={{color: "#171717"}}>Customer Rating</div>
+            <div className="text-sm text-muted-taupe font-body">Customer Rating</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border-2" style={{borderColor: "#171717", boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)'}}>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
             <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
             <div className="text-3xl font-bold text-primary font-heading">Trusted</div>
-            <div className="text-sm font-body" style={{color: "#171717"}}>Nationwide</div>
+            <div className="text-sm text-muted-taupe font-body">Nationwide</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border-2" style={{borderColor: "#171717", boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)'}}>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
             <div className="text-primary mx-auto mb-3 text-3xl">🧸</div>
             <div className="text-3xl font-bold text-primary font-heading">0-3yrs</div>
-            <div className="text-sm font-body" style={{color: "#171717"}}>Age Range</div>
+            <div className="text-sm text-muted-taupe font-body">Age Range</div>
           </div>
         </div>
       </div>
