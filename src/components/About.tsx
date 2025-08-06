@@ -13,7 +13,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="mb-16 animate-fade-in">
+        <div className="mb-8 animate-fade-in">
           <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
             <AccordionItem value="story" className="border-transparent">
               {/* Accordion trigger above the intro card */}
