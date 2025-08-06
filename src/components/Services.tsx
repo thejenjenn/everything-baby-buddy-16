@@ -78,7 +78,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-20" style={{backgroundColor: "#F8F4F2"}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
@@ -127,25 +127,14 @@ const Services = () => {
                 <CardContent className="p-6 space-y-6">
                   <p className="font-body leading-relaxed text-gray-600">{service.description}</p>
                   
-                  {/* Feature icons with labels */}
-                  <div className="grid grid-cols-3 gap-4">
-                    {service.features.slice(0, 3).map((feature, idx) => (
-                      <div key={idx} className="flex flex-col items-center text-center space-y-2">
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                          <Icon className="h-4 w-4 text-gray-600" />
-                        </div>
-                        <span className="text-xs font-body text-gray-600 leading-tight">{feature}</span>
-                      </div>
+                  {/* Feature pills */}
+                  <div className="flex flex-wrap gap-2">
+                    {service.features.map((feature, idx) => (
+                      <span key={idx} className="text-xs font-body px-3 py-1 bg-gray-100 rounded-full text-gray-600">
+                        {feature}
+                      </span>
                     ))}
                   </div>
-                  
-                  {service.features.length > 3 && (
-                    <div className="text-center">
-                      <span className="text-sm font-body text-gray-500">
-                        +{service.features.length - 3} more
-                      </span>
-                    </div>
-                  )}
 
                   <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                     <div className="text-left">
