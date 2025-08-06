@@ -14,7 +14,7 @@ import {
 import babyEssentials from "@/assets/baby-essentials.jpg";
 import babyFood from "@/assets/baby-food.jpg";
 import backToSchool from "@/assets/back-to-school.jpg";
-import partyPack from "@/assets/party-pack-new.jpg";
+import partyPack from "@/assets/party-pack-kids.jpg";
 import babyRegistry from "@/assets/baby-registry.jpg";
 import hospitalList from "@/assets/hospital-list.jpg";
 
@@ -93,7 +93,7 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="border-2 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`, borderColor: "hsl(var(--dark-grey))", borderWidth: "2px"}}>
+              <Card key={index} className="border-2 border-dark-grey/40 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 {service.image && (
                   <div className="relative h-48 overflow-hidden">
                     <img
