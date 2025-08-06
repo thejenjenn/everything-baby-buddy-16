@@ -41,12 +41,12 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="text-lg px-10 py-4 font-body font-medium group animate-scale-in border-2 bg-white rounded-full transition-colors duration-300 text-blue-600 border-blue-600 hover:bg-blue-50" 
+                className="text-lg px-10 py-4 font-body font-medium group animate-scale-in border-2 bg-white rounded-full transition-colors duration-300 text-primary border-primary hover:bg-primary hover:text-primary-foreground" 
                 style={{
                   animationDelay: "0.8s"
                 }}
               >
-                <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform text-blue-600" />
+                <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
                 Read My Story
               </Button>
             </div>

@@ -1,30 +1,48 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
+import { useEffect, useState } from "react";
 import zainabImage from "@/assets/zainab-akepre.jpg";
 import chikaImage from "@/assets/chika-anyanwu.jpg";
 import taiwoImage from "@/assets/taiwo-raymond.jpg";
 
 const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
   const testimonials = [
     {
       name: "Zainab Akepre",
       text: "Everything Baby made my first pregnancy so much easier. Their hospital package was perfectly curated and saved me hours of research.",
       rating: 5,
-      image: zainabImage
+      image: zainabImage,
+      bgColor: "bg-pink-50",
+      role: "New Mother"
     },
     {
-      name: "Chika Anyanwu",
+      name: "Chika Anyanwu", 
       text: "The baby essentials package was a lifesaver! Everything I needed and nothing I didn't. Highly recommend to new moms.",
       rating: 5,
-      image: chikaImage
+      image: chikaImage,
+      bgColor: "bg-blue-50",
+      role: "Mother of Two"
     },
     {
       name: "Taiwo Raymond",
       text: "Their back-to-school package was amazing. My daughter had everything she needed for nursery. Such thoughtful curation!",
       rating: 5,
-      image: taiwoImage
+      image: taiwoImage,
+      bgColor: "bg-green-50",
+      role: "Working Mom"
     }
   ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   return (
     <section className="py-20 bg-background">
@@ -38,30 +56,60 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in" style={{animationDelay: "0.3s"}}>
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-2 transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`, boxShadow: '0 4px 16px rgba(0, 0, 0, 0.08)', borderColor: '#E5E7EB'}}>
-              <CardContent className="p-8 text-center">
-                <div className="mb-4">
-                  <img src={testimonial.image} alt={testimonial.name} className="h-12 w-12 mx-auto mb-3 rounded-full object-cover" />
+        <div className="max-w-md mx-auto">
+          <div className="relative overflow-hidden rounded-3xl">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="w-full flex-shrink-0">
+                  <Card className="border-0 shadow-lg rounded-3xl overflow-hidden">
+                    {/* Image Section */}
+                    <div className="bg-gradient-to-b from-gray-100 to-gray-200 p-8 pt-12">
+                      <div className="text-center">
+                        <img 
+                          src={testimonial.image} 
+                          alt={testimonial.name} 
+                          className="w-32 h-32 mx-auto rounded-full object-cover shadow-lg" 
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Quote Section */}
+                    <div className={`${testimonial.bgColor} p-8`}>
+                      <div className="text-5xl text-gray-400 font-serif mb-4">"</div>
+                      <p className="text-lg font-body leading-relaxed text-gray-800 mb-6">
+                        {testimonial.text}
+                      </p>
+                      
+                      <div className="border-l-4 border-gray-400 pl-4">
+                        <h4 className="font-bold text-lg text-gray-900 mb-1">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-gray-600 text-sm font-medium">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
                 </div>
-                
-                <div className="flex justify-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4" style={{color: "#EC4899", fill: "#EC4899"}} />
-                  ))}
-                </div>
-                
-                <p className="font-body leading-relaxed mb-6 italic" style={{color: "#171717"}}>
-                  "{testimonial.text}"
-                </p>
-                
-                <h4 className="font-semibold font-heading" style={{color: "#171717"}}>
-                  {testimonial.name}
-                </h4>
-              </CardContent>
-            </Card>
-          ))}
+              ))}
+            </div>
+          </div>
+          
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex ? 'bg-primary scale-125' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
