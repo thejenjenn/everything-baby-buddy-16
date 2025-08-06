@@ -80,8 +80,8 @@ const About = () => {
             return (
               <Card key={index} className="border-white/20 hover:shadow-elegant transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardContent className="p-6 text-center">
-                  <Icon className="h-10 w-10 mx-auto mb-4" style={{color: "#C2185B"}} />
-                  <h3 className="font-semibold font-heading mb-2" style={{color: "#C2185B"}}>{highlight.title}</h3>
+                  <Icon className="h-10 w-10 mx-auto mb-4" style={{color: "hsl(var(--light-pink-fill))"}} />
+                  <h3 className="font-semibold font-heading mb-2" style={{color: "hsl(var(--light-pink-fill))"}}>{highlight.title}</h3>
                   <p className="text-sm text-white/80 font-body">{highlight.description}</p>
                 </CardContent>
               </Card>

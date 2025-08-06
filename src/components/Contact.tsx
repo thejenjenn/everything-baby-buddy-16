@@ -12,7 +12,7 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Get in Touch
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto" style={{color: '#171717'}}>
             Ready to start your journey with Everything Baby? We're here to support you every step of the way.
           </p>
         </div>
@@ -22,7 +22,7 @@ const Contact = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-6">Let's Connect</h3>
-              <p className="text-muted-foreground mb-8">
+              <p className="mb-8" style={{color: '#171717'}}>
                 Whether you need consultation, want to place an order, or have questions about our services, 
                 we're always happy to help. Reach out through any of the channels below.
               </p>
@@ -51,7 +51,7 @@ const Contact = () => {
             <Card className="border-blush-pink/30 bg-gradient-to-r from-blush-pink/10 via-powder-blue/10 to-soft-lilac/10 backdrop-blur-sm">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-3 mb-4">
-                  <Clock className="h-6 w-6 text-blush-pink" />
+                  <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
                   <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
                 </div>
                 <p className="text-muted-taupe font-body">
