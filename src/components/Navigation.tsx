@@ -19,7 +19,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
             <Baby className="h-8 w-8 text-powder-blue" />
-            <span className="font-bold text-xl text-foreground">Everything Baby</span>
+            <span className="font-bold text-[10px] text-foreground">Everything Baby</span>
           </div>
 
           {/* Desktop Navigation */}
