@@ -153,9 +153,9 @@ const Testimonials = () => {
                 <Card
                   key={index}
                   className={`
-                    absolute inset-0 w-full bg-gradient-to-br from-pink-50/90 to-blue-50/90 border-0 rounded-3xl shadow-xl backdrop-blur-sm
+                    absolute inset-0 w-full bg-white border-0 rounded-3xl shadow-lg
                     transition-all duration-500 ease-out cursor-pointer
-                    ${isActive ? 'hover:scale-[1.03] hover:shadow-2xl' : ''}
+                    ${isActive ? 'hover:scale-[1.03] hover:shadow-xl' : ''}
                     ${isVisible && index <= 2 ? 'animate-fade-in' : 'opacity-0'}
                   `}
                   style={{
@@ -166,7 +166,7 @@ const Testimonials = () => {
                   }}
                   onClick={() => setActiveIndex(index)}
                 >
-                  <CardContent className="p-8 h-full flex flex-col justify-between relative">
+                  <CardContent className="p-8 h-full flex flex-col text-left">
                     {/* Quote mark */}
                     <div className="text-4xl text-primary/30 font-serif leading-none mb-4">"</div>
                     
@@ -185,23 +185,10 @@ const Testimonials = () => {
                       {testimonial.text}
                     </p>
                     
-                    {/* Author info with avatar */}
-                    <div className="flex items-center gap-3">
-                      <Avatar className="w-12 h-12">
-                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                        <AvatarFallback className="bg-primary/10 text-primary font-semibold">
-                          {testimonial.name.split(' ').map(n => n[0]).join('')}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <p className="font-semibold text-gray-900 text-sm">
-                          {testimonial.name}
-                        </p>
-                        <p className="text-gray-600 text-xs">
-                          {testimonial.role}
-                        </p>
-                      </div>
-                    </div>
+                    {/* Role only */}
+                    <p className="text-gray-600 text-sm">
+                      {testimonial.role}
+                    </p>
                   </CardContent>
                 </Card>
               );
