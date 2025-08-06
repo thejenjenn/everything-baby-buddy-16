@@ -20,13 +20,6 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">Let's Connect</h3>
-              <p className="mb-8" style={{color: '#171717'}}>
-                Whether you need consultation, want to place an order, or have questions about our services, 
-                we're always happy to help. Reach out through any of the channels below.
-              </p>
-            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <Card className="border-border hover:shadow-soft transition-all duration-300">
@@ -48,15 +41,23 @@ const Contact = () => {
               </Card>
             </div>
 
-            <Card className="border-blush-pink/30 bg-gradient-to-r from-blush-pink/10 via-powder-blue/10 to-soft-lilac/10 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
-                  <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
-                  <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
+            <Card className="border relative overflow-hidden" style={{backgroundColor: "#F7F3F0", borderColor: "#E5E7EB"}}>
+              <CardContent className="p-6 relative">
+                {/* Playful decorative elements */}
+                <div className="absolute top-2 right-4 w-6 h-6 opacity-20" style={{color: "#EC4899"}}>🕐</div>
+                <div className="absolute bottom-3 left-2 w-4 h-4 opacity-15" style={{color: "#EC4899"}}>💬</div>
+                <div className="absolute top-1/2 right-2 w-3 h-3 opacity-15" style={{color: "#EC4899"}}>⚡</div>
+                <div className="absolute bottom-4 right-6 w-5 h-5 opacity-15" style={{color: "#EC4899"}}>📱</div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
+                    <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
+                  </div>
+                  <p className="text-muted-taupe font-body">
+                    We typically respond within 30mins - 2hours during business hours. For urgent matters, please call or message us directly on WhatsApp.
+                  </p>
                 </div>
-                <p className="text-muted-taupe font-body">
-                  We typically respond within 30mins - 2hours during business hours. For urgent matters, please call or message us directly on WhatsApp.
-                </p>
               </CardContent>
             </Card>
           </div>

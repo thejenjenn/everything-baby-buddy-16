@@ -143,27 +143,37 @@ const Services = () => {
           })}
         </div>
 
-        <div className="mt-20 bg-gradient-to-r from-blush-pink/20 via-powder-blue/20 to-soft-lilac/20 rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border border-blush-pink/20">
-          <h3 className="text-3xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
-            Need Personalized Consultation?
-          </h3>
-          <p className="mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed" style={{color: "#171717"}}>
-            Every baby is unique, and so are their needs. Contact us for personalized consultation 
-            and custom packages tailored specifically for your little one.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button variant="default" size="lg" className="gap-3 font-body font-medium shadow-warm" asChild>
-              <a href="tel:+2347060867150">
-                <Phone className="h-5 w-5" />
-                Call for Consultation
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium" style={{borderColor: "hsl(var(--powder-blue))", color: "hsl(var(--powder-blue))"}} asChild>
-              <a href="https://wa.me/2347060867150" className="flex items-center gap-3">
-                <MessageCircle className="h-5 w-5" style={{color: "hsl(var(--powder-blue))"}} />
-                Chat with Us
-              </a>
-            </Button>
+        <div className="mt-20 relative rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border overflow-hidden" style={{backgroundColor: "#F7F3F0", borderColor: "#E5E7EB"}}>
+          {/* Playful decorative elements */}
+          <div className="absolute top-4 left-8 w-8 h-8 opacity-20" style={{color: "#EC4899"}}>🎈</div>
+          <div className="absolute top-8 right-12 w-6 h-6 opacity-20" style={{color: "#EC4899"}}>⭐</div>
+          <div className="absolute bottom-6 left-12 w-6 h-6 opacity-20" style={{color: "#EC4899"}}>🧸</div>
+          <div className="absolute bottom-10 right-8 w-8 h-8 opacity-20" style={{color: "#EC4899"}}>❤️</div>
+          <div className="absolute top-1/2 left-4 w-4 h-4 opacity-15" style={{color: "#EC4899"}}>🌟</div>
+          <div className="absolute top-1/3 right-6 w-5 h-5 opacity-15" style={{color: "#EC4899"}}>💕</div>
+          
+          <div className="relative z-10">
+            <h3 className="text-3xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
+              Need Personalized Consultation?
+            </h3>
+            <p className="mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed" style={{color: "#171717"}}>
+              Every baby is unique, and so are their needs. Contact us for personalized consultation 
+              and custom packages tailored specifically for your little one.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button variant="default" size="lg" className="gap-3 font-body font-medium shadow-warm" asChild>
+                <a href="tel:+2347060867150">
+                  <Phone className="h-5 w-5" />
+                  Call for Consultation
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium" style={{borderColor: "hsl(var(--powder-blue))", color: "hsl(var(--powder-blue))"}} asChild>
+                <a href="https://wa.me/2347060867150" className="flex items-center gap-3">
+                  <MessageCircle className="h-5 w-5" style={{color: "hsl(var(--powder-blue))"}} />
+                  Chat with Us
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
