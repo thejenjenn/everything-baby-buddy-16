@@ -12,18 +12,18 @@ const Testimonials = () => {
   
   const testimonials = [
     {
-      name: "Zainab Akepre",
-      text: "Everything Baby made my first pregnancy so much easier. Their hospital package was perfectly curated and saved me hours of research.",
-      rating: 5,
-      role: "New Mother",
-      avatar: "/src/assets/zainab-akepre.jpg"
-    },
-    {
       name: "Chika Anyanwu", 
       text: "The baby essentials package was a lifesaver! Everything I needed and nothing I didn't. Highly recommend to new moms.",
       rating: 5,
       role: "Mother of Two",
       avatar: "/src/assets/chika-anyanwu.jpg"
+    },
+    {
+      name: "Zainab Akepre",
+      text: "Everything Baby made my first pregnancy so much easier. Their hospital package was perfectly curated and saved me hours of research.",
+      rating: 5,
+      role: "New Mother",
+      avatar: "/src/assets/zainab-akepre.jpg"
     },
     {
       name: "Taiwo Raymond",
@@ -136,11 +136,11 @@ const Testimonials = () => {
               let borderColor = '';
               
               if (index === 0) {
-                backgroundColor = 'bg-gradient-to-br from-pink-50 to-pink-100';
-                borderColor = 'border-pink-300';
-              } else if (index === 1) {
                 backgroundColor = 'bg-gradient-to-br from-blue-50 to-blue-100';
                 borderColor = 'border-blue-300';
+              } else if (index === 1) {
+                backgroundColor = 'bg-gradient-to-br from-pink-50 to-pink-100';
+                borderColor = 'border-pink-300';
               } else {
                 backgroundColor = 'bg-gradient-to-br from-orange-50 to-orange-100';
                 borderColor = 'border-orange-300';
