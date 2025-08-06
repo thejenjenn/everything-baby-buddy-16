@@ -35,28 +35,10 @@ const Hero = () => {
               <Button variant="default" size="lg" className="text-lg px-10 py-4 font-medium shadow-warm animate-scale-in" style={{animationDelay: "0.6s"}}>
                 Explore Services
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-10 py-4 font-medium group animate-scale-in" style={{animationDelay: "0.8s"}}>
+              <Button variant="outline" size="lg" className="text-lg px-10 py-4 font-medium group animate-scale-in border-2 border-primary/30 bg-background hover:bg-primary/5 hover:border-primary/60 hover:shadow-soft text-primary" style={{animationDelay: "0.8s"}}>
                 <Play className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-                Watch Our Story
+                Read My Story
               </Button>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4 pt-8 animate-fade-in" style={{animationDelay: "1s"}}>
-              <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-blush-pink/50 hover:shadow-warm transition-all duration-300">
-                <Heart className="h-6 w-6 text-primary mx-auto mb-2" />
-                <div className="text-2xl font-bold text-primary font-heading">100+</div>
-                <div className="text-sm text-muted-taupe font-body">Happy Families</div>
-              </div>
-              <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-powder-blue/50 hover:shadow-warm transition-all duration-300">
-                <Star className="h-6 w-6 text-primary mx-auto mb-2 fill-primary" />
-                <div className="text-2xl font-bold text-primary font-heading">5★</div>
-                <div className="text-sm text-muted-taupe font-body">Customer Rating</div>
-              </div>
-              <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-soft-lilac/50 hover:shadow-warm transition-all duration-300">
-                <div className="text-primary mx-auto mb-2 text-2xl">👶</div>
-                <div className="text-2xl font-bold text-primary font-heading">0-3yrs</div>
-                <div className="text-sm text-muted-taupe font-body">Age Range</div>
-              </div>
             </div>
           </div>
 
@@ -69,17 +51,25 @@ const Hero = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-warm-coral/30 via-transparent to-transparent"></div>
             </div>
-            <div className="absolute -bottom-8 -left-8 bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-elegant border border-blush-pink/30 animate-scale-in" style={{animationDelay: "1.2s"}}>
-              <div className="flex items-center space-x-4">
-                <div className="p-3 bg-gradient-to-br from-warm-coral to-dusty-rose rounded-full">
-                  <Heart className="h-6 w-6 text-white fill-white" />
-                </div>
-                <div>
-                  <div className="font-semibold text-charcoal-text font-heading text-lg">Trusted by Moms</div>
-                  <div className="text-sm text-muted-taupe font-body">Nationwide</div>
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
+
+        {/* Stats Section - Moved below hero content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: "1s"}}>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-powder-blue/50 hover:shadow-warm transition-all duration-300">
+            <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary" />
+            <div className="text-3xl font-bold text-primary font-heading">5.0</div>
+            <div className="text-sm text-muted-taupe font-body">Customer Rating</div>
+          </div>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-blush-pink/50 hover:shadow-warm transition-all duration-300">
+            <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
+            <div className="text-3xl font-bold text-primary font-heading">Trusted</div>
+            <div className="text-sm text-muted-taupe font-body">Nationwide</div>
+          </div>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-soft-lilac/50 hover:shadow-warm transition-all duration-300">
+            <div className="text-primary mx-auto mb-3 text-3xl">🧸</div>
+            <div className="text-3xl font-bold text-primary font-heading">0-3yrs</div>
+            <div className="text-sm text-muted-taupe font-body">Age Range</div>
           </div>
         </div>
       </div>

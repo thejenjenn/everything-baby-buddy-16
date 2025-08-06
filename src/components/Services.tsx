@@ -13,6 +13,10 @@ import {
 } from "lucide-react";
 import babyEssentials from "@/assets/baby-essentials.jpg";
 import babyFood from "@/assets/baby-food.jpg";
+import backToSchool from "@/assets/back-to-school.jpg";
+import partyPack from "@/assets/party-pack.jpg";
+import babyRegistry from "@/assets/baby-registry.jpg";
+import hospitalList from "@/assets/hospital-list.jpg";
 
 const Services = () => {
   const services = [
@@ -30,6 +34,7 @@ const Services = () => {
       title: "Back to School Package",
       subtitle: "Seasonal - September",
       description: "Special seasonal package to help prepare your little ones for their educational journey.",
+      image: backToSchool,
       features: ["Seasonal availability", "Educational essentials", "Age-appropriate items", "September delivery"],
       badge: "Seasonal",
       cta: "Coming September"
@@ -39,6 +44,7 @@ const Services = () => {
       title: "Party Pack Packages",
       subtitle: "Celebrations made easy",
       description: "Make your baby's special moments unforgettable with our curated party packages for birthdays and milestones.",
+      image: partyPack,
       features: ["Birthday themes", "Milestone celebrations", "Decorations included", "Hassle-free planning"],
       cta: "Plan Party"
     },
@@ -56,6 +62,7 @@ const Services = () => {
       title: "Baby Registry",
       subtitle: "Share with loved ones",
       description: "Create a registry and share with friends and family. Let them order gifts and send them directly to you.",
+      image: babyRegistry,
       features: ["Easy sharing", "Direct delivery", "Gift tracking", "Thank you notes"],
       cta: "Create Registry"
     },
@@ -64,6 +71,7 @@ const Services = () => {
       title: "Hospital List",
       subtitle: "Delivery preparation",
       description: "Complete hospital bag checklist and essentials package for your delivery day and hospital stay.",
+      image: hospitalList,
       features: ["Complete checklist", "Essential items", "Mom & baby needs", "Peace of mind"],
       cta: "Get List"
     }

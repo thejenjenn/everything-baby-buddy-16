@@ -31,23 +31,10 @@ const Contact = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <Card className="border-border hover:shadow-soft transition-all duration-300">
                 <CardContent className="p-6">
-                  <Phone className="h-8 w-8 text-primary mb-4" />
-                  <h4 className="font-semibold text-foreground mb-2">Phone</h4>
-                  <p className="text-muted-foreground text-sm mb-3">Call us for immediate assistance</p>
-                  <Button variant="soft" size="sm" className="w-full" asChild>
-                    <a href="tel:+2347060867150">+234 7060867150</a>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border hover:shadow-soft transition-all duration-300">
-                <CardContent className="p-6">
                   <MessageCircle className="h-8 w-8 text-primary mb-4" />
                   <h4 className="font-semibold text-foreground mb-2">WhatsApp</h4>
                   <p className="text-muted-foreground text-sm mb-3">Chat with us on WhatsApp</p>
-                  <Button variant="soft" size="sm" className="w-full" asChild>
-                    <a href="https://wa.me/2347060867150">+234 7060867150</a>
-                  </Button>
+                  <p className="text-sm font-medium text-foreground">+234 706 086 7150</p>
                 </CardContent>
               </Card>
 
@@ -61,17 +48,6 @@ const Contact = () => {
                   </Button>
                 </CardContent>
               </Card>
-
-              <Card className="border-border hover:shadow-soft transition-all duration-300">
-                <CardContent className="p-6">
-                  <MapPin className="h-8 w-8 text-primary mb-4" />
-                  <h4 className="font-semibold text-foreground mb-2">Location</h4>
-                  <p className="text-muted-foreground text-sm mb-3">Serving families nationwide</p>
-                  <Button variant="soft" size="sm" className="w-full">
-                    View Coverage
-                  </Button>
-                </CardContent>
-              </Card>
             </div>
 
             <Card className="border-border bg-gradient-to-r from-baby-pink/50 to-baby-blue/50">
@@ -81,8 +57,7 @@ const Contact = () => {
                   <h4 className="font-semibold text-foreground">Response Time</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  We typically respond within 2-4 hours during business hours. 
-                  For urgent matters, please call or message us directly.
+                  We typically respond within 30mins - 2hours during business hours. For urgent matters, please call or message us directly on WhatsApp.
                 </p>
               </CardContent>
             </Card>
