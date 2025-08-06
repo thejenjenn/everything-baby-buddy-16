@@ -55,20 +55,30 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Full Page Overlay */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
-              {navItems.map((item) => (
+          <div className="md:hidden fixed inset-0 top-0 left-0 w-full h-full bg-background z-40 animate-slide-in-right">
+            <div className="flex flex-col justify-center items-center h-full space-y-8 px-6">
+              {navItems.map((item, index) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200"
+                  className="text-3xl font-heading font-semibold text-foreground hover:text-primary transition-colors duration-300 story-link"
                   onClick={() => setIsOpen(false)}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {item.label}
                 </a>
               ))}
+              <Button
+                variant="ghost"
+                size="lg"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="mt-8 text-xl"
+              >
+                {theme === "dark" ? <Sun className="h-6 w-6 mr-2" /> : <Moon className="h-6 w-6 mr-2" />}
+                {theme === "dark" ? "Light Mode" : "Dark Mode"}
+              </Button>
             </div>
           </div>
         )}
