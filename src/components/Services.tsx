@@ -109,7 +109,7 @@ const Services = () => {
                     <service.icon className="h-6 w-6 text-primary" />
                   </div>
                   {service.badge && (
-                    <Badge variant="secondary" className="bg-blush-pink/20 text-muted-taupe font-body rounded-full px-3">
+                    <Badge variant="secondary" className="font-body rounded-full px-3" style={{backgroundColor: "#C2185B", color: "black"}}>
                       {service.badge}
                     </Badge>
                   )}
@@ -126,7 +126,7 @@ const Services = () => {
                 <ul className="space-y-3">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="text-sm text-muted-taupe font-body flex items-center">
-                      <div className="w-2 h-2 bg-blush-pink rounded-full mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0" style={{backgroundColor: "#C2185B"}}></div>
                       {feature}
                     </li>
                   ))}

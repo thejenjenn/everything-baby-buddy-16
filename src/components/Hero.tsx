@@ -21,7 +21,7 @@ const Hero = () => {
                 <span className="font-medium tracking-wide">Supporting mothers from bump through their child's precious early years</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-charcoal-text leading-tight tracking-tight">
-                Everything <span className="text-blush-pink">Baby</span>
+                Everything <span style={{color: "#C2185B"}}>Baby</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-taupe leading-relaxed font-body font-light max-w-xl">
                 We ease your motherhood journey — from bump to baby's early years.
@@ -70,17 +70,17 @@ const Hero = () => {
 
         {/* Stats Section - Moved below hero content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: "1s"}}>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-blush-pink hover:shadow-warm transition-all duration-300">
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft hover:shadow-warm transition-all duration-300" style={{borderColor: "#C2185B", borderWidth: "1px"}}>
             <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary" />
             <div className="text-3xl font-bold text-primary font-heading">5.0</div>
             <div className="text-sm text-muted-taupe font-body">Customer Rating</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-blush-pink hover:shadow-warm transition-all duration-300">
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft hover:shadow-warm transition-all duration-300" style={{borderColor: "#C2185B", borderWidth: "1px"}}>
             <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
             <div className="text-3xl font-bold text-primary font-heading">Trusted</div>
             <div className="text-sm text-muted-taupe font-body">Nationwide</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-blush-pink hover:shadow-warm transition-all duration-300">
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft hover:shadow-warm transition-all duration-300" style={{borderColor: "#C2185B", borderWidth: "1px"}}>
             <div className="text-primary mx-auto mb-3 text-3xl">🧸</div>
             <div className="text-3xl font-bold text-primary font-heading">0-3yrs</div>
             <div className="text-sm text-muted-taupe font-body">Age Range</div>

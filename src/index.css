@@ -52,6 +52,8 @@ All colors MUST be HSL.
     --baby-pink: 349 100% 95%;
     --baby-blue: 200 100% 95%;
     --light-pink: 342 100% 97%;
+    --custom-pink: 334 80% 43%;
+    --light-yellow: 55 100% 98%;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--warm-coral)), hsl(var(--dusty-rose)));

@@ -30,7 +30,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-yellow-50">
+    <section id="about" className="py-20" style={{backgroundColor: "hsl(var(--light-yellow))"}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
