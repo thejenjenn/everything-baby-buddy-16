@@ -95,7 +95,7 @@ const Services = () => {
             return (
               <Card key={index} className="border-2 border-dark-grey/40 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 {service.image && (
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden mb-4">
                     <img
                       src={service.image}
                       alt={service.title}
