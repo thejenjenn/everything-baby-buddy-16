@@ -7,6 +7,9 @@ const Navigation = () => {
 
   const navItems = [
     { href: "#home", label: "Home" },
+    { href: "#about", label: "My Story" },
+    { href: "#services", label: "Services" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
@@ -30,7 +33,7 @@ const Navigation = () => {
               </a>
             ))}
             <Button variant="warm" className="ml-4">
-              Explore Services
+              Get Started
             </Button>
           </div>
 
@@ -62,7 +65,7 @@ const Navigation = () => {
               ))}
               <div className="px-3 pt-2">
                 <Button variant="warm" className="w-full">
-                  Explore Services
+                  Get Started
                 </Button>
               </div>
             </div>

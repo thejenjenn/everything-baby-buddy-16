@@ -1,30 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { User, Users, BookOpen, Trophy } from "lucide-react";
-import experienceIcon from "@/assets/experience-icon.jpg";
-import networkIcon from "@/assets/network-icon.jpg";
-import researchIcon from "@/assets/research-icon.jpg";
-import resultsIcon from "@/assets/results-icon.jpg";
 
 const About = () => {
   const highlights = [
     {
-      image: experienceIcon,
+      icon: User,
       title: "Personal Experience",
       description: "First-time mother who understands the journey"
     },
     {
-      image: networkIcon,
+      icon: Users,
       title: "Expert Network",
       description: "Backed by nutritionists and pediatricians"
     },
     {
-      image: researchIcon,
+      icon: BookOpen,
       title: "Extensive Research",
       description: "Countless hours of study and experimentation"
     },
     {
-      image: resultsIcon,
+      icon: Trophy,
       title: "Proven Results",
       description: "Supporting families with confidence"
     }
@@ -80,10 +76,11 @@ const About = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{animationDelay: "0.3s"}}>
           {highlights.map((highlight, index) => {
+            const Icon = highlight.icon;
             return (
               <Card key={index} className="border-white/20 hover:shadow-elegant transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardContent className="p-6 text-center">
-                  <img src={highlight.image} alt={highlight.title} className="h-10 w-10 mx-auto mb-4" />
+                  <Icon className="h-10 w-10 mx-auto mb-4" style={{color: "hsl(var(--light-pink-fill))"}} />
                   <h3 className="font-semibold font-heading mb-2" style={{color: "hsl(var(--light-pink-fill))"}}>{highlight.title}</h3>
                   <p className="text-sm text-white/80 font-body">{highlight.description}</p>
                 </CardContent>

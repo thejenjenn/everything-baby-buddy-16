@@ -14,7 +14,7 @@ import {
 import babyEssentials from "@/assets/baby-essentials.jpg";
 import babyFood from "@/assets/baby-food.jpg";
 import backToSchool from "@/assets/back-to-school.jpg";
-import partyPack from "@/assets/party-pack-updated.jpg";
+import partyPack from "@/assets/party-pack-kids.jpg";
 import babyRegistry from "@/assets/baby-registry.jpg";
 import hospitalList from "@/assets/hospital-list.jpg";
 
@@ -143,42 +143,31 @@ const Services = () => {
           })}
         </div>
 
-        <div className="mt-20 relative bg-gradient-to-br from-warm-cream/30 via-blush-pink/10 to-powder-blue/20 rounded-3xl p-12 text-center shadow-warm animate-fade-in-up border border-warm-cream/40 overflow-hidden">
-          {/* Playful background illustrations */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-6 left-8 w-16 h-16 opacity-20">
-              <div className="w-8 h-8 bg-baby-pink rounded-full animate-float"></div>
-            </div>
-            <div className="absolute top-12 right-16 w-12 h-12 opacity-15">
-              <div className="w-6 h-6 bg-powder-blue rounded-full animate-float" style={{animationDelay: "1s"}}></div>
-            </div>
-            <div className="absolute bottom-8 left-12 w-20 h-20 opacity-10">
-              <div className="w-10 h-10 bg-soft-lilac rounded-full animate-float" style={{animationDelay: "2s"}}></div>
-            </div>
-            <div className="absolute bottom-16 right-8 w-14 h-14 opacity-20">
-              <div className="w-7 h-7 bg-light-pink rounded-full animate-float" style={{animationDelay: "1.5s"}}></div>
-            </div>
-            <div className="absolute top-1/2 left-4 text-4xl opacity-10 animate-float" style={{animationDelay: "3s"}}>💝</div>
-            <div className="absolute top-1/3 right-4 text-3xl opacity-15 animate-float" style={{animationDelay: "2.5s"}}>🍼</div>
-            <div className="absolute bottom-1/3 left-16 text-2xl opacity-10 animate-float" style={{animationDelay: "4s"}}>🧸</div>
-          </div>
+        <div className="relative mt-20 rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border border-blush-pink/20 overflow-hidden" style={{backgroundColor: "#F5E6D3"}}>
+          {/* Playful illustrations */}
+          <div className="absolute top-4 left-6 text-2xl opacity-60">🎈</div>
+          <div className="absolute top-12 right-8 text-xl opacity-60">🧸</div>
+          <div className="absolute bottom-6 left-10 text-lg opacity-60">👶</div>
+          <div className="absolute bottom-4 right-6 text-2xl opacity-60">🍼</div>
+          <div className="absolute top-1/2 left-4 text-sm opacity-40">⭐</div>
+          <div className="absolute top-1/4 right-4 text-sm opacity-40">💕</div>
           
           <div className="relative z-10">
-            <h3 className="text-4xl font-heading font-bold text-charcoal-text mb-8 tracking-tight">
+            <h3 className="text-3xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
               Need Personalized Consultation?
             </h3>
-            <p className="mb-10 max-w-2xl mx-auto font-body text-xl leading-relaxed" style={{color: "#171717"}}>
+            <p className="mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed" style={{color: "#171717"}}>
               Every baby is unique, and so are their needs. Contact us for personalized consultation 
               and custom packages tailored specifically for your little one.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button variant="default" size="lg" className="gap-3 font-body font-medium shadow-warm text-lg px-8 py-4" asChild>
+              <Button variant="default" size="lg" className="gap-3 font-body font-medium shadow-warm" asChild>
                 <a href="tel:+2347060867150">
                   <Phone className="h-5 w-5" />
                   Call for Consultation
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium text-lg px-8 py-4 border-2" style={{borderColor: "hsl(var(--powder-blue))", color: "hsl(var(--powder-blue))"}} asChild>
+              <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium" style={{borderColor: "hsl(var(--powder-blue))", color: "hsl(var(--powder-blue))"}} asChild>
                 <a href="https://wa.me/2347060867150" className="flex items-center gap-3">
                   <MessageCircle className="h-5 w-5" style={{color: "hsl(var(--powder-blue))"}} />
                   Chat with Us
