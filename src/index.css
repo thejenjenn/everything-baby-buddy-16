@@ -42,16 +42,16 @@ All colors MUST be HSL.
     --ring: 0 70% 65%;
 
     /* Refined color palette */
-    --blush-pink: 351 94% 97%;
+    --blush-pink: 334 80% 43%;
     --powder-blue: 201 56% 74%;
     --soft-lilac: 252 50% 95%;
     --charcoal-text: 0 0% 20%;
     --muted-taupe: 30 8% 65%;
-    --warm-coral: 0 70% 65%;
-    --dusty-rose: 350 60% 70%;
-    --baby-pink: 349 100% 95%;
+    --warm-coral: 334 80% 43%;
+    --dusty-rose: 334 80% 43%;
+    --baby-pink: 334 80% 43%;
     --baby-blue: 200 100% 95%;
-    --light-pink: 342 100% 97%;
+    --light-pink: 334 80% 43%;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--warm-coral)), hsl(var(--dusty-rose)));
