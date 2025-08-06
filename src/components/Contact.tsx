@@ -13,7 +13,7 @@ const Contact = () => {
             Get in Touch
           </h2>
           <p className="text-xl max-w-3xl mx-auto" style={{color: '#171717'}}>
-            Ready to start your journey with Everything Baby? We're here to support you every step of the way (30mins to 1hour).
+            Ready to start your journey with Everything Baby? We're here to support you every step of the way.
           </p>
         </div>
 
@@ -52,7 +52,7 @@ const Contact = () => {
                     Get in touch with us
                   </h2>
                   <p className="text-purple-100 text-lg">
-                    Fill out the form below and we'll get back to you as soon as possible.
+                    Fill out the form below and we'll get back to you as soon as possible (30mins to 1hour).
                   </p>
                 </div>
                 <Button 

@@ -93,7 +93,7 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="border-2 border-dark-grey/40 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="border border-gray-200 hover:shadow-elegant transition-all duration-500 group bg-white rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 {service.image && (
                   <div className="relative h-48 overflow-hidden">
                     <img
@@ -101,42 +101,54 @@ const Services = () => {
                       alt={service.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-warm-coral/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    
+                    {/* Overlay content */}
+                    <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-xl font-heading font-bold mb-2">{service.title}</h3>
+                          <div className="flex items-center space-x-1 text-white/90">
+                            <Icon className="h-4 w-4" />
+                            <span className="text-sm font-body">{service.subtitle}</span>
+                          </div>
+                        </div>
+                        {service.badge && (
+                          <Badge variant="secondary" className="font-body rounded-full px-3 bg-white/20 text-white border-white/30">
+                            {service.badge}
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 )}
                 
-                 <CardHeader className="space-y-4 p-6">
-                   <div className="flex items-center justify-between">
-                     <div className="w-12 h-12 bg-gradient-to-br from-powder-blue/20 to-soft-lilac/20 rounded-xl flex items-center justify-center">
-                       <Icon className="h-6 w-6 text-primary" />
-                     </div>
-                     {service.badge && (
-                        <Badge variant="secondary" className="font-body rounded-full px-3" style={{backgroundColor: "#FDDDE6", color: "#C2185B"}}>
-                          {service.badge}
-                        </Badge>
-                     )}
-                   </div>
-                  <div>
-                    <CardTitle className="text-xl font-heading font-semibold" style={{color: "#171717"}}>{service.title}</CardTitle>
-                    <p className="text-sm text-primary font-body font-medium mt-1">{service.subtitle}</p>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="space-y-6 p-6 pt-0">
-                  <p className="font-body leading-relaxed" style={{color: "#171717"}}>{service.description}</p>
+                <CardContent className="p-6 space-y-4">
+                  <p className="font-body leading-relaxed text-gray-700">{service.description}</p>
                   
-                   <ul className="space-y-3">
-                     {service.features.map((feature, idx) => (
-                       <li key={idx} className="text-sm font-body flex items-center" style={{color: "#171717"}}>
-                         <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0" style={{backgroundColor: "#171717"}}></div>
-                         {feature}
-                       </li>
-                     ))}
-                   </ul>
+                  {/* Features as tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {service.features.slice(0, 3).map((feature, idx) => (
+                      <span key={idx} className="text-xs font-body px-3 py-1 bg-gray-100 rounded-full text-gray-600">
+                        {feature}
+                      </span>
+                    ))}
+                    {service.features.length > 3 && (
+                      <span className="text-xs font-body px-3 py-1 bg-gray-100 rounded-full text-gray-600">
+                        +{service.features.length - 3} more
+                      </span>
+                    )}
+                  </div>
 
-                  <Button variant="default" className="w-full font-body font-medium">
-                    {service.cta}
-                  </Button>
+                  <div className="flex justify-between items-center pt-4">
+                    <div className="text-left">
+                      <span className="text-2xl font-bold text-gray-900">From ₦5k</span>
+                      <span className="text-sm text-gray-500 ml-1">/ package</span>
+                    </div>
+                    <Button variant="default" className="font-body font-medium">
+                      {service.cta}
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             );
@@ -167,9 +179,9 @@ const Services = () => {
                   Call for Consultation
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium" style={{borderColor: "hsl(var(--powder-blue))", color: "hsl(var(--powder-blue))"}} asChild>
+              <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium border-blue-500 text-blue-600 hover:bg-blue-50" asChild>
                 <a href="https://wa.me/2347060867150" className="flex items-center gap-3">
-                  <MessageCircle className="h-5 w-5" style={{color: "hsl(var(--powder-blue))"}} />
+                  <MessageCircle className="h-5 w-5 text-blue-600" />
                   Chat with Us
                 </a>
               </Button>
