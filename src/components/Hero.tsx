@@ -21,10 +21,7 @@ const Hero = () => {
                 <span className="font-medium tracking-wide">Supporting mothers from bump through their child's precious early years</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-charcoal-text leading-tight tracking-tight">
-                Everything{" "}
-                <span className="bg-gradient-to-r from-warm-coral via-dusty-rose to-primary bg-clip-text text-transparent animate-glow">
-                  Baby
-                </span>
+                Everything Baby
               </h1>
               <p className="text-xl md:text-2xl text-muted-taupe leading-relaxed font-body font-light max-w-xl">
                 We ease your motherhood journey — from bump to baby's early years.

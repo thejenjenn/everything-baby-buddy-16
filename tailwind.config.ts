@@ -19,10 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ["Poppins", "Inter", "sans-serif"],
-				serif: ["Playfair Display", "serif"],
-				heading: ["Playfair Display", "serif"],
-				body: ["Poppins", "Inter", "sans-serif"],
+				sans: ["Plus Jakarta Sans", "Inter", "sans-serif"],
+				serif: ["Clash Display", "serif"],
+				heading: ["Clash Display", "sans-serif"],
+				body: ["Plus Jakarta Sans", "sans-serif"],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -68,6 +68,7 @@ export default {
 				'dusty-rose': 'hsl(var(--dusty-rose))',
 				'baby-pink': 'hsl(var(--baby-pink))',
 				'baby-blue': 'hsl(var(--baby-blue))',
+				'light-pink': 'hsl(var(--light-pink))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

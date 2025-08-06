@@ -16,9 +16,9 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 20%;
 
-    /* Primary colors - warm coral theme */
-    --primary: 0 70% 65%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary colors - soft blue theme */
+    --primary: 210 67% 62%;
+    --primary-foreground: 0 0% 100%;
     
     /* Secondary colors */
     --secondary: 210 40% 96%;
@@ -43,7 +43,7 @@ All colors MUST be HSL.
 
     /* Refined color palette */
     --blush-pink: 351 94% 97%;
-    --powder-blue: 210 44% 91%;
+    --powder-blue: 201 56% 74%;
     --soft-lilac: 252 50% 95%;
     --charcoal-text: 0 0% 20%;
     --muted-taupe: 30 8% 65%;
@@ -51,6 +51,7 @@ All colors MUST be HSL.
     --dusty-rose: 350 60% 70%;
     --baby-pink: 349 100% 95%;
     --baby-blue: 200 100% 95%;
+    --light-pink: 342 100% 97%;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--warm-coral)), hsl(var(--dusty-rose)));
