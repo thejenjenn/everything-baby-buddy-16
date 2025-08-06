@@ -38,17 +38,6 @@ const Hero = () => {
               <Button variant="default" size="lg" className="text-lg px-10 py-4 font-medium shadow-warm animate-scale-in" style={{animationDelay: "0.6s"}}>
                 Explore Services
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="text-lg px-10 py-4 font-body font-medium group animate-scale-in border-2 bg-white rounded-full transition-colors duration-300 text-primary border-primary hover:bg-primary hover:text-primary-foreground" 
-                style={{
-                  animationDelay: "0.8s"
-                }}
-              >
-                <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
-                Read My Story
-              </Button>
             </div>
           </div>
 
