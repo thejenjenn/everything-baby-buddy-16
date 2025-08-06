@@ -13,7 +13,7 @@ const Contact = () => {
             Get in Touch
           </h2>
           <p className="text-xl max-w-3xl mx-auto" style={{color: '#171717'}}>
-            Ready to start your journey with Everything Baby? We're here to support you every step of the way (30mins to 1 hour).
+            Ready to start your journey with Everything Baby? We're here to support you every step of the way.
           </p>
         </div>
 
@@ -41,6 +41,25 @@ const Contact = () => {
               </Card>
             </div>
 
+            <Card className="border relative overflow-hidden" style={{backgroundColor: "#F7F3F0", borderColor: "#E5E7EB"}}>
+              <CardContent className="p-6 relative">
+                {/* Playful decorative elements */}
+                <div className="absolute top-2 right-4 w-6 h-6 opacity-20" style={{color: "#EC4899"}}>🕐</div>
+                <div className="absolute bottom-3 left-2 w-4 h-4 opacity-15" style={{color: "#EC4899"}}>💬</div>
+                <div className="absolute top-1/2 right-2 w-3 h-3 opacity-15" style={{color: "#EC4899"}}>⚡</div>
+                <div className="absolute bottom-4 right-6 w-5 h-5 opacity-15" style={{color: "#EC4899"}}>📱</div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
+                    <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
+                  </div>
+                  <p className="text-muted-taupe font-body">
+                    We typically respond within 30mins - 2hours during business hours. For urgent matters, please call or message us directly on WhatsApp.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Contact Form */}
@@ -52,7 +71,7 @@ const Contact = () => {
                     Get in touch with us
                   </h2>
                   <p className="text-purple-100 text-lg">
-                    Fill out the form below and we'll get back to you as soon as possible (30mins to 1 hour).
+                    Fill out the form below and we'll get back to you as soon as possible.
                   </p>
                 </div>
                 <Button 
@@ -68,14 +87,14 @@ const Contact = () => {
                   <div>
                     <Input 
                       placeholder="Full name" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-300 hover:border-pink-300"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40"
                     />
                   </div>
                   <div>
                     <Input 
                       type="email" 
                       placeholder="Email address" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-300 hover:border-pink-300"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40"
                     />
                   </div>
                 </div>
@@ -83,10 +102,10 @@ const Contact = () => {
                 <Input 
                   type="tel" 
                   placeholder="Phone number" 
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-300 hover:border-pink-300"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40"
                 />
 
-                <select className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-pink-300 hover:border-pink-300">
+                <select className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-white/40">
                   <option value="" className="text-gray-900">Select a service</option>
                   <option value="newborn" className="text-gray-900">Newborn Package</option>
                   <option value="meals" className="text-gray-900">Curated Meal Plans</option>
@@ -99,7 +118,7 @@ const Contact = () => {
                 <Textarea 
                   placeholder="Tell us about your needs, baby's age, or any specific questions you have..."
                   rows={4}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-300 hover:border-pink-300"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40"
                 />
 
                 <Button variant="default" size="lg" className="w-full">
