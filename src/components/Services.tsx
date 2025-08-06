@@ -129,7 +129,7 @@ const Services = () => {
                   
                   {/* Feature pills */}
                   <div className="flex flex-wrap gap-2">
-                    {service.features.map((feature, idx) => (
+                    {service.features.slice(0, 3).map((feature, idx) => (
                       <span key={idx} className="text-xs font-body px-3 py-1 bg-gray-100 rounded-full text-gray-600">
                         {feature}
                       </span>

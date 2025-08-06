@@ -41,25 +41,12 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="text-lg px-10 py-4 font-body font-medium group animate-scale-in border-2 bg-white rounded-full transition-colors duration-300" 
+                className="text-lg px-10 py-4 font-body font-medium group animate-scale-in border-2 bg-white rounded-full transition-colors duration-300 text-blue-600 border-blue-600 hover:bg-blue-50" 
                 style={{
-                  animationDelay: "0.8s",
-                  borderColor: "hsl(var(--powder-blue))",
-                  color: "hsl(var(--powder-blue))",
-                  borderWidth: "2px"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "hsl(var(--powder-blue))";
-                  e.currentTarget.style.color = "hsl(var(--powder-blue))";
-                  e.currentTarget.style.backgroundColor = "rgba(201, 155, 185, 0.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "hsl(var(--powder-blue))";
-                  e.currentTarget.style.color = "hsl(var(--powder-blue))";
-                  e.currentTarget.style.backgroundColor = "white";
+                  animationDelay: "0.8s"
                 }}
               >
-                <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" style={{color: "hsl(var(--powder-blue))"}} />
+                <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform text-blue-600" />
                 Read My Story
               </Button>
             </div>
