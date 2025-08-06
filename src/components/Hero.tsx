@@ -32,8 +32,25 @@ const Hero = () => {
               <Button variant="default" size="lg" className="text-lg px-10 py-4 font-medium shadow-warm animate-scale-in" style={{animationDelay: "0.6s"}}>
                 Explore Services
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-10 py-4 font-medium group animate-scale-in border-2 border-gray-700 bg-background hover:bg-primary/5 hover:border-gray-800 hover:shadow-soft text-primary" style={{animationDelay: "0.8s"}}>
-                <Play className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-10 py-4 font-body font-medium group animate-scale-in border-2 bg-white rounded-xl transition-colors duration-300" 
+                style={{
+                  animationDelay: "0.8s",
+                  borderColor: "#5093FF",
+                  color: "#5093FF"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "#2B6CB0";
+                  e.currentTarget.style.color = "#2B6CB0";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "#5093FF";
+                  e.currentTarget.style.color = "#5093FF";
+                }}
+              >
+                <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" />
                 Read My Story
               </Button>
             </div>
