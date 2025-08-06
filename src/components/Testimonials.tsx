@@ -153,9 +153,9 @@ const Testimonials = () => {
                 <Card
                   key={index}
                   className={`
-                    absolute inset-0 w-full bg-gradient-to-br from-pink-50/90 to-blue-50/90 border-0 rounded-3xl shadow-xl backdrop-blur-sm
+                    absolute inset-0 w-full bg-white border-0 rounded-3xl shadow-sm backdrop-blur-sm
                     transition-all duration-500 ease-out cursor-pointer
-                    ${isActive ? 'hover:scale-[1.03] hover:shadow-2xl' : ''}
+                    ${isActive ? 'hover:scale-[1.03] hover:shadow-md' : ''}
                     ${isVisible && index <= 2 ? 'animate-fade-in' : 'opacity-0'}
                   `}
                   style={{
@@ -185,22 +185,11 @@ const Testimonials = () => {
                       {testimonial.text}
                     </p>
                     
-                    {/* Author info with avatar */}
-                    <div className="flex items-center gap-3">
-                      <Avatar className="w-12 h-12">
-                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                        <AvatarFallback className="bg-primary/10 text-primary font-semibold">
-                          {testimonial.name.split(' ').map(n => n[0]).join('')}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <p className="font-semibold text-gray-900 text-sm">
-                          {testimonial.name}
-                        </p>
-                        <p className="text-gray-600 text-xs">
-                          {testimonial.role}
-                        </p>
-                      </div>
+                    {/* Role only */}
+                    <div className="text-right">
+                      <p className="text-gray-600 text-sm font-medium">
+                        {testimonial.role}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -224,10 +213,6 @@ const Testimonials = () => {
             ))}
           </div>
 
-          {/* Mobile swipe hint */}
-          <div className="md:hidden text-center mt-4">
-            <p className="text-sm text-gray-500">Swipe left or right to navigate</p>
-          </div>
         </div>
       </div>
     </section>
