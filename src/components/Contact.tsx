@@ -48,10 +48,15 @@ const Contact = () => {
               </Card>
             </div>
 
-            <Card className="border-blush-pink/30 bg-gradient-to-r from-blush-pink/10 via-powder-blue/10 to-soft-lilac/10 backdrop-blur-sm">
-              <CardContent className="p-6">
+            <Card className="relative border-blush-pink/30 backdrop-blur-sm overflow-hidden" style={{backgroundColor: "#F5E6D3"}}>
+              {/* Playful illustrations */}
+              <div className="absolute top-2 right-4 text-lg opacity-50">⏰</div>
+              <div className="absolute bottom-2 left-3 text-sm opacity-40">💬</div>
+              <div className="absolute top-1/2 right-2 text-xs opacity-30">⚡</div>
+              
+              <CardContent className="p-6 relative z-10">
                 <div className="flex items-center space-x-3 mb-4">
-                  <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
+                  <Clock className="h-8 w-8" style={{color: '#C2185B'}} />
                   <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
                 </div>
                 <p className="text-muted-taupe font-body">
