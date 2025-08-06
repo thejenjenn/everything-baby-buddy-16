@@ -14,7 +14,7 @@ import {
 import babyEssentials from "@/assets/baby-essentials.jpg";
 import babyFood from "@/assets/baby-food.jpg";
 import backToSchool from "@/assets/back-to-school.jpg";
-import partyPack from "@/assets/party-pack-updated.jpg";
+import partyPack from "@/assets/party-pack-kids.jpg";
 import babyRegistry from "@/assets/baby-registry.jpg";
 import hospitalList from "@/assets/hospital-list.jpg";
 
