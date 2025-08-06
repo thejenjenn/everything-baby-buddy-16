@@ -1,51 +1,54 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
-import { useEffect, useState } from "react";
-import zainabImage from "@/assets/zainab-akepre.jpg";
-import chikaImage from "@/assets/chika-anyanwu.jpg";
-import taiwoImage from "@/assets/taiwo-raymond.jpg";
+import { useEffect, useRef, useState } from "react";
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   
   const testimonials = [
     {
       name: "Zainab Akepre",
       text: "Everything Baby made my first pregnancy so much easier. Their hospital package was perfectly curated and saved me hours of research.",
       rating: 5,
-      image: zainabImage,
-      bgColor: "bg-pink-50",
+      bgColor: "bg-pink-50/70",
       role: "New Mother"
     },
     {
       name: "Chika Anyanwu", 
       text: "The baby essentials package was a lifesaver! Everything I needed and nothing I didn't. Highly recommend to new moms.",
       rating: 5,
-      image: chikaImage,
-      bgColor: "bg-blue-50",
+      bgColor: "bg-blue-50/70",
       role: "Mother of Two"
     },
     {
       name: "Taiwo Raymond",
       text: "Their back-to-school package was amazing. My daughter had everything she needed for nursery. Such thoughtful curation!",
       rating: 5,
-      image: taiwoImage,
-      bgColor: "bg-green-50",
+      bgColor: "bg-green-50/70",
       role: "Working Mom"
     }
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="py-20 bg-background">
+    <section ref={sectionRef} className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
@@ -56,58 +59,58 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="max-w-md mx-auto">
-          <div className="relative overflow-hidden rounded-3xl">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {testimonials.map((testimonial, index) => (
+            <Card 
+              key={index} 
+              className={`
+                group border-0 rounded-2xl overflow-hidden shadow-lg backdrop-blur-sm
+                transition-all duration-300 ease-in-out
+                hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/10
+                ${testimonial.bgColor}
+                ${isVisible ? 
+                  index === 0 ? 'animate-slide-up-fade' :
+                  index === 1 ? 'animate-slide-up-fade-delay-1' :
+                  'animate-slide-up-fade-delay-2'
+                  : 'opacity-0 translate-y-8'
+                }
+              `}
             >
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full flex-shrink-0">
-                  <Card className="border-0 shadow-lg rounded-3xl overflow-hidden">
-                    {/* Full Cover Image Section - no cropping */}
-                    <div className="relative h-96">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name} 
-                        className="w-full h-full object-cover object-center" 
-                      />
-                    </div>
-                    
-                    {/* Quote Section */}
-                    <div className={`${testimonial.bgColor} p-8`}>
-                      <div className="text-6xl text-gray-400 font-serif leading-none mb-6">"</div>
-                      <p className="text-lg font-body leading-relaxed text-gray-800 mb-8">
-                        {testimonial.text}
-                      </p>
-                      
-                      <div className="text-center">
-                        <h4 className="font-bold text-xl text-gray-900 mb-2">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-gray-600 font-medium">
-                          {testimonial.role}
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
+              <CardContent className="p-8 relative">
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out" />
+                
+                {/* Quote mark */}
+                <div className="text-5xl text-primary/30 font-serif leading-none mb-4 relative z-10">"</div>
+                
+                {/* Star rating */}
+                <div className="flex gap-1 mb-6 relative z-10">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className="w-5 h-5 fill-yellow-400 text-yellow-400 transition-all duration-200 group-hover:scale-110" 
+                      style={{animationDelay: `${i * 100}ms`}}
+                    />
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-6 space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-primary scale-125' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-          </div>
+                
+                {/* Testimonial text */}
+                <p className="text-gray-700 font-body leading-relaxed mb-6 relative z-10 group-hover:text-gray-800 transition-colors duration-300">
+                  {testimonial.text}
+                </p>
+                
+                {/* Author info */}
+                <div className="relative z-10">
+                  <h4 className="font-bold text-lg text-gray-900 mb-1 group-hover:text-primary transition-colors duration-300">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-gray-600 font-medium text-sm">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
