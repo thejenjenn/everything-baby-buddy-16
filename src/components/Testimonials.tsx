@@ -33,14 +33,14 @@ const Testimonials = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
             What Mothers Say
           </h2>
-          <p className="text-xl text-muted-taupe max-w-3xl mx-auto font-body leading-relaxed">
+          <p className="text-xl max-w-3xl mx-auto font-body leading-relaxed" style={{color: "#171717"}}>
             Real experiences from mothers who trusted us with their precious journey.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in" style={{animationDelay: "0.3s"}}>
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-blush-pink/30 hover:shadow-elegant transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+            <Card key={index} className="border-2 border-dark-grey/40 transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`, boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)'}}>
               <CardContent className="p-8 text-center">
                 <div className="mb-4">
                   <img src={testimonial.image} alt={testimonial.name} className="h-12 w-12 mx-auto mb-3 rounded-full object-cover" />
@@ -52,11 +52,11 @@ const Testimonials = () => {
                   ))}
                 </div>
                 
-                <p className="text-muted-taupe font-body leading-relaxed mb-6 italic">
+                <p className="font-body leading-relaxed mb-6 italic" style={{color: "#171717"}}>
                   "{testimonial.text}"
                 </p>
                 
-                <h4 className="font-semibold text-charcoal-text font-heading">
+                <h4 className="font-semibold font-heading" style={{color: "#171717"}}>
                   {testimonial.name}
                 </h4>
               </CardContent>

@@ -1,29 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import personalExperienceIcon from "@/assets/personal-experience-icon.jpg";
-import expertNetworkIcon from "@/assets/expert-network-icon.jpg";
-import extensiveResearchIcon from "@/assets/extensive-research-icon.jpg";
-import provenResultsIcon from "@/assets/proven-results-icon.jpg";
+import { User, Users, BookOpen, Trophy } from "lucide-react";
 
 const About = () => {
   const highlights = [
     {
-      image: personalExperienceIcon,
+      icon: User,
       title: "Personal Experience",
       description: "First-time mother who understands the journey"
     },
     {
-      image: expertNetworkIcon,
+      icon: Users,
       title: "Expert Network",
       description: "Backed by nutritionists and pediatricians"
     },
     {
-      image: extensiveResearchIcon,
+      icon: BookOpen,
       title: "Extensive Research",
       description: "Countless hours of study and experimentation"
     },
     {
-      image: provenResultsIcon,
+      icon: Trophy,
       title: "Proven Results",
       description: "Supporting families with confidence"
     }
@@ -78,15 +75,18 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{animationDelay: "0.3s"}}>
-          {highlights.map((highlight, index) => (
-            <Card key={index} className="border-white/20 hover:shadow-elegant transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
-              <CardContent className="p-6 text-center">
-                <img src={highlight.image} alt={highlight.title} className="h-10 w-10 mx-auto mb-4 rounded-lg object-cover" />
-                <h3 className="font-semibold text-white font-heading mb-2">{highlight.title}</h3>
-                <p className="text-sm text-white/80 font-body">{highlight.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+          {highlights.map((highlight, index) => {
+            const Icon = highlight.icon;
+            return (
+              <Card key={index} className="border-white/20 hover:shadow-elegant transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+                <CardContent className="p-6 text-center">
+                  <Icon className="h-10 w-10 mx-auto mb-4" style={{color: "#C2185B"}} />
+                  <h3 className="font-semibold font-heading mb-2" style={{color: "#C2185B"}}>{highlight.title}</h3>
+                  <p className="text-sm text-white/80 font-body">{highlight.description}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

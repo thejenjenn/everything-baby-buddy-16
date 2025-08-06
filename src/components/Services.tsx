@@ -84,67 +84,70 @@ const Services = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
             Our Services
           </h2>
-          <p className="text-xl text-muted-taupe max-w-3xl mx-auto font-body leading-relaxed">
+          <p className="text-xl max-w-3xl mx-auto font-body leading-relaxed" style={{color: "#171717"}}>
             Supporting mums and their little ones from bump to baby's first birthday with comprehensive packages and personalized care.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card key={index} className="border-blush-pink/30 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-              {service.image && (
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-warm-coral/20 to-transparent"></div>
-                </div>
-              )}
-              
-               <CardHeader className="space-y-4 p-6">
-                 <div className="flex items-center justify-between">
-                   <div className="w-12 h-12 bg-gradient-to-br from-powder-blue/20 to-soft-lilac/20 rounded-xl overflow-hidden flex items-center justify-center">
-                     <img src={service.image} alt={service.title} className="w-8 h-8 object-cover rounded" />
-                   </div>
-                   {service.badge && (
-                     <Badge variant="secondary" className="font-body rounded-full px-3" style={{backgroundColor: "hsl(var(--light-pink))", color: "black"}}>
-                       {service.badge}
-                     </Badge>
-                   )}
-                 </div>
-                <div>
-                  <CardTitle className="text-xl text-charcoal-text font-heading font-semibold">{service.title}</CardTitle>
-                  <p className="text-sm text-primary font-body font-medium mt-1">{service.subtitle}</p>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-6 p-6 pt-0">
-                <p className="text-muted-taupe font-body leading-relaxed">{service.description}</p>
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <Card key={index} className="border-2 border-dark-grey/40 hover:shadow-elegant transition-all duration-500 group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                {service.image && (
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-warm-coral/20 to-transparent"></div>
+                  </div>
+                )}
                 
-                 <ul className="space-y-3">
-                   {service.features.map((feature, idx) => (
-                     <li key={idx} className="text-sm text-muted-taupe font-body flex items-center">
-                       <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0 bg-dark-grey"></div>
-                       {feature}
-                     </li>
-                   ))}
-                 </ul>
+                 <CardHeader className="space-y-4 p-6">
+                   <div className="flex items-center justify-between">
+                     <div className="w-12 h-12 bg-gradient-to-br from-powder-blue/20 to-soft-lilac/20 rounded-xl flex items-center justify-center">
+                       <Icon className="h-6 w-6 text-primary" />
+                     </div>
+                     {service.badge && (
+                       <Badge variant="secondary" className="font-body rounded-full px-3" style={{backgroundColor: "hsl(var(--light-pink-fill))", color: "black"}}>
+                         {service.badge}
+                       </Badge>
+                     )}
+                   </div>
+                  <div>
+                    <CardTitle className="text-xl font-heading font-semibold" style={{color: "#171717"}}>{service.title}</CardTitle>
+                    <p className="text-sm text-primary font-body font-medium mt-1">{service.subtitle}</p>
+                  </div>
+                </CardHeader>
 
-                <Button variant="default" className="w-full font-body font-medium">
-                  {service.cta}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+                <CardContent className="space-y-6 p-6 pt-0">
+                  <p className="font-body leading-relaxed" style={{color: "#171717"}}>{service.description}</p>
+                  
+                   <ul className="space-y-3">
+                     {service.features.map((feature, idx) => (
+                       <li key={idx} className="text-sm font-body flex items-center" style={{color: "#171717"}}>
+                         <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0" style={{backgroundColor: "#171717"}}></div>
+                         {feature}
+                       </li>
+                     ))}
+                   </ul>
+
+                  <Button variant="default" className="w-full font-body font-medium">
+                    {service.cta}
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
         <div className="mt-20 bg-gradient-to-r from-blush-pink/20 via-powder-blue/20 to-soft-lilac/20 rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border border-blush-pink/20">
           <h3 className="text-3xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
             Need Personalized Consultation?
           </h3>
-          <p className="text-muted-taupe mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed">
+          <p className="mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed" style={{color: "#171717"}}>
             Every baby is unique, and so are their needs. Contact us for personalized consultation 
             and custom packages tailored specifically for your little one.
           </p>
@@ -155,9 +158,9 @@ const Services = () => {
                 Call for Consultation
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium border-blush-pink text-blush-pink hover:bg-blush-pink/10" asChild>
-              <a href="https://wa.me/2347060867150">
-                <MessageCircle className="h-5 w-5" />
+            <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium" style={{borderColor: "hsl(var(--powder-blue))", color: "hsl(var(--powder-blue))"}} asChild>
+              <a href="https://wa.me/2347060867150" className="flex items-center gap-3">
+                <MessageCircle className="h-5 w-5" style={{color: "hsl(var(--powder-blue))"}} />
                 Chat with Us
               </a>
             </Button>
