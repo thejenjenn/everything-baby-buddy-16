@@ -48,8 +48,16 @@ const Contact = () => {
               </Card>
             </div>
 
-            <Card className="border-blush-pink/30 bg-gradient-to-r from-blush-pink/10 via-powder-blue/10 to-soft-lilac/10 backdrop-blur-sm">
-              <CardContent className="p-6">
+            <Card className="relative border-pink-200 backdrop-blur-sm overflow-hidden" style={{backgroundColor: '#FDF2F8'}}>
+              {/* Playful decorative elements */}
+              <div className="absolute top-2 left-3 text-lg opacity-50">⏰</div>
+              <div className="absolute top-3 right-4 text-sm opacity-60">💬</div>
+              <div className="absolute bottom-3 left-4 text-base opacity-40">🚀</div>
+              <div className="absolute bottom-2 right-3 text-sm opacity-50">💕</div>
+              <div className="absolute top-1/2 left-2 text-xs opacity-30">✨</div>
+              <div className="absolute top-1/2 right-2 text-xs opacity-30">🌟</div>
+              
+              <CardContent className="p-6 relative z-10">
                 <div className="flex items-center space-x-3 mb-4">
                   <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
                   <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
