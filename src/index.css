@@ -45,8 +45,8 @@ All colors MUST be HSL.
     --blush-pink: 351 94% 97%;
     --powder-blue: 201 56% 74%;
     --soft-lilac: 252 50% 95%;
-    --charcoal-text: 0 0% 20%;
-    --muted-taupe: 30 8% 65%;
+    --charcoal-text: 0 0% 9%; /* #171717 */
+    --muted-taupe: 0 0% 9%; /* #171717 for body text */
     --warm-coral: 0 70% 65%;
     --dusty-rose: 350 60% 70%;
     --baby-pink: 349 100% 95%;
@@ -54,6 +54,7 @@ All colors MUST be HSL.
     --light-pink: 342 100% 97%;
     --custom-pink: 334 80% 43%;
     --light-yellow: 55 100% 98%;
+    --dark-grey: 0 0% 40%;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--warm-coral)), hsl(var(--dusty-rose)));

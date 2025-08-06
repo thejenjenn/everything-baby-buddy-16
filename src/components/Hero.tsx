@@ -70,17 +70,17 @@ const Hero = () => {
 
         {/* Stats Section - Moved below hero content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: "1s"}}>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft hover:shadow-warm transition-all duration-300" style={{borderColor: "#C2185B", borderWidth: "1px"}}>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
             <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary" />
             <div className="text-3xl font-bold text-primary font-heading">5.0</div>
             <div className="text-sm text-muted-taupe font-body">Customer Rating</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft hover:shadow-warm transition-all duration-300" style={{borderColor: "#C2185B", borderWidth: "1px"}}>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
             <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
             <div className="text-3xl font-bold text-primary font-heading">Trusted</div>
             <div className="text-sm text-muted-taupe font-body">Nationwide</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft hover:shadow-warm transition-all duration-300" style={{borderColor: "#C2185B", borderWidth: "1px"}}>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
             <div className="text-primary mx-auto mb-3 text-3xl">🧸</div>
             <div className="text-3xl font-bold text-primary font-heading">0-3yrs</div>
             <div className="text-sm text-muted-taupe font-body">Age Range</div>

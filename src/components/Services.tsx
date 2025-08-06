@@ -103,17 +103,17 @@ const Services = () => {
                 </div>
               )}
               
-              <CardHeader className="space-y-4 p-6">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 bg-gradient-to-br from-powder-blue/20 to-soft-lilac/20 rounded-xl">
-                    <service.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  {service.badge && (
-                    <Badge variant="secondary" className="font-body rounded-full px-3" style={{backgroundColor: "#C2185B", color: "black"}}>
-                      {service.badge}
-                    </Badge>
-                  )}
-                </div>
+               <CardHeader className="space-y-4 p-6">
+                 <div className="flex items-center justify-between">
+                   <div className="w-12 h-12 bg-gradient-to-br from-powder-blue/20 to-soft-lilac/20 rounded-xl overflow-hidden flex items-center justify-center">
+                     <img src={service.image} alt={service.title} className="w-8 h-8 object-cover rounded" />
+                   </div>
+                   {service.badge && (
+                     <Badge variant="secondary" className="font-body rounded-full px-3" style={{backgroundColor: "hsl(var(--light-pink))", color: "black"}}>
+                       {service.badge}
+                     </Badge>
+                   )}
+                 </div>
                 <div>
                   <CardTitle className="text-xl text-charcoal-text font-heading font-semibold">{service.title}</CardTitle>
                   <p className="text-sm text-primary font-body font-medium mt-1">{service.subtitle}</p>
@@ -123,14 +123,14 @@ const Services = () => {
               <CardContent className="space-y-6 p-6 pt-0">
                 <p className="text-muted-taupe font-body leading-relaxed">{service.description}</p>
                 
-                <ul className="space-y-3">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-sm text-muted-taupe font-body flex items-center">
-                      <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0" style={{backgroundColor: "#C2185B"}}></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                 <ul className="space-y-3">
+                   {service.features.map((feature, idx) => (
+                     <li key={idx} className="text-sm text-muted-taupe font-body flex items-center">
+                       <div className="w-2 h-2 rounded-full mr-3 flex-shrink-0 bg-dark-grey"></div>
+                       {feature}
+                     </li>
+                   ))}
+                 </ul>
 
                 <Button variant="default" className="w-full font-body font-medium">
                   {service.cta}
