@@ -48,14 +48,31 @@ const Contact = () => {
               </Card>
             </div>
 
-            <Card className="border-blush-pink/30 bg-gradient-to-r from-blush-pink/10 via-powder-blue/10 to-soft-lilac/10 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
-                  <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
-                  <h4 className="font-semibold text-charcoal-text font-heading">Response Time</h4>
+            <Card className="relative border-warm-cream/40 bg-gradient-to-br from-warm-cream/40 via-blush-pink/15 to-powder-blue/20 backdrop-blur-sm overflow-hidden">
+              <CardContent className="p-8 relative z-10">
+                {/* Playful background illustrations */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div className="absolute top-3 left-4 w-8 h-8 opacity-15">
+                    <div className="w-4 h-4 bg-baby-pink rounded-full animate-float"></div>
+                  </div>
+                  <div className="absolute top-6 right-6 w-6 h-6 opacity-20">
+                    <div className="w-3 h-3 bg-powder-blue rounded-full animate-float" style={{animationDelay: "1s"}}></div>
+                  </div>
+                  <div className="absolute bottom-4 left-6 w-10 h-10 opacity-10">
+                    <div className="w-5 h-5 bg-soft-lilac rounded-full animate-float" style={{animationDelay: "2s"}}></div>
+                  </div>
+                  <div className="absolute bottom-3 right-4 text-2xl opacity-15 animate-float" style={{animationDelay: "1.5s"}}>⏰</div>
+                  <div className="absolute top-1/2 right-2 text-lg opacity-10 animate-float" style={{animationDelay: "2.5s"}}>📞</div>
                 </div>
-                <p className="text-muted-taupe font-body">
-                  We typically respond within 30mins - 2hours during business hours. For urgent matters, please call or message us directly on WhatsApp.
+                
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-baby-pink/30 to-powder-blue/30 rounded-xl flex items-center justify-center">
+                    <Clock className="h-6 w-6" style={{color: '#C2185B'}} />
+                  </div>
+                  <h4 className="font-bold text-charcoal-text font-heading text-xl">Response Time</h4>
+                </div>
+                <p className="text-muted-taupe font-body text-lg leading-relaxed">
+                  We typically respond within <span className="font-semibold text-primary">30mins - 2hours</span> during business hours. For urgent matters, please call or message us directly on WhatsApp.
                 </p>
               </CardContent>
             </Card>

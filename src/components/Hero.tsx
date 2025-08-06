@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Star, Play } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
+import starIcon from "@/assets/star-icon.jpg";
+import worldIcon from "@/assets/world-icon.jpg";
+import teddyIcon from "@/assets/teddy-icon.jpg";
 
 const Hero = () => {
   return (
@@ -79,18 +82,18 @@ const Hero = () => {
 
         {/* Stats Section - Moved below hero content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: "1s"}}>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
-            <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary" />
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
+            <img src={starIcon} alt="Star rating" className="h-8 w-8 mx-auto mb-3" />
             <div className="text-3xl font-bold text-primary font-heading">5.0</div>
             <div className="text-sm font-body" style={{color: "#171717"}}>Customer Rating</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
-            <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
+            <img src={worldIcon} alt="World icon" className="h-8 w-8 mx-auto mb-3" />
             <div className="text-3xl font-bold text-primary font-heading">Trusted</div>
             <div className="text-sm font-body" style={{color: "#171717"}}>Nationwide</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-dark-grey" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
-            <div className="text-primary mx-auto mb-3 text-3xl">🧸</div>
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'}}>
+            <img src={teddyIcon} alt="Teddy bear" className="h-8 w-8 mx-auto mb-3" />
             <div className="text-3xl font-bold text-primary font-heading">0-3yrs</div>
             <div className="text-sm font-body" style={{color: "#171717"}}>Age Range</div>
           </div>
