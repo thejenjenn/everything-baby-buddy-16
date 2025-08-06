@@ -77,7 +77,7 @@ const Hero = () => {
             <div className="text-sm font-body" style={{color: "#171717"}}>Nationwide</div>
           </div>
           <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)', borderColor: '#E5E7EB'}}>
-            <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
+            <div className="text-primary mx-auto mb-3 text-3xl">🧸</div>
             <div className="text-3xl font-bold text-primary font-heading">0-3yrs</div>
             <div className="text-sm font-body" style={{color: "#171717"}}>Age Range</div>
           </div>
