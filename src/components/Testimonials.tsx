@@ -56,39 +56,58 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className={`p-6 rounded-2xl shadow-lg border-0 ${testimonial.bgColor} transform transition-all duration-300 hover:scale-105 hover:shadow-xl`}>
-              <CardContent className="p-0">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  
-                  <p className="text-gray-700 mb-4 leading-relaxed font-body">
-                    "{testimonial.text}"
-                  </p>
-                  
-                  <h4 className="font-bold text-gray-900 mb-1">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-gray-600 text-sm font-medium">
-                    {testimonial.role}
-                  </p>
+        <div className="max-w-md mx-auto">
+          <div className="relative overflow-hidden rounded-3xl">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="w-full flex-shrink-0">
+                  <Card className="border-0 shadow-lg rounded-3xl overflow-hidden">
+                    {/* Full Cover Image Section - no cropping */}
+                    <div className="relative h-96">
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name} 
+                        className="w-full h-full object-cover object-center" 
+                      />
+                    </div>
+                    
+                    {/* Quote Section */}
+                    <div className={`${testimonial.bgColor} p-8`}>
+                      <div className="text-6xl text-gray-400 font-serif leading-none mb-6">"</div>
+                      <p className="text-lg font-body leading-relaxed text-gray-800 mb-8">
+                        {testimonial.text}
+                      </p>
+                      
+                      <div className="text-center">
+                        <h4 className="font-bold text-xl text-gray-900 mb-2">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-gray-600 font-medium">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              ))}
+            </div>
+          </div>
+          
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex ? 'bg-primary scale-125' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
