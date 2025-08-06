@@ -14,6 +14,16 @@ const About = () => {
         </div>
 
         <div className="mb-16 animate-fade-in">
+          {/* Preview text shown first */}
+          <div className="max-w-4xl mx-auto mb-8 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <p className="text-white/90 font-body leading-relaxed text-lg mb-4">
+              I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers.
+            </p>
+            <p className="text-white/90 font-body leading-relaxed text-lg">
+              What exactly do I need for the hospital? What essentials should I have ready at home? How do I know if I'm buying the right things? The endless lists online were confusing and often contradictory.
+            </p>
+          </div>
+          
           <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto mb-8">
             <AccordionItem value="story" className="border-white/20">
               <AccordionTrigger className="text-left py-6 hover:no-underline group [&[data-state=open]>div]:text-pink-300 [&>svg]:text-pink-300">
@@ -39,22 +49,12 @@ const About = () => {
           </Accordion>
           
           {/* Image after accordion */}
-          <div className="max-w-4xl mx-auto mb-8 flex justify-center">
+          <div className="max-w-4xl mx-auto flex justify-center">
             <img 
               src="/lovable-uploads/c85ff976-5688-4e47-be12-3bd2fde12341.png" 
               alt="Portrait" 
               className="rounded-2xl shadow-lg max-w-md w-full object-cover"
             />
-          </div>
-          
-          {/* Preview text shown after accordion */}
-          <div className="max-w-4xl mx-auto p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-            <p className="text-white/90 font-body leading-relaxed text-lg mb-4">
-              I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers.
-            </p>
-            <p className="text-white/90 font-body leading-relaxed text-lg">
-              What exactly do I need for the hospital? What essentials should I have ready at home? How do I know if I'm buying the right things? The endless lists online were confusing and often contradictory.
-            </p>
           </div>
         </div>
       </div>
