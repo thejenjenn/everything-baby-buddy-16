@@ -9,21 +9,22 @@ import {
   Gift, 
   ClipboardList,
   Phone,
-  MessageCircle
+  MessageCircle,
+  Heart
 } from "lucide-react";
 import babyEssentials from "@/assets/baby-essentials.jpg";
 import babyFood from "@/assets/baby-food.jpg";
 import backToSchool from "@/assets/back-to-school.jpg";
-import partyPack from "@/assets/party-pack-kids.jpg";
+import partyPack from "@/assets/gift-packs.jpg";
 import babyRegistry from "@/assets/baby-registry.jpg";
 import hospitalList from "@/assets/hospital-list.jpg";
 
 const Services = () => {
   const services = [
     {
-      icon: Baby,
+      icon: Heart,
       title: "Newborn Package",
-      subtitle: "0-12 months",
+      subtitle: "0-3 years",
       description: "Complete essentials package for your newborn's first year. Everything you need, carefully curated and delivered to your doorstep.",
       image: babyEssentials,
       features: ["Essential baby items", "Age-appropriate products", "Budget-friendly options", "Quality guaranteed"],
@@ -78,7 +79,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20" style={{backgroundColor: "#F8F4F2"}}>
+    <section id="services" className="py-20" style={{backgroundColor: "#FEFEFE"}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
@@ -138,12 +139,8 @@ const Services = () => {
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-center pt-6 mt-6 border-t border-gray-100">
-                    <div className="text-left">
-                      <span className="text-2xl font-bold text-gray-900">From ₦5k</span>
-                      <span className="text-sm text-gray-500 block">/ package</span>
-                    </div>
-                    <Button variant="default" className="font-body font-medium">
+                  <div className="flex justify-center items-center pt-6 mt-6 border-t border-gray-100">
+                    <Button variant="default" className="font-body font-medium w-full">
                       {service.cta}
                     </Button>
                   </div>

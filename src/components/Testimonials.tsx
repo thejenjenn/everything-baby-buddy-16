@@ -67,7 +67,7 @@ const Testimonials = () => {
                 group border-0 rounded-2xl overflow-hidden shadow-lg backdrop-blur-sm
                 transition-all duration-300 ease-in-out
                 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/10
-                ${testimonial.bgColor}
+                bg-white
                 ${isVisible ? 
                   index === 0 ? 'animate-slide-up-fade' :
                   index === 1 ? 'animate-slide-up-fade-delay-1' :
@@ -101,9 +101,6 @@ const Testimonials = () => {
                 
                 {/* Author info */}
                 <div className="relative z-10">
-                  <h4 className="font-bold text-lg text-gray-900 mb-1 group-hover:text-primary transition-colors duration-300">
-                    {testimonial.name}
-                  </h4>
                   <p className="text-gray-600 font-medium text-sm">
                     {testimonial.role}
                   </p>
