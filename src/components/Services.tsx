@@ -95,55 +95,62 @@ const Services = () => {
             return (
               <Card key={index} className="border border-gray-200 hover:shadow-elegant transition-all duration-500 group bg-white rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 {service.image && (
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-64 overflow-hidden rounded-t-2xl">
                     <img
                       src={service.image}
                       alt={service.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                     
                     {/* Overlay content */}
                     <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
                       <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="text-xl font-heading font-bold mb-2">{service.title}</h3>
-                          <div className="flex items-center space-x-1 text-white/90">
-                            <Icon className="h-4 w-4" />
-                            <span className="text-sm font-body">{service.subtitle}</span>
-                          </div>
-                        </div>
                         {service.badge && (
                           <Badge variant="secondary" className="font-body rounded-full px-3 bg-white/20 text-white border-white/30">
                             {service.badge}
                           </Badge>
                         )}
                       </div>
+                      
+                      <div className="space-y-3">
+                        <h3 className="text-2xl font-heading font-bold">{service.title}</h3>
+                        <div className="flex items-center space-x-2 text-white/90">
+                          <Icon className="h-5 w-5" />
+                          <span className="font-body">{service.subtitle}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
                 
-                <CardContent className="p-6 space-y-4">
-                  <p className="font-body leading-relaxed text-gray-700">{service.description}</p>
+                <CardContent className="p-6 space-y-6">
+                  <p className="font-body leading-relaxed text-gray-600">{service.description}</p>
                   
-                  {/* Features as tags */}
-                  <div className="flex flex-wrap gap-2">
+                  {/* Feature icons with labels */}
+                  <div className="grid grid-cols-3 gap-4">
                     {service.features.slice(0, 3).map((feature, idx) => (
-                      <span key={idx} className="text-xs font-body px-3 py-1 bg-gray-100 rounded-full text-gray-600">
-                        {feature}
-                      </span>
+                      <div key={idx} className="flex flex-col items-center text-center space-y-2">
+                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                          <Icon className="h-4 w-4 text-gray-600" />
+                        </div>
+                        <span className="text-xs font-body text-gray-600 leading-tight">{feature}</span>
+                      </div>
                     ))}
-                    {service.features.length > 3 && (
-                      <span className="text-xs font-body px-3 py-1 bg-gray-100 rounded-full text-gray-600">
+                  </div>
+                  
+                  {service.features.length > 3 && (
+                    <div className="text-center">
+                      <span className="text-sm font-body text-gray-500">
                         +{service.features.length - 3} more
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
-                  <div className="flex justify-between items-center pt-4">
+                  <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                     <div className="text-left">
                       <span className="text-2xl font-bold text-gray-900">From ₦5k</span>
-                      <span className="text-sm text-gray-500 ml-1">/ package</span>
+                      <span className="text-sm text-gray-500 block">/ package</span>
                     </div>
                     <Button variant="default" className="font-body font-medium">
                       {service.cta}
