@@ -186,7 +186,7 @@ const Testimonials = () => {
                     </p>
                     
                     {/* Role only */}
-                    <div className="text-center">
+                    <div className="text-right">
                       <p className="text-gray-600 text-sm font-medium">
                         {testimonial.role}
                       </p>
