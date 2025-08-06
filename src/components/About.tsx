@@ -15,7 +15,7 @@ const About = () => {
 
         <div className="mb-16 animate-fade-in">
           {/* Preview text shown first */}
-          <div className="max-w-4xl mx-auto mb-8 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-pink-300">
+          <div className="max-w-4xl mx-auto mb-8 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
             <p className="text-white/90 font-body leading-relaxed text-lg">
               I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers…..
             </p>
