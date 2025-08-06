@@ -93,7 +93,7 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="border border-gray-200 hover:shadow-elegant transition-all duration-500 group bg-white rounded-2xl overflow-hidden animate-fade-in flex flex-col h-full" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="border border-gray-200 hover:shadow-elegant hover-lift hover-glow transition-all duration-500 group bg-white rounded-2xl overflow-hidden animate-fade-in-up flex flex-col h-full" style={{animationDelay: `${index * 0.1}s`}}>
                 {service.image && (
                   <div className="relative h-64 overflow-hidden rounded-t-2xl flex-shrink-0">
                     <img
@@ -116,7 +116,7 @@ const Services = () => {
                       <div className="space-y-3">
                         <h3 className="text-2xl font-heading font-bold">{service.title}</h3>
                         <div className="flex items-center space-x-2 text-white/90">
-                          <Icon className="h-5 w-5" />
+                          <Icon className="h-5 w-5 animate-bounce-gentle" />
                           <span className="font-body">{service.subtitle}</span>
                         </div>
                       </div>
@@ -143,7 +143,7 @@ const Services = () => {
                       <span className="text-2xl font-bold text-gray-900">From ₦5k</span>
                       <span className="text-sm text-gray-500 block">/ package</span>
                     </div>
-                    <Button variant="default" className="font-body font-medium">
+                    <Button variant="default" className="font-body font-medium hover-lift transition-transform duration-300">
                       {service.cta}
                     </Button>
                   </div>
@@ -153,33 +153,33 @@ const Services = () => {
           })}
         </div>
 
-        <div className="mt-20 relative rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"  style={{borderColor: "#E5E7EB"}}>
-          {/* Playful decorative elements */}
-          <div className="absolute top-4 left-8 w-8 h-8 opacity-20" style={{color: "#EC4899"}}>🎈</div>
-          <div className="absolute top-8 right-12 w-6 h-6 opacity-20" style={{color: "#EC4899"}}>⭐</div>
-          <div className="absolute bottom-6 left-12 w-6 h-6 opacity-20" style={{color: "#EC4899"}}>🧸</div>
-          <div className="absolute bottom-10 right-8 w-8 h-8 opacity-20" style={{color: "#EC4899"}}>❤️</div>
-          <div className="absolute top-1/2 left-4 w-4 h-4 opacity-15" style={{color: "#EC4899"}}>🌟</div>
-          <div className="absolute top-1/3 right-6 w-5 h-5 opacity-15" style={{color: "#EC4899"}}>💕</div>
+        <div className="mt-20 relative rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up hover-glow border overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"  style={{borderColor: "#E5E7EB"}}>
+          {/* Playful decorative elements with animations */}
+          <div className="absolute top-4 left-8 w-8 h-8 opacity-20 animate-bounce-gentle" style={{color: "#EC4899", animationDelay: "0.5s"}}>🎈</div>
+          <div className="absolute top-8 right-12 w-6 h-6 opacity-20 animate-wiggle" style={{color: "#EC4899", animationDelay: "1s"}}>⭐</div>
+          <div className="absolute bottom-6 left-12 w-6 h-6 opacity-20 animate-pulse-scale" style={{color: "#EC4899", animationDelay: "1.5s"}}>🧸</div>
+          <div className="absolute bottom-10 right-8 w-8 h-8 opacity-20 animate-bounce-gentle" style={{color: "#EC4899", animationDelay: "2s"}}>❤️</div>
+          <div className="absolute top-1/2 left-4 w-4 h-4 opacity-15 animate-float" style={{color: "#EC4899", animationDelay: "0.3s"}}>🌟</div>
+          <div className="absolute top-1/3 right-6 w-5 h-5 opacity-15 animate-wiggle" style={{color: "#EC4899", animationDelay: "1.2s"}}>💕</div>
           
           <div className="relative z-10">
-            <h3 className="text-3xl font-heading font-bold text-white mb-6 tracking-tight">
+            <h3 className="text-3xl font-heading font-bold text-white mb-6 tracking-tight animate-fade-in-up">
               Need Personalized Consultation?
             </h3>
-            <p className="mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed text-purple-100">
+            <p className="mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed text-purple-100 animate-fade-in-up" style={{animationDelay: "0.2s"}}>
               Every baby is unique, and so are their needs. Contact us for personalized consultation 
               and custom packages tailored specifically for your little one.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button variant="default" size="lg" className="gap-3 font-body font-medium shadow-warm" asChild>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style={{animationDelay: "0.4s"}}>
+              <Button variant="default" size="lg" className="gap-3 font-body font-medium shadow-warm hover-lift hover-glow transition-all duration-300" asChild>
                 <a href="tel:+2347060867150">
-                  <Phone className="h-5 w-5" />
+                  <Phone className="h-5 w-5 animate-wiggle" />
                   Call for Consultation
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium border-blue-500 text-blue-600 hover:bg-blue-50" asChild>
+              <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium border-blue-500 text-blue-600 hover:bg-blue-50 hover-lift transition-all duration-300" asChild>
                 <a href="https://wa.me/2347060867150" className="flex items-center gap-3">
-                  <MessageCircle className="h-5 w-5 text-blue-600" />
+                  <MessageCircle className="h-5 w-5 text-blue-600 animate-bounce-gentle" />
                   Chat with Us
                 </a>
               </Button>

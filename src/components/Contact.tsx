@@ -6,9 +6,9 @@ import { Phone, MessageCircle, Mail, MapPin, Clock, Heart } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-warm-cream to-background">
+    <section id="contact" className="py-20 bg-gradient-to-b from-warm-cream to-background animate-fade-in-up">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Get in Touch
           </h2>
@@ -17,23 +17,23 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 animate-fade-in-up" style={{animationDelay: "0.2s"}}>
           {/* Contact Information */}
           <div className="space-y-8">
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <Card className="border-border hover:shadow-soft transition-all duration-300">
+              <Card className="border-border hover:shadow-soft hover-lift hover-glow transition-all duration-300 animate-slide-in-left" style={{animationDelay: "0.4s"}}>
                 <CardContent className="p-6">
-                  <MessageCircle className="h-8 w-8 text-primary mb-4" />
+                  <MessageCircle className="h-8 w-8 text-primary mb-4 animate-bounce-gentle" />
                   <h4 className="font-semibold text-foreground mb-2">WhatsApp</h4>
                   <p className="text-muted-foreground text-sm mb-3">Chat with us on WhatsApp</p>
                   <p className="text-sm font-medium text-foreground">+234 706 086 7150</p>
                 </CardContent>
               </Card>
 
-              <Card className="border-border hover:shadow-soft transition-all duration-300">
+              <Card className="border-border hover:shadow-soft hover-lift hover-glow transition-all duration-300 animate-slide-in-right" style={{animationDelay: "0.6s"}}>
                 <CardContent className="p-6">
-                  <Mail className="h-8 w-8 text-primary mb-4" />
+                  <Mail className="h-8 w-8 text-primary mb-4 animate-wiggle" />
                   <h4 className="font-semibold text-foreground mb-2">Email</h4>
                   <p className="text-muted-foreground text-sm mb-3">Send us your inquiries</p>
                   <p className="text-sm font-medium text-foreground">everythingbabyworld@gmail.com</p>
@@ -44,10 +44,10 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-8 text-white">
+          <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-8 text-white hover-glow animate-zoom-in" style={{animationDelay: "0.8s"}}>
             <div className="relative z-10">
               <div className="flex justify-between items-start mb-8">
-                <div>
+                <div className="animate-fade-in-up">
                   <h2 className="text-3xl md:text-4xl font-bold mb-2">
                     Get in touch with us
                   </h2>
@@ -57,7 +57,7 @@ const Contact = () => {
                 </div>
                 <Button 
                   variant="outline" 
-                  className="border-white/30 text-white hover:bg-white/10 bg-transparent"
+                  className="border-white/30 text-white hover:bg-white/10 bg-transparent hover-lift animate-wiggle"
                 >
                   Quick Call
                 </Button>
@@ -102,13 +102,13 @@ const Contact = () => {
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
                 />
 
-                <Button variant="default" size="lg" className="w-full">
+                <Button variant="default" size="lg" className="w-full hover-lift hover-glow transition-all duration-300">
                   Send Message
                 </Button>
 
-                <div className="text-center pt-4">
+                <div className="text-center pt-4 animate-fade-in-up" style={{animationDelay: "0.6s"}}>
                   <div className="flex items-center justify-center space-x-2 text-sm text-purple-100">
-                    <Heart className="h-4 w-4 text-pink-300 fill-pink-300" />
+                    <Heart className="h-4 w-4 text-pink-300 fill-pink-300 animate-pulse-scale" />
                     <span>We care about your privacy and will never spam you</span>
                   </div>
                 </div>

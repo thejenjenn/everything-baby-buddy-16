@@ -97,13 +97,13 @@ const Testimonials = () => {
           </div>
           
           {/* Dots Indicator */}
-          <div className="flex justify-center mt-6 space-x-2">
+          <div className="flex justify-center mt-6 space-x-2 animate-fade-in-up" style={{animationDelay: "0.8s"}}>
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-primary scale-125' : 'bg-gray-300'
+                className={`w-3 h-3 rounded-full transition-all duration-300 hover-lift ${
+                  index === currentIndex ? 'bg-primary scale-125 animate-pulse-scale' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               />
             ))}
