@@ -38,6 +38,15 @@ const About = () => {
             </AccordionItem>
           </Accordion>
           
+          {/* Image after accordion */}
+          <div className="max-w-4xl mx-auto mb-8 flex justify-center">
+            <img 
+              src="/lovable-uploads/c85ff976-5688-4e47-be12-3bd2fde12341.png" 
+              alt="Portrait" 
+              className="rounded-2xl shadow-lg max-w-md w-full object-cover"
+            />
+          </div>
+          
           {/* Preview text shown after accordion */}
           <div className="max-w-4xl mx-auto p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
             <p className="text-white/90 font-body leading-relaxed text-lg mb-4">
