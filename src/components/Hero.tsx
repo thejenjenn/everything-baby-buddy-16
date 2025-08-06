@@ -32,7 +32,7 @@ const Hero = () => {
               <Button variant="default" size="lg" className="text-lg px-10 py-4 font-medium shadow-warm animate-scale-in" style={{animationDelay: "0.6s"}}>
                 Explore Services
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-10 py-4 font-medium group animate-scale-in border-2 border-primary/30 bg-background hover:bg-primary/5 hover:border-primary/60 hover:shadow-soft text-primary" style={{animationDelay: "0.8s"}}>
+              <Button variant="outline" size="lg" className="text-lg px-10 py-4 font-medium group animate-scale-in border-2 border-gray-700 bg-background hover:bg-primary/5 hover:border-gray-800 hover:shadow-soft text-primary" style={{animationDelay: "0.8s"}}>
                 <Play className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
                 Read My Story
               </Button>
@@ -53,17 +53,17 @@ const Hero = () => {
 
         {/* Stats Section - Moved below hero content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: "1s"}}>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-powder-blue/50 hover:shadow-warm transition-all duration-300">
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-gray-600 hover:shadow-warm transition-all duration-300">
             <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary" />
             <div className="text-3xl font-bold text-primary font-heading">5.0</div>
             <div className="text-sm text-muted-taupe font-body">Customer Rating</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-blush-pink/50 hover:shadow-warm transition-all duration-300">
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-gray-600 hover:shadow-warm transition-all duration-300">
             <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
             <div className="text-3xl font-bold text-primary font-heading">Trusted</div>
             <div className="text-sm text-muted-taupe font-body">Nationwide</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-soft-lilac/50 hover:shadow-warm transition-all duration-300">
+          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-gray-600 hover:shadow-warm transition-all duration-300">
             <div className="text-primary mx-auto mb-3 text-3xl">🧸</div>
             <div className="text-3xl font-bold text-primary font-heading">0-3yrs</div>
             <div className="text-sm text-muted-taupe font-body">Age Range</div>

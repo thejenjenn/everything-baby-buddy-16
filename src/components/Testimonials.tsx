@@ -1,22 +1,28 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, User } from "lucide-react";
+import { Star } from "lucide-react";
+import zainabImage from "@/assets/zainab-akepre.jpg";
+import chikaImage from "@/assets/chika-anyanwu.jpg";
+import taiwoImage from "@/assets/taiwo-raymond.jpg";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Zainab Akepre",
       text: "Everything Baby made my first pregnancy so much easier. Their hospital package was perfectly curated and saved me hours of research.",
-      rating: 5
+      rating: 5,
+      image: zainabImage
     },
     {
-      name: "Priya Patel",
+      name: "Chika Anyanwu",
       text: "The baby essentials package was a lifesaver! Everything I needed and nothing I didn't. Highly recommend to new moms.",
-      rating: 5
+      rating: 5,
+      image: chikaImage
     },
     {
-      name: "Emma Wilson",
+      name: "Taiwo Raymond",
       text: "Their back-to-school package was amazing. My daughter had everything she needed for nursery. Such thoughtful curation!",
-      rating: 5
+      rating: 5,
+      image: taiwoImage
     }
   ];
 
@@ -37,7 +43,7 @@ const Testimonials = () => {
             <Card key={index} className="border-blush-pink/30 hover:shadow-elegant transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
               <CardContent className="p-8 text-center">
                 <div className="mb-4">
-                  <User className="h-12 w-12 text-powder-blue mx-auto mb-3 bg-blush-pink/30 rounded-full p-2" />
+                  <img src={testimonial.image} alt={testimonial.name} className="h-12 w-12 mx-auto mb-3 rounded-full object-cover" />
                 </div>
                 
                 <div className="flex justify-center mb-4">

@@ -1,33 +1,36 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Heart, Users, BookOpen, Award } from "lucide-react";
+import personalExperienceIcon from "@/assets/personal-experience-icon.jpg";
+import expertNetworkIcon from "@/assets/expert-network-icon.jpg";
+import extensiveResearchIcon from "@/assets/extensive-research-icon.jpg";
+import provenResultsIcon from "@/assets/proven-results-icon.jpg";
 
 const About = () => {
   const highlights = [
     {
-      icon: Heart,
+      image: personalExperienceIcon,
       title: "Personal Experience",
       description: "First-time mother who understands the journey"
     },
     {
-      icon: Users,
+      image: expertNetworkIcon,
       title: "Expert Network",
       description: "Backed by nutritionists and pediatricians"
     },
     {
-      icon: BookOpen,
+      image: extensiveResearchIcon,
       title: "Extensive Research",
       description: "Countless hours of study and experimentation"
     },
     {
-      icon: Award,
+      image: provenResultsIcon,
       title: "Proven Results",
       description: "Supporting families with confidence"
     }
   ];
 
   return (
-    <section id="about" className="py-20 bg-light-pink">
+    <section id="about" className="py-20 bg-yellow-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
@@ -41,8 +44,11 @@ const About = () => {
         <div className="mb-16 animate-fade-in">
           {/* Preview text shown before collapsing */}
           <div className="max-w-4xl mx-auto mb-8 p-6 bg-white/50 backdrop-blur-sm rounded-2xl border border-blush-pink/30">
-            <p className="text-muted-taupe font-body leading-relaxed text-lg">
+            <p className="text-muted-taupe font-body leading-relaxed text-lg mb-4">
               I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers.
+            </p>
+            <p className="text-muted-taupe font-body leading-relaxed text-lg">
+              What exactly do I need for the hospital? What essentials should I have ready at home? How do I know if I'm buying the right things? The endless lists online were confusing and often contradictory.
             </p>
           </div>
           
@@ -75,7 +81,7 @@ const About = () => {
           {highlights.map((highlight, index) => (
             <Card key={index} className="border-blush-pink/30 hover:shadow-elegant transition-all duration-300 bg-white/70 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
               <CardContent className="p-6 text-center">
-                <highlight.icon className="h-10 w-10 text-primary mx-auto mb-4" />
+                <img src={highlight.image} alt={highlight.title} className="h-10 w-10 mx-auto mb-4 rounded-lg object-cover" />
                 <h3 className="font-semibold text-charcoal-text font-heading mb-2">{highlight.title}</h3>
                 <p className="text-sm text-muted-taupe font-body">{highlight.description}</p>
               </CardContent>

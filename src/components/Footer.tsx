@@ -64,7 +64,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-xs text-background/60">
-              Response time: 2-4 hours during business hours
+              Response time: 30 mins - 2 hours during business hours
             </p>
           </div>
         </div>
