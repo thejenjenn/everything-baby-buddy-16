@@ -1,31 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { User, Users, BookOpen, Trophy } from "lucide-react";
 
 const About = () => {
-  const highlights = [
-    {
-      icon: User,
-      title: "Personal Experience",
-      description: "First-time mother who understands the journey"
-    },
-    {
-      icon: Users,
-      title: "Expert Network",
-      description: "Backed by nutritionists and pediatricians"
-    },
-    {
-      icon: BookOpen,
-      title: "Extensive Research",
-      description: "Countless hours of study and experimentation"
-    },
-    {
-      icon: Trophy,
-      title: "Proven Results",
-      description: "Supporting families with confidence"
-    }
-  ];
-
   return (
     <section id="about" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,8 +26,8 @@ const About = () => {
           
           <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
             <AccordionItem value="story" className="border-white/20">
-              <AccordionTrigger className="text-left py-6 hover:no-underline group">
-                <div className="text-xl font-heading font-semibold text-white group-hover:text-primary transition-colors">
+              <AccordionTrigger className="text-left py-6 hover:no-underline group [&[data-state=open]>div]:text-pink-300 [&>svg]:text-pink-300">
+                <div className="text-xl font-heading font-semibold text-pink-300 transition-colors">
                   Read My Full Story
                 </div>
               </AccordionTrigger>
@@ -72,21 +47,6 @@ const About = () => {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{animationDelay: "0.3s"}}>
-          {highlights.map((highlight, index) => {
-            const Icon = highlight.icon;
-            return (
-              <Card key={index} className="border-white/20 hover:shadow-elegant transition-all duration-300 bg-white/10 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
-                <CardContent className="p-6 text-center">
-                  <Icon className="h-10 w-10 mx-auto mb-4" style={{color: "hsl(var(--light-pink-fill))"}} />
-                  <h3 className="font-semibold font-heading mb-2" style={{color: "hsl(var(--light-pink-fill))"}}>{highlight.title}</h3>
-                  <p className="text-sm text-white/80 font-body">{highlight.description}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
         </div>
       </div>
     </section>
