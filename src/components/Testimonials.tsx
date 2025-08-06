@@ -40,7 +40,7 @@ const Testimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in" style={{animationDelay: "0.3s"}}>
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-blush-pink/30 hover:shadow-elegant transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-2xl animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+            <Card key={index} className="border-2 hover:shadow-elegant transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-2xl animate-scale-in shadow-lg" style={{animationDelay: `${index * 0.1}s`, borderColor: "#171717", boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)'}}>
               <CardContent className="p-8 text-center">
                 <div className="mb-4">
                   <img src={testimonial.image} alt={testimonial.name} className="h-12 w-12 mx-auto mb-3 rounded-full object-cover" />
