@@ -24,7 +24,7 @@ const About = () => {
               </AccordionTrigger>
               
               {/* Preview text card */}
-              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-pink-200/10 mb-8">
+              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-pink-200/10 mb-4">
                 <p className="text-white/90 font-body leading-relaxed text-lg">
                   I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers…..
                 </p>
