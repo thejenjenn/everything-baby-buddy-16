@@ -143,7 +143,7 @@ const Services = () => {
           })}
         </div>
 
-        <div className="mt-20 relative rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border overflow-hidden" style={{backgroundColor: "#F7F3F0", borderColor: "#E5E7EB"}}>
+        <div className="mt-20 relative rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"  style={{borderColor: "#E5E7EB"}}>
           {/* Playful decorative elements */}
           <div className="absolute top-4 left-8 w-8 h-8 opacity-20" style={{color: "#EC4899"}}>🎈</div>
           <div className="absolute top-8 right-12 w-6 h-6 opacity-20" style={{color: "#EC4899"}}>⭐</div>
@@ -153,10 +153,10 @@ const Services = () => {
           <div className="absolute top-1/3 right-6 w-5 h-5 opacity-15" style={{color: "#EC4899"}}>💕</div>
           
           <div className="relative z-10">
-            <h3 className="text-3xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
+            <h3 className="text-3xl font-heading font-bold text-white mb-6 tracking-tight">
               Need Personalized Consultation?
             </h3>
-            <p className="mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed" style={{color: "#171717"}}>
+            <p className="mb-8 max-w-2xl mx-auto font-body text-lg leading-relaxed text-purple-100">
               Every baby is unique, and so are their needs. Contact us for personalized consultation 
               and custom packages tailored specifically for your little one.
             </p>

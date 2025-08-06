@@ -7,6 +7,7 @@ const Navigation = () => {
 
   const navItems = [
     { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -30,9 +31,6 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant="warm" className="ml-4">
-              Explore Services
-            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -61,11 +59,6 @@ const Navigation = () => {
                   {item.label}
                 </a>
               ))}
-              <div className="px-3 pt-2">
-                <Button variant="warm" className="w-full">
-                  Explore Services
-                </Button>
-              </div>
             </div>
           </div>
         )}
