@@ -153,9 +153,9 @@ const Testimonials = () => {
                 <Card
                   key={index}
                   className={`
-                    absolute inset-0 w-full bg-white border-0 rounded-3xl shadow-lg
+                    absolute inset-0 w-full bg-white border border-gray-200 rounded-3xl shadow-sm
                     transition-all duration-500 ease-out cursor-pointer
-                    ${isActive ? 'hover:scale-[1.03] hover:shadow-xl' : ''}
+                    ${isActive ? 'hover:scale-[1.03] hover:shadow-md' : ''}
                     ${isVisible && index <= 2 ? 'animate-fade-in' : 'opacity-0'}
                   `}
                   style={{
