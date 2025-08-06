@@ -131,19 +131,6 @@ const Testimonials = () => {
               let transform = '';
               let opacity = 0.6;
               
-              // Define different background colors and borders for each card
-              const cardColors = [
-                'bg-gradient-to-br from-baby-pink/20 to-light-pink/30', // First card
-                'bg-gradient-to-br from-baby-blue/20 to-powder-blue/30', // Second card  
-                'bg-gradient-to-br from-warm-coral/20 to-blush-pink/30'  // Third card
-              ];
-              
-              const borderColors = [
-                'border-baby-pink', // Matching first card
-                'border-baby-blue', // Matching second card
-                'border-warm-coral' // Matching third card
-              ];
-              
               if (isActive) {
                 zIndex = 10;
                 transform = 'translate(0, 0) scale(1)';
@@ -166,7 +153,7 @@ const Testimonials = () => {
                 <Card
                   key={index}
                   className={`
-                    absolute inset-0 w-full ${cardColors[index]} ${borderColors[index]} rounded-3xl shadow-sm
+                    absolute inset-0 w-full bg-white border border-gray-200 rounded-3xl shadow-sm
                     transition-all duration-500 ease-out cursor-pointer
                     ${isActive ? 'hover:scale-[1.03] hover:shadow-md' : ''}
                     ${isVisible && index <= 2 ? 'animate-fade-in' : 'opacity-0'}
