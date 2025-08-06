@@ -93,9 +93,9 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="border border-gray-200 hover:shadow-elegant transition-all duration-500 group bg-white rounded-2xl overflow-hidden animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="border border-gray-200 hover:shadow-elegant transition-all duration-500 group bg-white rounded-2xl overflow-hidden animate-fade-in flex flex-col h-full" style={{animationDelay: `${index * 0.1}s`}}>
                 {service.image && (
-                  <div className="relative h-64 overflow-hidden rounded-t-2xl">
+                  <div className="relative h-64 overflow-hidden rounded-t-2xl flex-shrink-0">
                     <img
                       src={service.image}
                       alt={service.title}
@@ -124,19 +124,21 @@ const Services = () => {
                   </div>
                 )}
                 
-                <CardContent className="p-6 space-y-6">
-                  <p className="font-body leading-relaxed text-gray-600">{service.description}</p>
-                  
-                  {/* Feature pills */}
-                  <div className="flex flex-wrap gap-2">
-                    {service.features.slice(0, 3).map((feature, idx) => (
-                      <span key={idx} className="text-xs font-body px-3 py-1 bg-gray-100 rounded-full text-gray-600">
-                        {feature}
-                      </span>
-                    ))}
+                <CardContent className="p-6 flex flex-col flex-grow">
+                  <div className="flex-grow space-y-6">
+                    <p className="font-body leading-relaxed text-gray-600">{service.description}</p>
+                    
+                    {/* Feature pills */}
+                    <div className="flex flex-wrap gap-2">
+                      {service.features.slice(0, 3).map((feature, idx) => (
+                        <span key={idx} className="text-xs font-body px-3 py-1 bg-gray-100 rounded-full text-gray-600">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+                  <div className="flex justify-between items-center pt-6 mt-6 border-t border-gray-100">
                     <div className="text-left">
                       <span className="text-2xl font-bold text-gray-900">From ₦5k</span>
                       <span className="text-sm text-gray-500 block">/ package</span>
