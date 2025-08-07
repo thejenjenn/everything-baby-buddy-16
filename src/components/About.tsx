@@ -16,37 +16,37 @@ const About = () => {
         <div className="mb-8 animate-fade-in">
           <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
             <AccordionItem value="story" className="border-transparent">
-              {/* Story card with integrated accordion */}
-              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-pink-200/10">
-                <p className="text-white/90 font-body leading-relaxed text-lg mb-4">
+              {/* Accordion trigger above the intro card */}
+              <AccordionTrigger className="text-center py-6 hover:no-underline group [&[data-state=open]>div]:text-pink-300 [&>svg]:text-pink-300 mb-8">
+                <div className="text-xl font-heading font-semibold text-pink-300 transition-colors">
+                  Read My Full Story
+                </div>
+              </AccordionTrigger>
+              
+              {/* Preview text card */}
+              <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-pink-200/10 mb-8">
+                <p className="text-white/90 font-body leading-relaxed text-lg">
                   I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers…..
                 </p>
-                
-                {/* Accordion trigger inside the card */}
-                <AccordionTrigger className="flex flex-col items-center text-center py-4 hover:no-underline group [&[data-state=open]>div]:text-pink-300 [&>svg]:text-pink-300">
-                  <div className="text-lg font-heading font-semibold text-pink-300 transition-colors">
-                    Read My Full Story
-                  </div>
-                </AccordionTrigger>
-                
-                {/* Expandable content inside the same card */}
-                <AccordionContent className="text-white/90 font-body leading-relaxed text-lg">
-                  <div className="space-y-4 pt-2">
-                    <p>
-                      What exactly do I need for the hospital? What essentials should I have ready at home? How do I know if I'm buying the right things? The endless lists online were confusing and often contradictory.
-                    </p>
-                    <p>
-                      That's when I realized there had to be a better way. New mothers shouldn't have to navigate this journey alone, feeling overwhelmed and unprepared. We deserve support, guidance, and peace of mind during one of life's most precious moments.
-                    </p>
-                    <p>
-                      Everything Baby was born from this personal experience. We're here to take the guesswork out of motherhood, providing curated packages and expert guidance so you can focus on what truly matters - bonding with your little one.
-                    </p>
-                    <p>
-                      Every package we create, every recommendation we make, comes from understanding exactly what you're going through. Because we've been there too.
-                    </p>
-                  </div>
-                </AccordionContent>
               </div>
+              
+              {/* Expandable content as plain text */}
+              <AccordionContent className="text-white/90 font-body leading-relaxed text-lg">
+                <div className="space-y-4">
+                  <p>
+                    What exactly do I need for the hospital? What essentials should I have ready at home? How do I know if I'm buying the right things? The endless lists online were confusing and often contradictory.
+                  </p>
+                  <p>
+                    That's when I realized there had to be a better way. New mothers shouldn't have to navigate this journey alone, feeling overwhelmed and unprepared. We deserve support, guidance, and peace of mind during one of life's most precious moments.
+                  </p>
+                  <p>
+                    Everything Baby was born from this personal experience. We're here to take the guesswork out of motherhood, providing curated packages and expert guidance so you can focus on what truly matters - bonding with your little one.
+                  </p>
+                  <p>
+                    Every package we create, every recommendation we make, comes from understanding exactly what you're going through. Because we've been there too.
+                  </p>
+                </div>
+              </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
