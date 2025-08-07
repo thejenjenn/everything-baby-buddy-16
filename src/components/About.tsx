@@ -23,7 +23,7 @@ const About = () => {
                 </p>
                 
                 {/* Accordion trigger inside the card */}
-                <AccordionTrigger className="text-center py-4 hover:no-underline group [&[data-state=open]>div]:text-pink-300 [&>svg]:text-pink-300">
+                <AccordionTrigger className="flex flex-col items-center text-center py-4 hover:no-underline group [&[data-state=open]>div]:text-pink-300 [&>svg]:text-pink-300">
                   <div className="text-lg font-heading font-semibold text-pink-300 transition-colors">
                     Read My Full Story
                   </div>
