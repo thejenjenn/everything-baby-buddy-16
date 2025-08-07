@@ -15,11 +15,6 @@ const About = () => {
 
         <div className="mb-8 animate-fade-in max-w-4xl mx-auto">
           <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-pink-200/10">
-            {/* Preview text */}
-            <p className="text-white/90 font-body leading-relaxed text-lg mb-6">
-              I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers…..
-            </p>
-            
             {/* Accordion inside the card */}
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="story" className="border-transparent">
@@ -29,19 +24,27 @@ const About = () => {
                   </div>
                 </AccordionTrigger>
                 
+                {/* Preview text */}
+                <p className="text-white/90 font-body leading-relaxed text-lg mb-6">
+                  I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers…..
+                </p>
+                
                 <AccordionContent className="text-white/90 font-body leading-relaxed text-lg pt-2">
                   <div className="space-y-4">
                     <p>
-                      What exactly do I need for the hospital? What essentials should I have ready at home? How do I know if I'm buying the right things? The endless lists online were confusing and often contradictory.
+                      …What was I supposed to pack for the hospital? What items did I actually need at home? Was I even doing any of it right?
                     </p>
                     <p>
-                      That's when I realized there had to be a better way. New mothers shouldn't have to navigate this journey alone, feeling overwhelmed and unprepared. We deserve support, guidance, and peace of mind during one of life's most precious moments.
+                      I found myself drowning in endless checklists, each one different from the last, and none of them seemed to truly speak to what I was going through. The advice online felt overwhelming, impersonal, and often contradictory.
                     </p>
                     <p>
-                      Everything Baby was born from this personal experience. We're here to take the guesswork out of motherhood, providing curated packages and expert guidance so you can focus on what truly matters - bonding with your little one.
+                      That's when it hit me. There had to be a better way.
                     </p>
                     <p>
-                      Every package we create, every recommendation we make, comes from understanding exactly what you're going through. Because we've been there too.
+                      No mother should have to face this life-changing moment feeling confused, anxious, or unsupported. We deserve clarity. We deserve guidance. We deserve peace of mind.
+                    </p>
+                    <p>
+                      That inspired me to create Everything Baby, to make the path a little smoother for the next mum standing where I once stood.
                     </p>
                   </div>
                 </AccordionContent>
