@@ -26,13 +26,13 @@ const About = () => {
                 
                 {/* Preview text */}
                 <p className="text-white/90 font-body leading-relaxed text-lg mb-6">
-                  I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers…..
+                  I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers.
                 </p>
                 
                 <AccordionContent className="text-white/90 font-body leading-relaxed text-lg pt-2">
                   <div className="space-y-4">
                     <p>
-                      …What was I supposed to pack for the hospital? What items did I actually need at home? Was I even doing any of it right?
+                      What was I supposed to pack for the hospital? What items did I actually need at home? Was I even doing any of it right?
                     </p>
                     <p>
                       I found myself drowning in endless checklists, each one different from the last, and none of them seemed to truly speak to what I was going through. The advice online felt overwhelming, impersonal, and often contradictory.
