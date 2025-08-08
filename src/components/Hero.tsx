@@ -1,38 +1,67 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Star, Play, Baby } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [parallaxY, setParallaxY] = useState(0);
+
+  useEffect(() => {
+    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handle = () => {
+      const isMobile = window.innerWidth < 768;
+      if (mql.matches || isMobile) {
+        setParallaxY(0);
+        return;
+      }
+      const y = window.scrollY || 0;
+      const delta = Math.max(-24, Math.min(24, y * 0.4));
+      setParallaxY(delta);
+    };
+    handle();
+    window.addEventListener('scroll', handle, { passive: true });
+    window.addEventListener('resize', handle);
+    return () => {
+      window.removeEventListener('scroll', handle);
+      window.removeEventListener('resize', handle);
+    };
+  }, []);
+
   return (
     <section id="home" className="relative bg-background min-h-screen flex items-center overflow-hidden">
       {/* Floating background elements - Lovely soft blue and pink bubbles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-48 h-48 bg-gradient-to-br from-baby-blue/40 to-powder-blue/30 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-32 right-16 w-36 h-36 bg-gradient-to-br from-baby-pink/50 to-blush-pink/40 rounded-full blur-lg animate-float" style={{animationDelay: "1s"}}></div>
-        <div className="absolute top-1/3 right-1/4 w-28 h-28 bg-gradient-to-br from-powder-blue/35 to-baby-blue/30 rounded-full blur-md animate-float" style={{animationDelay: "2s"}}></div>
-        <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-light-pink/40 to-baby-pink/50 rounded-full blur-lg animate-float" style={{animationDelay: "3s"}}></div>
-        <div className="absolute bottom-1/4 left-1/5 w-24 h-24 bg-gradient-to-br from-baby-pink/60 to-light-pink-fill/40 rounded-full blur-md animate-float" style={{animationDelay: "2.5s"}}></div>
-        <div className="absolute top-1/4 right-1/3 w-30 h-30 bg-gradient-to-br from-powder-blue/50 to-baby-blue/40 rounded-full blur-lg animate-float" style={{animationDelay: "1.5s"}}></div>
-        <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-baby-pink/45 to-powder-blue/35 rounded-full blur-sm animate-float" style={{animationDelay: "4s"}}></div>
-        <div className="absolute bottom-10 left-1/4 w-40 h-40 bg-gradient-to-br from-baby-blue/30 to-light-pink/35 rounded-full blur-xl animate-float" style={{animationDelay: "0.5s"}}></div>
-        <div className="absolute top-3/4 right-1/5 w-34 h-34 bg-gradient-to-br from-blush-pink/35 to-baby-blue/30 rounded-full blur-lg animate-float" style={{animationDelay: "3.5s"}}></div>
+        <div
+          className="motion-parallax will-change-transform"
+          style={{ transform: `translateY(${parallaxY}px)` }}
+        >
+          <div className="absolute top-20 left-10 w-48 h-48 bg-gradient-to-br from-baby-blue/40 to-powder-blue/30 rounded-full blur-xl animate-float"></div>
+          <div className="absolute bottom-32 right-16 w-36 h-36 bg-gradient-to-br from-baby-pink/50 to-blush-pink/40 rounded-full blur-lg animate-float" style={{animationDelay: "1s"}}></div>
+          <div className="absolute top-1/3 right-1/4 w-28 h-28 bg-gradient-to-br from-powder-blue/35 to-baby-blue/30 rounded-full blur-md animate-float" style={{animationDelay: "2s"}}></div>
+          <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-br from-light-pink/40 to-baby-pink/50 rounded-full blur-lg animate-float" style={{animationDelay: "3s"}}></div>
+          <div className="absolute bottom-1/4 left-1/5 w-24 h-24 bg-gradient-to-br from-baby-pink/60 to-light-pink-fill/40 rounded-full blur-md animate-float" style={{animationDelay: "2.5s"}}></div>
+          <div className="absolute top-1/4 right-1/3 w-30 h-30 bg-gradient-to-br from-powder-blue/50 to-baby-blue/40 rounded-full blur-lg animate-float" style={{animationDelay: "1.5s"}}></div>
+          <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-baby-pink/45 to-powder-blue/35 rounded-full blur-sm animate-float" style={{animationDelay: "4s"}}></div>
+          <div className="absolute bottom-10 left-1/4 w-40 h-40 bg-gradient-to-br from-baby-blue/30 to-light-pink/35 rounded-full blur-xl animate-float" style={{animationDelay: "0.5s"}}></div>
+          <div className="absolute top-3/4 right-1/5 w-34 h-34 bg-gradient-to-br from-blush-pink/35 to-baby-blue/30 rounded-full blur-lg animate-float" style={{animationDelay: "3.5s"}}></div>
+        </div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-10 animate-fade-in-up">
-            <div className="space-y-6">
-              <div className="flex items-center space-x-3 text-sm font-body">
-                <Star className="h-5 w-5 fill-primary text-primary animate-scale-in" style={{animationDelay: "0.3s"}} />
-                <span className="font-medium tracking-wide" style={{color: "#171717"}}>Supporting mothers from bump through their child's precious early years</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-charcoal-text leading-tight tracking-tight">
-                Everything <span style={{color: "#C2185B"}}>Baby</span>
-              </h1>
-              <p className="text-xl md:text-2xl leading-relaxed font-body font-light max-w-xl" style={{color: "#171717"}}>
-                We ease your motherhood journey — from bump to baby's early years.
-              </p>
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 text-sm font-body animate-slide-up-fade" style={{ animationDelay: "0ms" }}>
+              <Star className="h-5 w-5 fill-primary text-primary" />
+              <span className="font-medium tracking-wide" style={{color: "#171717"}}>Supporting mothers from bump through their child's precious early years</span>
             </div>
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-charcoal-text leading-tight tracking-tight animate-slide-up-fade" style={{ animationDelay: "120ms" }}>
+              Everything <span style={{color: "#C2185B"}}>Baby</span>
+            </h1>
+            <p className="text-xl md:text-2xl leading-relaxed font-body font-light max-w-xl animate-slide-up-fade" style={{color: "#171717", animationDelay: "240ms"}}>
+              We ease your motherhood journey — from bump to baby's early years.
+            </p>
+          </div>
 
             <div className="flex flex-col sm:flex-row gap-6 pt-4">
               <Button variant="default" size="lg" className="text-lg px-10 py-4 font-medium shadow-warm animate-scale-in" style={{animationDelay: "0.6s"}}>

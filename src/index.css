@@ -163,3 +163,32 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Global motion utilities and reduced motion handling */
+@layer utilities {
+  :root {
+    --motion-duration: 500ms;
+    --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --motion-stagger: 60ms;
+  }
+
+  .motion-base {
+    transition: all var(--motion-duration) var(--motion-ease);
+  }
+
+  /* Respect reduced motion: switch to 150ms fade only and disable parallax */
+  .respect-reduced-motion {
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .respect-reduced-motion * {
+      animation-name: fade-in !important;
+      animation-duration: 150ms !important;
+      animation-timing-function: ease-in-out !important;
+      transition-duration: 150ms !important;
+      transform: translateY(0) !important;
+    }
+    .motion-parallax {
+      transform: none !important;
+    }
+  }
+}
