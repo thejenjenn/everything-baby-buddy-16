@@ -50,20 +50,20 @@ const Footer = () => {
           {/* Contact */}
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Get in Touch</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-sm text-background/80">
-                <Phone className="h-4 w-4 text-primary" />
-                <span>Call for consultation</span>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3 text-sm text-background/80">
+                  <Phone className="h-4 w-4 text-primary" />
+                  <a href="tel:+2347060867150" className="hover:text-primary transition-colors">Call for consultation</a>
+                </div>
+                <div className="flex items-center space-x-3 text-sm text-background/80">
+                  <MessageCircle className="h-4 w-4 text-primary" />
+                  <a href="https://wa.me/2347060867150" className="hover:text-primary transition-colors">WhatsApp available</a>
+                </div>
+                <div className="flex items-center space-x-3 text-sm text-background/80">
+                  <Mail className="h-4 w-4 text-primary" />
+                  <a href="mailto:info.everythingbaby@gmail.com" className="hover:text-primary transition-colors">Email support</a>
+                </div>
               </div>
-              <div className="flex items-center space-x-3 text-sm text-background/80">
-                <MessageCircle className="h-4 w-4 text-primary" />
-                <span>WhatsApp available</span>
-              </div>
-              <div className="flex items-center space-x-3 text-sm text-background/80">
-                <Mail className="h-4 w-4 text-primary" />
-                <span>Email support</span>
-              </div>
-            </div>
             <p className="text-xs text-background/60">
               Response time: 30 mins - 2 hours during business hours
             </p>

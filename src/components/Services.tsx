@@ -96,7 +96,7 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Reveal key={index} delay={index * 100}>
+              <div key={index}>
                 <Card className="border border-gray-200 hover:shadow-elegant transition-all duration-500 group bg-white rounded-2xl overflow-hidden flex flex-col h-full">
                 {service.image && (
                   <div className="relative h-64 overflow-hidden rounded-t-2xl flex-shrink-0">
@@ -141,7 +141,7 @@ const Services = () => {
                       ))}
                     </div>
                   </div>
-
+  
                   <div className="flex justify-center items-center pt-6 mt-6 border-t border-gray-100">
                     <Button variant="default" className="font-body font-medium w-full">
                       {service.cta}
@@ -149,7 +149,7 @@ const Services = () => {
                   </div>
                 </CardContent>
               </Card>
-              </Reveal>
+              </div>
             );
           })}
         </div>

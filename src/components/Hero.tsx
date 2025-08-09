@@ -58,14 +58,14 @@ const Hero = () => {
           <div className="space-y-6">
             <div className={`flex items-center space-x-3 text-sm font-body transition-all duration-500 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <Star className="h-5 w-5 fill-primary text-primary" />
-              <span className="font-medium tracking-wide" style={{color: "#171717"}}>Supporting mothers from bump through their child's precious early years</span>
+              <span className="font-medium tracking-wide" style={{color: "#171717"}}>We ease motherhood journey - from bump to baby’s early years.</span>
             </div>
             <h1 className={`text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-charcoal-text leading-tight tracking-tight transition-all duration-500 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <span className="hover:text-warm-coral transition-colors duration-200">Everything</span>{" "}
               <span className="baby-cycle text-warm-coral animate-baby-color-cycle transition-colors duration-200">Baby</span>
             </h1>
             <p className={`text-xl md:text-2xl leading-relaxed font-body font-light max-w-xl transition-all duration-500 delay-200 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} text-charcoal-text`}>
-              We ease your motherhood journey — from bump to baby's early years.
+              Supporting mums and their little ones from bump to baby's early years with comprehensive packages and personalized care.
             </p>
           </div>
 
