@@ -53,15 +53,15 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-sm text-background/80">
                   <Phone className="h-4 w-4 text-primary" />
-                  <a href="tel:+2347060867150" className="hover:text-primary transition-colors">Call for consultation</a>
+                  <a href="tel:+2347060867150" className="hover:text-primary transition-colors">+234 706 086 7150</a>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-background/80">
                   <MessageCircle className="h-4 w-4 text-primary" />
-                  <a href="https://wa.me/2347060867150" className="hover:text-primary transition-colors">WhatsApp available</a>
+                  <a href="https://wa.me/2347060867150" className="hover:text-primary transition-colors">WhatsApp: +234 706 086 7150</a>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-background/80">
                   <Mail className="h-4 w-4 text-primary" />
-                  <a href="mailto:info.everythingbaby@gmail.com" className="hover:text-primary transition-colors">Email support</a>
+                  <a href="mailto:info.everythingbaby@gmail.com" className="hover:text-primary transition-colors">info.everythingbaby@gmail.com</a>
                 </div>
               </div>
             <p className="text-xs text-background/60">
