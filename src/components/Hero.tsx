@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [parallaxY, setParallaxY] = useState(0);
+  const [isHeroVisible, setIsHeroVisible] = useState(false);
 
   useEffect(() => {
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -25,6 +26,10 @@ const Hero = () => {
       window.removeEventListener('scroll', handle);
       window.removeEventListener('resize', handle);
     };
+  }, []);
+
+  useEffect(() => {
+    setIsHeroVisible(true);
   }, []);
 
   return (
@@ -51,14 +56,15 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-10 animate-fade-in-up">
           <div className="space-y-6">
-            <div className="flex items-center space-x-3 text-sm font-body animate-slide-up-fade" style={{ animationDelay: "0ms" }}>
+            <div className={`flex items-center space-x-3 text-sm font-body transition-all duration-500 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <Star className="h-5 w-5 fill-primary text-primary" />
               <span className="font-medium tracking-wide" style={{color: "#171717"}}>Supporting mothers from bump through their child's precious early years</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-charcoal-text leading-tight tracking-tight animate-slide-up-fade" style={{ animationDelay: "120ms" }}>
-              Everything <span style={{color: "#C2185B"}}>Baby</span>
+            <h1 className={`text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-charcoal-text leading-tight tracking-tight transition-all duration-500 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <span className="hover:text-warm-coral transition-colors duration-200">Everything</span>{" "}
+              <span className="text-warm-coral hover:text-charcoal-text transition-colors duration-200">Baby</span>
             </h1>
-            <p className="text-xl md:text-2xl leading-relaxed font-body font-light max-w-xl animate-slide-up-fade" style={{color: "#171717", animationDelay: "240ms"}}>
+            <p className={`text-xl md:text-2xl leading-relaxed font-body font-light max-w-xl transition-all duration-500 delay-200 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} text-charcoal-text`}>
               We ease your motherhood journey — from bump to baby's early years.
             </p>
           </div>
@@ -84,19 +90,19 @@ const Hero = () => {
 
         {/* Stats Section - Moved below hero content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: "1s"}}>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200">
-            <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary" />
-            <div className="text-3xl font-bold text-primary font-heading">5.0</div>
+          <div className="group text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200 hover:-translate-y-1.5 hover:shadow-warm">
+            <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary transition-colors duration-200 group-hover:text-warm-coral group-hover:fill-warm-coral" />
+            <div className="text-3xl font-bold text-primary font-heading transition-colors duration-200 group-hover:text-warm-coral">5.0</div>
             <div className="text-sm font-body" style={{color: "#171717"}}>Customer Rating</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200">
-            <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
-            <div className="text-3xl font-bold text-primary font-heading">Trusted</div>
+          <div className="group text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200 hover:-translate-y-1.5 hover:shadow-warm">
+            <Heart className="h-8 w-8 text-primary mx-auto mb-3 transition-colors duration-200 group-hover:text-warm-coral" />
+            <div className="text-3xl font-bold text-primary font-heading transition-colors duration-200 group-hover:text-warm-coral">Trusted</div>
             <div className="text-sm font-body" style={{color: "#171717"}}>Nationwide</div>
           </div>
-          <div className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200">
-            <Baby className="h-8 w-8 text-primary mx-auto mb-3" />
-            <div className="text-3xl font-bold text-primary font-heading">0-3yrs</div>
+          <div className="group text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200 hover:-translate-y-1.5 hover:shadow-warm">
+            <Baby className="h-8 w-8 text-primary mx-auto mb-3 transition-colors duration-200 group-hover:text-warm-coral" />
+            <div className="text-3xl font-bold text-primary font-heading transition-colors duration-200 group-hover:text-warm-coral">0-3yrs</div>
             <div className="text-sm font-body" style={{color: "#171717"}}>Age Range</div>
           </div>
         </div>
