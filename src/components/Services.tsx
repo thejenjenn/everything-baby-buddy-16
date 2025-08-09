@@ -19,6 +19,8 @@ import partyPack from "@/assets/gift-packs.jpg";
 import babyRegistry from "@/assets/baby-registry.jpg";
 import hospitalList from "@/assets/hospital-list.jpg";
 
+import Reveal from "@/components/Reveal";
+
 const Services = () => {
   const services = [
     {
@@ -81,20 +83,21 @@ const Services = () => {
   return (
     <section id="services" className="py-20" style={{backgroundColor: "#FFFDF9"}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
+        <div className="text-center mb-16">
+          <Reveal as="h2" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal-text mb-6 tracking-tight">
             Our Services
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto font-body leading-relaxed" style={{color: "#171717"}}>
+          </Reveal>
+          <Reveal as="p" delay={120} className="text-xl max-w-3xl mx-auto font-body leading-relaxed" style={{color: "#171717"}}>
             Supporting mums and their little ones from bump to baby's first birthday with comprehensive packages and personalized care.
-          </p>
+          </Reveal>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="border border-gray-200 hover:shadow-elegant transition-all duration-500 group bg-white rounded-2xl overflow-hidden animate-fade-in flex flex-col h-full" style={{animationDelay: `${index * 0.1}s`}}>
+              <Reveal key={index} delay={index * 100}>
+                <Card className="border border-gray-200 hover:shadow-elegant transition-all duration-500 group bg-white rounded-2xl overflow-hidden flex flex-col h-full">
                 {service.image && (
                   <div className="relative h-64 overflow-hidden rounded-t-2xl flex-shrink-0">
                     <img
@@ -146,11 +149,12 @@ const Services = () => {
                   </div>
                 </CardContent>
               </Card>
+              </Reveal>
             );
           })}
         </div>
 
-        <div className="mt-20 relative rounded-3xl p-10 text-center shadow-elegant animate-fade-in-up border overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"  style={{borderColor: "#E5E7EB"}}>
+        <Reveal as="div" delay={100} className="mt-20 relative rounded-3xl p-10 text-center shadow-elegant border overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"  style={{borderColor: "#E5E7EB"}}>
           {/* Playful decorative elements */}
           <div className="absolute top-4 left-8 w-8 h-8 opacity-20" style={{color: "#EC4899"}}>🎈</div>
           <div className="absolute top-8 right-12 w-6 h-6 opacity-20" style={{color: "#EC4899"}}>⭐</div>
@@ -183,7 +187,7 @@ const Services = () => {
             </div>
           </div>
         </div>
-      </div>
+        </Reveal>
     </section>
   );
 };

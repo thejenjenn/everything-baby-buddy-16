@@ -4,22 +4,24 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, MessageCircle, Mail, MapPin, Clock, Heart } from "lucide-react";
 
+import Reveal from "@/components/Reveal";
+
 const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-warm-cream to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <Reveal as="h2" className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Get in Touch
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto" style={{color: '#171717'}}>
+          </Reveal>
+          <Reveal as="p" delay={120} className="text-xl max-w-3xl mx-auto" style={{color: '#171717'}}>
             Ready to start your journey with Everything Baby? We're here to support you every step of the way.
-          </p>
+          </Reveal>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <Reveal as="div" className="space-y-8">
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <Card className="border-border hover:shadow-soft transition-all duration-300">
@@ -45,10 +47,10 @@ const Contact = () => {
               </Card>
             </div>
 
-          </div>
+          </Reveal>
 
           {/* Contact Form */}
-          <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-8 text-white">
+          <Reveal as="div" delay={120} className="relative overflow-hidden rounded-lg bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-8 text-white">
             <div className="relative z-10">
               <div className="flex justify-between items-start mb-8">
                 <div>
@@ -122,7 +124,7 @@ const Contact = () => {
             {/* Background decoration */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-800/20 via-transparent to-blue-800/20"></div>
           </div>
-        </div>
+          </Reveal>
       </div>
     </section>
   );

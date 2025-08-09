@@ -1,16 +1,17 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import Reveal from "@/components/Reveal";
 
 const About = () => {
   return (
     <section id="about" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-6 tracking-tight">
+        <div className="text-center mb-16">
+          <Reveal as="h2" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-6 tracking-tight">
             My Story
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto font-body leading-relaxed">
+          </Reveal>
+          <Reveal as="p" delay={120} className="text-xl text-white/80 max-w-3xl mx-auto font-body leading-relaxed">
             A personal journey that sparked a mission to support every mother's path.
-          </p>
+          </Reveal>
         </div>
 
         <div className="mb-8 animate-fade-in max-w-4xl mx-auto">

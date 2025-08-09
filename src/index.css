@@ -45,6 +45,7 @@ All colors MUST be HSL.
     --blush-pink: 351 94% 97%;
     --powder-blue: 201 56% 74%;
     --soft-lilac: 252 50% 95%;
+    --purple-accent: 270 70% 55%;
     --charcoal-text: 0 0% 9%; /* #171717 */
     --muted-taupe: 0 0% 9%; /* #171717 for body text */
     --warm-coral: 0 70% 65%;
@@ -190,5 +191,23 @@ All colors MUST be HSL.
     .motion-parallax {
       transform: none !important;
     }
+  }
+}
+
+/* Hero 'Baby' word color cycling */
+@layer utilities {
+  @keyframes baby-color-cycle {
+    0% { color: hsl(var(--warm-coral)); }
+    25% { color: hsl(var(--powder-blue)); }
+    50% { color: hsl(var(--purple-accent)); }
+    75% { color: hsl(var(--charcoal-text)); }
+    100% { color: hsl(var(--warm-coral)); }
+  }
+  .animate-baby-color-cycle {
+    animation: baby-color-cycle 720ms linear infinite;
+  }
+  .baby-cycle:hover {
+    animation-play-state: paused;
+    color: hsl(var(--charcoal-text));
   }
 }

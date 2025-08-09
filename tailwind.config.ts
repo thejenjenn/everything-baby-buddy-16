@@ -69,6 +69,7 @@ export default {
 				'baby-pink': 'hsl(var(--baby-pink))',
 				'baby-blue': 'hsl(var(--baby-blue))',
 				'light-pink': 'hsl(var(--light-pink))',
+				'purple-accent': 'hsl(var(--purple-accent))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

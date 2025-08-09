@@ -62,7 +62,7 @@ const Hero = () => {
             </div>
             <h1 className={`text-4xl md:text-5xl lg:text-7xl font-heading font-bold text-charcoal-text leading-tight tracking-tight transition-all duration-500 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <span className="hover:text-warm-coral transition-colors duration-200">Everything</span>{" "}
-              <span className="text-warm-coral hover:text-charcoal-text transition-colors duration-200">Baby</span>
+              <span className="baby-cycle text-warm-coral animate-baby-color-cycle transition-colors duration-200">Baby</span>
             </h1>
             <p className={`text-xl md:text-2xl leading-relaxed font-body font-light max-w-xl transition-all duration-500 delay-200 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} text-charcoal-text`}>
               We ease your motherhood journey — from bump to baby's early years.
