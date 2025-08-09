@@ -204,7 +204,7 @@ All colors MUST be HSL.
     100% { color: hsl(var(--warm-coral)); }
   }
   .animate-baby-color-cycle {
-    animation: baby-color-cycle 720ms linear infinite;
+    animation: baby-color-cycle 1000ms linear infinite;
   }
   .baby-cycle:hover {
     animation-play-state: paused;

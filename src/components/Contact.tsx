@@ -123,8 +123,8 @@ const Contact = () => {
             
             {/* Background decoration */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-800/20 via-transparent to-blue-800/20"></div>
-          </div>
           </Reveal>
+      </div>
       </div>
     </section>
   );

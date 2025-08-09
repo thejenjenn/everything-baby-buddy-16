@@ -186,8 +186,8 @@ const Services = () => {
               </Button>
             </div>
           </div>
-        </div>
         </Reveal>
+      </div>
     </section>
   );
 };
