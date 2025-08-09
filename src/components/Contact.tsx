@@ -42,7 +42,7 @@ const Contact = () => {
                   <Mail className="h-8 w-8 text-primary mb-4" />
                   <h4 className="font-semibold text-foreground mb-2">Email</h4>
                   <p className="text-muted-foreground text-sm mb-3">Send us your inquiries</p>
-                  <a href="mailto:info.everythingbaby@gmail.com" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+                  <a href="mailto:info.everythingbaby@gmail.com" className="text-sm font-medium text-foreground hover:text-primary transition-colors pointer-events-auto relative z-10">
                     info.everythingbaby@gmail.com
                   </a>
                 </CardContent>
@@ -111,7 +111,7 @@ const Contact = () => {
                 />
 
                 <Button variant="default" size="lg" className="w-full" asChild>
-                  <a href="mailto:info.everythingbaby@gmail.com">Send Message</a>
+                  <a href="mailto:info.everythingbaby@gmail.com?subject=Everything%20Baby%20Enquiry" className="pointer-events-auto relative z-10">Send Message</a>
                 </Button>
 
                 <div className="text-center pt-4">
