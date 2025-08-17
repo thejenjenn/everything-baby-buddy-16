@@ -19,7 +19,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [webhookUrl, setWebhookUrl] = useState("");
+  const [webhookUrl, setWebhookUrl] = useState("https://hooks.zapier.com/hooks/catch/24244927/utyim4l/");
   const { toast } = useToast();
 
   // Persist Zapier webhook URL locally so you only set it once
@@ -166,7 +166,7 @@ const Contact = () => {
                       value={formData.fullName}
                       onChange={handleInputChange}
                       placeholder="Full name" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 caret-sky-300 focus:outline-none focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                       required
                     />
                   </div>
@@ -177,7 +177,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       type="email" 
                       placeholder="Email address" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 caret-sky-300 focus:outline-none focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                       required
                     />
                   </div>
@@ -189,7 +189,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   type="tel" 
                   placeholder="Phone number" 
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
+                   className="bg-white/10 border-white/20 text-white placeholder:text-white/70 caret-sky-300 focus:outline-none focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                   required
                 />
 
@@ -215,7 +215,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Tell us about your needs, baby's age, or any specific questions you have..."
                   rows={4}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 caret-sky-300 focus:outline-none focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                   required
                 />
 
@@ -228,7 +228,7 @@ const Contact = () => {
                     placeholder="Zapier Webhook URL (admin)"
                     value={webhookUrl}
                     onChange={(e) => setWebhookUrl(e.target.value)}
-                    className="bg-white/5 border-white/10 text-white placeholder:text-white/60 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
+                    className="bg-white/5 border-white/10 text-white placeholder:text-white/60 caret-sky-300 focus:outline-none focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                   />
                   <p className="text-xs text-purple-100/70">Paste your Zapier "Catch Hook" URL here once. Submissions will be emailed via your Zap.</p>
                 </div>
