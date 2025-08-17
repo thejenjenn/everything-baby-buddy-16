@@ -128,7 +128,7 @@ const Contact = () => {
                       value={formData.fullName}
                       onChange={handleInputChange}
                       placeholder="Full name" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-sky-300/20 hover:border-sky-400"
                       required
                     />
                   </div>
@@ -139,7 +139,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       type="email" 
                       placeholder="Email address" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-sky-300/20 hover:border-sky-400"
                       required
                     />
                   </div>
@@ -151,7 +151,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   type="tel" 
                   placeholder="Phone number" 
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-sky-300/20 hover:border-sky-400"
                   required
                 />
 
@@ -159,7 +159,7 @@ const Contact = () => {
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
+                  className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-2 focus:ring-sky-300/20 hover:border-sky-400 focus:outline-none"
                   required
                 >
                   <option value="" className="text-gray-900">Select a service</option>
@@ -177,7 +177,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Tell us about your needs, baby's age, or any specific questions you have..."
                   rows={4}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-sky-300/20 hover:border-sky-400"
                   required
                 />
 
