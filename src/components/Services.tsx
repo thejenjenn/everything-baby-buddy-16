@@ -58,7 +58,7 @@ const Services = () => {
       image: babyEssentials,
       features: ["Essential baby items", "Age-appropriate products", "Budget-friendly options", "Quality guaranteed"],
       cta: "View Package",
-      action: () => window.open("https://tally.so/r/wz9K5k", "_blank")
+      action: () => window.location.href = "https://tally.so/r/wz9K5k"
     },
     {
       icon: UtensilsCrossed,
