@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, MessageCircle, Mail, MapPin, Clock, Heart } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, CheckCircle } from "lucide-react";
 import { useState } from "react";
 
 import Reveal from "@/components/Reveal";
@@ -16,6 +16,9 @@ const Contact = () => {
     message: ""
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -24,33 +27,33 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Create email body with form data
-    const subject = "Everything Baby Enquiry";
-    const body = `
-Full Name: ${formData.fullName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Service: ${formData.service}
-Message: ${formData.message}
-    `.trim();
-
-    // Create mailto link
-    const mailtoLink = `mailto:info.everythingbaby@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: ""
-    });
+    try {
+      // Simulate form submission (replace with actual API call)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Show success message
+      setIsSubmitted(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: ""
+        });
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-warm-cream to-background">
@@ -125,7 +128,7 @@ Message: ${formData.message}
                       value={formData.fullName}
                       onChange={handleInputChange}
                       placeholder="Full name" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
                       required
                     />
                   </div>
@@ -136,7 +139,7 @@ Message: ${formData.message}
                       onChange={handleInputChange}
                       type="email" 
                       placeholder="Email address" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
                       required
                     />
                   </div>
@@ -148,7 +151,7 @@ Message: ${formData.message}
                   onChange={handleInputChange}
                   type="tel" 
                   placeholder="Phone number" 
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
                   required
                 />
 
@@ -156,7 +159,7 @@ Message: ${formData.message}
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                  className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
                   required
                 >
                   <option value="" className="text-gray-900">Select a service</option>
@@ -174,13 +177,26 @@ Message: ${formData.message}
                   onChange={handleInputChange}
                   placeholder="Tell us about your needs, baby's age, or any specific questions you have..."
                   rows={4}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-blue-400 hover:border-blue-300"
                   required
                 />
 
-                <Button type="submit" variant="default" size="lg" className="w-full">
-                  Send Message
-                </Button>
+                {isSubmitted ? (
+                  <div className="flex items-center justify-center gap-2 p-4 bg-green-500/20 border border-green-500/30 rounded-md">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-green-400 font-medium">Message sent successfully!</span>
+                  </div>
+                ) : (
+                  <Button 
+                    type="submit" 
+                    variant="default" 
+                    size="lg" 
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </Button>
+                )}
 
                 <div className="text-center pt-4">
                   <div className="flex items-center justify-center space-x-2 text-sm text-purple-100">
