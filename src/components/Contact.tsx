@@ -3,10 +3,55 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, MessageCircle, Mail, MapPin, Clock, Heart } from "lucide-react";
+import { useState } from "react";
 
 import Reveal from "@/components/Reveal";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: ""
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Create email body with form data
+    const subject = "Everything Baby Enquiry";
+    const body = `
+Full Name: ${formData.fullName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Service: ${formData.service}
+Message: ${formData.message}
+    `.trim();
+
+    // Create mailto link
+    const mailtoLink = `mailto:info.everythingbaby@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Reset form
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: ""
+    });
+  };
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-warm-cream to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,35 +111,54 @@ const Contact = () => {
                 <Button 
                   variant="outline" 
                   className="border-white/30 text-white hover:bg-white/10 bg-transparent"
+                  asChild
                 >
-                  Quick Call
+                  <a href="tel:+2347060867150">Quick Call</a>
                 </Button>
               </div>
 
-              <div className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <Input 
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleInputChange}
                       placeholder="Full name" 
                       className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                      required
                     />
                   </div>
                   <div>
                     <Input 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       type="email" 
                       placeholder="Email address" 
                       className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                      required
                     />
                   </div>
                 </div>
 
                 <Input 
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   type="tel" 
                   placeholder="Phone number" 
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                  required
                 />
 
-                <select className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300">
+                <select 
+                  name="service"
+                  value={formData.service}
+                  onChange={handleInputChange}
+                  className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                  required
+                >
                   <option value="" className="text-gray-900">Select a service</option>
                   <option value="newborn" className="text-gray-900">Newborn Package</option>
                   <option value="meals" className="text-gray-900">Curated Meal Plans</option>
@@ -105,13 +169,17 @@ const Contact = () => {
                 </select>
 
                 <Textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Tell us about your needs, baby's age, or any specific questions you have..."
                   rows={4}
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-pink-400 hover:border-pink-300"
+                  required
                 />
 
-                <Button variant="default" size="lg" className="w-full" asChild>
-                  <a href="mailto:info.everythingbaby@gmail.com?subject=Everything%20Baby%20Enquiry" className="pointer-events-auto relative z-10">Send Message</a>
+                <Button type="submit" variant="default" size="lg" className="w-full">
+                  Send Message
                 </Button>
 
                 <div className="text-center pt-4">
@@ -120,7 +188,7 @@ const Contact = () => {
                     <span>We care about your privacy and will never spam you</span>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
             
             {/* Background decoration */}
