@@ -70,7 +70,18 @@ const Hero = () => {
           </div>
 
             <div className="flex flex-col sm:flex-row gap-6 pt-4">
-              <Button variant="default" size="lg" className="text-lg px-10 py-4 font-medium shadow-warm animate-scale-in" style={{animationDelay: "0.6s"}}>
+              <Button 
+                variant="default" 
+                size="lg" 
+                className="text-lg px-10 py-4 font-medium shadow-warm animate-scale-in" 
+                style={{animationDelay: "0.6s"}}
+                onClick={() => {
+                  const servicesSection = document.getElementById('services');
+                  if (servicesSection) {
+                    servicesSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
                 Explore Services
               </Button>
             </div>

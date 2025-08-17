@@ -1,10 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { 
   Baby, 
-  GraduationCap, 
-  PartyPopper, 
   UtensilsCrossed, 
   Gift, 
   ClipboardList,
@@ -12,6 +14,7 @@ import {
   MessageCircle,
   Heart
 } from "lucide-react";
+import { useState } from "react";
 import babyEssentials from "@/assets/baby-essentials.jpg";
 import babyFood from "@/assets/baby-food.jpg";
 import backToSchool from "@/assets/back-to-school.jpg";
@@ -22,7 +25,31 @@ import hospitalList from "@/assets/hospital-list.jpg";
 import Reveal from "@/components/Reveal";
 
 const Services = () => {
-  const services = [
+  const [isRegistryDialogOpen, setIsRegistryDialogOpen] = useState(false);
+  const [registryForm, setRegistryForm] = useState({
+    title: "",
+    firstName: "",
+    lastName: "",
+    partnerFirstName: "",
+    partnerLastName: "",
+    email: "",
+    description: "",
+    eventDate: ""
+  });
+
+  interface Service {
+    icon: any;
+    title: string;
+    subtitle: string;
+    description: string;
+    image: string;
+    features: string[];
+    cta: string;
+    badge?: string;
+    action?: () => void;
+  }
+
+  const services: Service[] = [
     {
       icon: Heart,
       title: "Newborn Package",
@@ -30,26 +57,8 @@ const Services = () => {
       description: "Complete essentials package for your newborn's first year. Everything you need, carefully curated and delivered to your doorstep.",
       image: babyEssentials,
       features: ["Essential baby items", "Age-appropriate products", "Budget-friendly options", "Quality guaranteed"],
-      cta: "View Package"
-    },
-    {
-      icon: GraduationCap,
-      title: "Back to School Package",
-      subtitle: "Seasonal - September",
-      description: "Special seasonal package to help prepare your little ones for their educational journey.",
-      image: backToSchool,
-      features: ["Seasonal availability", "Educational essentials", "Age-appropriate items", "September delivery"],
-      badge: "Seasonal",
-      cta: "Coming September"
-    },
-    {
-      icon: PartyPopper,
-      title: "Party Pack Packages",
-      subtitle: "Celebrations made easy",
-      description: "Make your baby's special moments unforgettable with our curated party packages for birthdays and milestones.",
-      image: partyPack,
-      features: ["Birthday themes", "Milestone celebrations", "Decorations included", "Hassle-free planning"],
-      cta: "Plan Party"
+      cta: "View Package",
+      action: () => window.open("https://tally.so/r/wz9K5k", "_blank")
     },
     {
       icon: UtensilsCrossed,
@@ -67,7 +76,8 @@ const Services = () => {
       description: "Create a registry and share with friends and family. Let them order gifts and send them directly to you.",
       image: babyRegistry,
       features: ["Easy sharing", "Direct delivery", "Gift tracking", "Thank you notes"],
-      cta: "Create Registry"
+      cta: "Create Registry",
+      action: () => setIsRegistryDialogOpen(true)
     },
     {
       icon: ClipboardList,
@@ -79,6 +89,23 @@ const Services = () => {
       cta: "Get List"
     }
   ];
+
+  const handleRegistrySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Registry form submitted:", registryForm);
+    // Here you would typically send the data to your backend
+    setIsRegistryDialogOpen(false);
+    setRegistryForm({
+      title: "",
+      firstName: "",
+      lastName: "",
+      partnerFirstName: "",
+      partnerLastName: "",
+      email: "",
+      description: "",
+      eventDate: ""
+    });
+  };
 
   return (
     <section id="services" className="py-20" style={{backgroundColor: "#FFFDF9"}}>
@@ -143,7 +170,11 @@ const Services = () => {
                   </div>
   
                   <div className="flex justify-center items-center pt-6 mt-6 border-t border-gray-100">
-                    <Button variant="default" className="font-body font-medium w-full">
+                    <Button 
+                      variant="default" 
+                      className="font-body font-medium w-full"
+                      onClick={service.action}
+                    >
                       {service.cta}
                     </Button>
                   </div>
@@ -187,6 +218,134 @@ const Services = () => {
             </div>
           </div>
         </Reveal>
+
+        {/* Registry Form Dialog */}
+        <Dialog open={isRegistryDialogOpen} onOpenChange={setIsRegistryDialogOpen}>
+          <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-heading font-bold text-charcoal-text">
+                Registry List
+              </DialogTitle>
+              <p className="text-sm text-gray-600 font-body mt-2">Add new</p>
+            </DialogHeader>
+
+            <form onSubmit={handleRegistrySubmit} className="space-y-6">
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="title" className="text-sm font-medium text-charcoal-text">
+                    Title *
+                  </Label>
+                  <Input
+                    id="title"
+                    placeholder="Gift registry title"
+                    value={registryForm.title}
+                    onChange={(e) => setRegistryForm({ ...registryForm, title: e.target.value })}
+                    required
+                    className="mt-1"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="firstName" className="text-sm font-medium text-charcoal-text">
+                    First Name *
+                  </Label>
+                  <Input
+                    id="firstName"
+                    value={registryForm.firstName}
+                    onChange={(e) => setRegistryForm({ ...registryForm, firstName: e.target.value })}
+                    required
+                    className="mt-1"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="lastName" className="text-sm font-medium text-charcoal-text">
+                    Last Name *
+                  </Label>
+                  <Input
+                    id="lastName"
+                    value={registryForm.lastName}
+                    onChange={(e) => setRegistryForm({ ...registryForm, lastName: e.target.value })}
+                    required
+                    className="mt-1"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="partnerFirstName" className="text-sm font-medium text-charcoal-text">
+                    Partner First Name
+                  </Label>
+                  <Input
+                    id="partnerFirstName"
+                    value={registryForm.partnerFirstName}
+                    onChange={(e) => setRegistryForm({ ...registryForm, partnerFirstName: e.target.value })}
+                    className="mt-1"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="partnerLastName" className="text-sm font-medium text-charcoal-text">
+                    Partner Last Name
+                  </Label>
+                  <Input
+                    id="partnerLastName"
+                    value={registryForm.partnerLastName}
+                    onChange={(e) => setRegistryForm({ ...registryForm, partnerLastName: e.target.value })}
+                    className="mt-1"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="email" className="text-sm font-medium text-charcoal-text">
+                    Email *
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={registryForm.email}
+                    onChange={(e) => setRegistryForm({ ...registryForm, email: e.target.value })}
+                    required
+                    className="mt-1"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="description" className="text-sm font-medium text-charcoal-text">
+                    Description
+                  </Label>
+                  <Textarea
+                    id="description"
+                    placeholder="Describe your gift registry here, or write a message to your guests"
+                    value={registryForm.description}
+                    onChange={(e) => setRegistryForm({ ...registryForm, description: e.target.value })}
+                    rows={4}
+                    className="mt-1"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="eventDate" className="text-sm font-medium text-charcoal-text">
+                    Event Date
+                  </Label>
+                  <Input
+                    id="eventDate"
+                    type="date"
+                    value={registryForm.eventDate}
+                    onChange={(e) => setRegistryForm({ ...registryForm, eventDate: e.target.value })}
+                    className="mt-1"
+                  />
+                </div>
+              </div>
+
+              <Button 
+                type="submit" 
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 text-base"
+              >
+                Save Changes
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
