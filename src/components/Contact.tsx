@@ -68,8 +68,8 @@ const Contact = () => {
       
       setIsSubmitted(true);
       toast({
-        title: "Request sent",
-        description: "Form was sent to Zapier. Check your Zap runs and email inbox.",
+        title: "Request sent with Love",
+        description: "Someone will reach out to you as soon as possible",
       });
       
       setTimeout(() => {
@@ -219,19 +219,11 @@ const Contact = () => {
                   required
                 />
 
-                {/* Admin-only configuration for email delivery via Zapier */}
-                <div className="space-y-1">
-                  <label htmlFor="zapierWebhook" className="sr-only">Zapier Webhook URL</label>
-                  <Input
-                    id="zapierWebhook"
-                    type="url"
-                    placeholder="Zapier Webhook URL (admin)"
-                    value={webhookUrl}
-                    onChange={(e) => setWebhookUrl(e.target.value)}
-                    className="bg-white/5 border-white/10 text-white placeholder:text-white/60 caret-sky-300 focus:outline-none focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
-                  />
-                  <p className="text-xs text-purple-100/70">Paste your Zapier "Catch Hook" URL here once. Submissions will be emailed via your Zap.</p>
-                </div>
+                {/* Hidden admin configuration for email delivery via Zapier */}
+                <input
+                  type="hidden"
+                  value={webhookUrl}
+                />
 
                 {isSubmitted ? (
                   <div className="flex items-center justify-center gap-2 p-4 bg-green-500/20 border border-green-500/30 rounded-md">
