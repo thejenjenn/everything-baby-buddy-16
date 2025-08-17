@@ -3,7 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 import Reveal from "@/components/Reveal";
 
@@ -18,6 +19,17 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [webhookUrl, setWebhookUrl] = useState("");
+  const { toast } = useToast();
+
+  // Persist Zapier webhook URL locally so you only set it once
+  useEffect(() => {
+    const saved = localStorage.getItem("zapierWebhookUrl");
+    if (saved) setWebhookUrl(saved);
+  }, []);
+  useEffect(() => {
+    if (webhookUrl) localStorage.setItem("zapierWebhookUrl", webhookUrl);
+  }, [webhookUrl]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -32,13 +44,34 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate form submission (replace with actual API call)
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (!webhookUrl) {
+        toast({
+          title: "Email delivery not configured",
+          description: "Please paste your Zapier Webhook URL to receive submissions.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+          source: window.location.href,
+        }),
+      });
       
-      // Show success message
       setIsSubmitted(true);
+      toast({
+        title: "Request sent",
+        description: "Form was sent to Zapier. Check your Zap runs and email inbox.",
+      });
       
-      // Reset form after 3 seconds
       setTimeout(() => {
         setFormData({
           fullName: "",
@@ -51,6 +84,11 @@ const Contact = () => {
       }, 3000);
     } catch (error) {
       console.error('Form submission error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to submit. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -128,7 +166,7 @@ const Contact = () => {
                       value={formData.fullName}
                       onChange={handleInputChange}
                       placeholder="Full name" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-sky-300/20 hover:border-sky-400"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                       required
                     />
                   </div>
@@ -139,7 +177,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       type="email" 
                       placeholder="Email address" 
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-sky-300/20 hover:border-sky-400"
+                      className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                       required
                     />
                   </div>
@@ -151,7 +189,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   type="tel" 
                   placeholder="Phone number" 
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-sky-300/20 hover:border-sky-400"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                   required
                 />
 
@@ -159,7 +197,7 @@ const Contact = () => {
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-2 focus:ring-sky-300/20 hover:border-sky-400 focus:outline-none"
+                  className="w-full p-3 border border-white/20 rounded-md bg-white/10 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus:outline-none"
                   required
                 >
                   <option value="" className="text-gray-900">Select a service</option>
@@ -177,9 +215,23 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Tell us about your needs, baby's age, or any specific questions you have..."
                   rows={4}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 focus:ring-sky-300/20 hover:border-sky-400"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/70 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                   required
                 />
+
+                {/* Admin-only configuration for email delivery via Zapier */}
+                <div className="space-y-1">
+                  <label htmlFor="zapierWebhook" className="sr-only">Zapier Webhook URL</label>
+                  <Input
+                    id="zapierWebhook"
+                    type="url"
+                    placeholder="Zapier Webhook URL (admin)"
+                    value={webhookUrl}
+                    onChange={(e) => setWebhookUrl(e.target.value)}
+                    className="bg-white/5 border-white/10 text-white placeholder:text-white/60 focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
+                  />
+                  <p className="text-xs text-purple-100/70">Paste your Zapier "Catch Hook" URL here once. Submissions will be emailed via your Zap.</p>
+                </div>
 
                 {isSubmitted ? (
                   <div className="flex items-center justify-center gap-2 p-4 bg-green-500/20 border border-green-500/30 rounded-md">
