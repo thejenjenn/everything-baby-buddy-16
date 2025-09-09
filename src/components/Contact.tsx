@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
@@ -105,36 +106,58 @@ const Contact = () => {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
+          {/* FAQ Section */}
           <Reveal as="div" className="space-y-8">
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <Card className="border-border hover:shadow-soft transition-all duration-300">
-                <CardContent className="p-6">
-                  <MessageCircle className="h-8 w-8 text-primary mb-4" />
-                  <h4 className="font-semibold text-foreground mb-2">WhatsApp</h4>
-                  <a 
-                    href="https://wa.me/2347060867150" 
-                    className="text-primary hover:text-primary/80 font-medium transition-colors"
-                  >
-                    Chat with us on WhatsApp
-                  </a>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border hover:shadow-soft transition-all duration-300">
-                <CardContent className="p-6">
-                  <Mail className="h-8 w-8 text-primary mb-4" />
-                  <h4 className="font-semibold text-foreground mb-2">Email</h4>
-                  <p className="text-muted-foreground text-sm mb-3">Send us your inquiries</p>
-                  <a href="mailto:info.everythingbaby@gmail.com" className="text-sm font-medium text-foreground hover:text-primary transition-colors pointer-events-auto relative z-10">
-                    info.everythingbaby@gmail.com
-                  </a>
-                </CardContent>
-              </Card>
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Everything Baby – Frequently Asked Questions (FAQ) 🌸
+              </h3>
             </div>
 
+            <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto space-y-4">
+              <AccordionItem value="item-1" className="border border-border rounded-lg px-6">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold">
+                  Do you sell thrift/used baby products?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pt-2 pb-4">
+                  No, we don't sell thrift or used items. We focus on brand-new baby essentials. 💙 However, we understand that every mum has different needs, so we can gladly link you to trusted businesses that specialize in quality thrift baby products.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2" className="border border-border rounded-lg px-6">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold">
+                  Do you have a shop or physical location?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pt-2 pb-4">
+                  No, we don't have a physical store. ✨ Everything Baby is a service-based company created to make your motherhood journey simple and full of care. From the comfort of your home, you can access our services, shop recommendations, and baby essentials without stress. We bring the love and care directly to you. 💕
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="border border-border rounded-lg px-6">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold">
+                  What other services do you provide?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pt-2 pb-4">
+                  At Everything Baby, we go beyond products. Our services include:<br />
+                  🍼 Baby Shopping Assistance – We help you shop and organize all your newborn and baby essentials.<br />
+                  🌸 New Mum Support – Guides, tips, and resources to make your journey lighter and filled with care.<br />
+                  🎁 Curated Baby Packages – Specially packed with love, making gifting easy for new mums and loved ones.<br />
+                  💬 Connections and Recommendations – Linking you to trusted baby-related businesses and services in Nigeria.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="border border-border rounded-lg px-6">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold">
+                  Is Everything Baby only about products?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pt-2 pb-4">
+                  No. ✨ We are not just a business. Everything Baby is a movement built on love, ease, and care. Our goal is to support mothers and babies at every step, while creating a community that understands and celebrates your journey. 💕<br />
+                  Follow on IG @Theeverythingbaby<br />
+                  Website: www.Theeverythingbaby.com
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </Reveal>
 
           {/* Contact Form */}
