@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, CheckCircle, Baby, Store, HelpCircle, Sparkles } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, CheckCircle, Baby, Store, HelpCircle, Sparkles, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -99,12 +99,12 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="flex justify-center mb-4">
-            <div className="w-8 h-8 bg-foreground transform rotate-45 rounded-sm"></div>
+            <Star className="w-8 h-8 text-pink-500 fill-pink-500" />
           </div>
           <Reveal as="h3" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Frequently asked questions
           </Reveal>
-          <Reveal as="p" delay={120} className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <Reveal as="p" delay={120} className="text-lg max-w-2xl mx-auto" style={{color: '#171717'}}>
             These are the most commonly asked questions about everything baby products and services
           </Reveal>
         </div>
