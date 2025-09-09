@@ -29,7 +29,6 @@ const Footer = () => {
               <li><a href="#services" className="hover:text-primary transition-colors">Meal Plans</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">Baby Registry</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">Hospital Lists</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">Party Packages</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">Consultation</a></li>
             </ul>
           </div>
