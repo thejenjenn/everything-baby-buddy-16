@@ -169,9 +169,7 @@ const Contact = () => {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="pt-2 pb-6 pl-14 text-base md:text-lg" style={{color: '#171717'}}>
-                  No. ✨ We are not just a business. Everything Baby is a movement built on love, ease, and care. Our goal is to support mothers and babies at every step, while creating a community that understands and celebrates your journey. 💕<br />
-                  Follow on IG @Theeverythingbaby<br />
-                  Website: www.Theeverythingbaby.com
+                  No. ✨ We are not just a business. Everything Baby is a movement built on love, ease, and care. Our goal is to support mothers and babies at every step, while creating a community that understands and celebrates your journey.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
