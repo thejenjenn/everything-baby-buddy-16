@@ -98,26 +98,17 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-gradient-to-b from-warm-cream to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <Reveal as="h2" className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Get in Touch
-          </Reveal>
-          <Reveal as="p" delay={120} className="text-xl max-w-3xl mx-auto" style={{color: '#171717'}}>
-            Ready to start your journey with Everything Baby? We're here to support you every step of the way.
+          <Reveal as="h3" className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            Frequently Asked Questions (FAQ) 🌸
           </Reveal>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
           {/* FAQ Section */}
           <Reveal as="div" className="space-y-8">
-            <div className="text-center mb-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                Everything Baby – Frequently Asked Questions (FAQ) 🌸
-              </h3>
-            </div>
-
             <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto space-y-4">
               <AccordionItem value="item-1" className="border border-border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold [&>svg]:text-foreground">
                   Do you sell thrift/used baby products?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pt-2 pb-4">
@@ -126,7 +117,7 @@ const Contact = () => {
               </AccordionItem>
 
               <AccordionItem value="item-2" className="border border-border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold [&>svg]:text-foreground">
                   Do you have a shop or physical location?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pt-2 pb-4">
@@ -135,7 +126,7 @@ const Contact = () => {
               </AccordionItem>
 
               <AccordionItem value="item-3" className="border border-border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold [&>svg]:text-foreground">
                   What other services do you provide?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pt-2 pb-4">
@@ -148,7 +139,7 @@ const Contact = () => {
               </AccordionItem>
 
               <AccordionItem value="item-4" className="border border-border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold [&>svg]:text-foreground">
                   Is Everything Baby only about products?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pt-2 pb-4">
