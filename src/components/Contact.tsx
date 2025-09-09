@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, CheckCircle } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, CheckCircle, Baby, Store, HelpCircle, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -98,41 +98,59 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-gradient-to-b from-warm-cream to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <Reveal as="h3" className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-            Frequently Asked Questions
+          <div className="flex justify-center mb-4">
+            <div className="w-8 h-8 bg-foreground transform rotate-45 rounded-sm"></div>
+          </div>
+          <Reveal as="h3" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Frequently asked questions
           </Reveal>
-          <Reveal as="p" delay={120} className="text-2xl md:text-3xl font-bold text-foreground">
-            FAQ 🌸
+          <Reveal as="p" delay={120} className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            These are the most commonly asked questions about everything baby products and services
           </Reveal>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
           {/* FAQ Section */}
           <Reveal as="div" className="space-y-8">
-            <Accordion type="single" collapsible className="w-full max-w-5xl mx-auto space-y-6">
-              <AccordionItem value="item-1" className="border border-border rounded-lg px-8 py-2">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold text-lg md:text-xl py-6 [&>svg]:text-foreground">
-                  Do you sell thrift/used baby products?
+            <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto space-y-4">
+              <AccordionItem value="item-1" className="border border-border rounded-xl px-6 py-2 bg-card">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-medium text-lg md:text-xl py-6 [&>svg]:text-foreground">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Baby className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                    <span>Do you sell thrift/used baby products?</span>
+                  </div>
                 </AccordionTrigger>
-                <AccordionContent className="pt-2 pb-6 text-base md:text-lg" style={{color: '#171717'}}>
+                <AccordionContent className="pt-2 pb-6 pl-14 text-base md:text-lg" style={{color: '#171717'}}>
                   No, we don't sell thrift or used items. We focus on brand-new baby essentials. 💙 However, we understand that every mum has different needs, so we can gladly link you to trusted businesses that specialize in quality thrift baby products.
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-2" className="border border-border rounded-lg px-8 py-2">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold text-lg md:text-xl py-6 [&>svg]:text-foreground">
-                  Do you have a shop or physical location?
+              <AccordionItem value="item-2" className="border border-border rounded-xl px-6 py-2 bg-card">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-medium text-lg md:text-xl py-6 [&>svg]:text-foreground">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Store className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                    <span>Do you have a shop or physical location?</span>
+                  </div>
                 </AccordionTrigger>
-                <AccordionContent className="pt-2 pb-6 text-base md:text-lg" style={{color: '#171717'}}>
+                <AccordionContent className="pt-2 pb-6 pl-14 text-base md:text-lg" style={{color: '#171717'}}>
                   No, we don't have a physical store. ✨ Everything Baby is a service-based company created to make your motherhood journey simple and full of care. From the comfort of your home, you can access our services, shop recommendations, and baby essentials without stress. We bring the love and care directly to you. 💕
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-3" className="border border-border rounded-lg px-8 py-2">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold text-lg md:text-xl py-6 [&>svg]:text-foreground">
-                  What other services do you provide?
+              <AccordionItem value="item-3" className="border border-border rounded-xl px-6 py-2 bg-card">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-medium text-lg md:text-xl py-6 [&>svg]:text-foreground">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                      <HelpCircle className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                    <span>What other services do you provide?</span>
+                  </div>
                 </AccordionTrigger>
-                <AccordionContent className="pt-2 pb-6 text-base md:text-lg" style={{color: '#171717'}}>
+                <AccordionContent className="pt-2 pb-6 pl-14 text-base md:text-lg" style={{color: '#171717'}}>
                   At Everything Baby, we go beyond products. Our services include:<br />
                   🍼 Baby Shopping Assistance – We help you shop and organize all your newborn and baby essentials.<br />
                   🌸 New Mum Support – Guides, tips, and resources to make your journey lighter and filled with care.<br />
@@ -141,11 +159,16 @@ const Contact = () => {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-4" className="border border-border rounded-lg px-8 py-2">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold text-lg md:text-xl py-6 [&>svg]:text-foreground">
-                  Is Everything Baby only about products?
+              <AccordionItem value="item-4" className="border border-border rounded-xl px-6 py-2 bg-card">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-medium text-lg md:text-xl py-6 [&>svg]:text-foreground">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Sparkles className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                    <span>Is Everything Baby only about products?</span>
+                  </div>
                 </AccordionTrigger>
-                <AccordionContent className="pt-2 pb-6 text-base md:text-lg" style={{color: '#171717'}}>
+                <AccordionContent className="pt-2 pb-6 pl-14 text-base md:text-lg" style={{color: '#171717'}}>
                   No. ✨ We are not just a business. Everything Baby is a movement built on love, ease, and care. Our goal is to support mothers and babies at every step, while creating a community that understands and celebrates your journey. 💕<br />
                   Follow on IG @Theeverythingbaby<br />
                   Website: www.Theeverythingbaby.com
