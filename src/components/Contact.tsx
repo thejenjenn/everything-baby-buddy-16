@@ -98,38 +98,41 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-gradient-to-b from-warm-cream to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <Reveal as="h3" className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Frequently Asked Questions (FAQ) 🌸
+          <Reveal as="h3" className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+            Frequently Asked Questions
+          </Reveal>
+          <Reveal as="p" delay={120} className="text-2xl md:text-3xl font-bold text-foreground">
+            FAQ 🌸
           </Reveal>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
           {/* FAQ Section */}
           <Reveal as="div" className="space-y-8">
-            <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto space-y-4">
-              <AccordionItem value="item-1" className="border border-border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold [&>svg]:text-foreground">
+            <Accordion type="single" collapsible className="w-full max-w-5xl mx-auto space-y-6">
+              <AccordionItem value="item-1" className="border border-border rounded-lg px-8 py-2">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold text-lg md:text-xl py-6 [&>svg]:text-foreground">
                   Do you sell thrift/used baby products?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pt-2 pb-4">
+                <AccordionContent className="pt-2 pb-6 text-base md:text-lg" style={{color: '#171717'}}>
                   No, we don't sell thrift or used items. We focus on brand-new baby essentials. 💙 However, we understand that every mum has different needs, so we can gladly link you to trusted businesses that specialize in quality thrift baby products.
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-2" className="border border-border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold [&>svg]:text-foreground">
+              <AccordionItem value="item-2" className="border border-border rounded-lg px-8 py-2">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold text-lg md:text-xl py-6 [&>svg]:text-foreground">
                   Do you have a shop or physical location?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pt-2 pb-4">
+                <AccordionContent className="pt-2 pb-6 text-base md:text-lg" style={{color: '#171717'}}>
                   No, we don't have a physical store. ✨ Everything Baby is a service-based company created to make your motherhood journey simple and full of care. From the comfort of your home, you can access our services, shop recommendations, and baby essentials without stress. We bring the love and care directly to you. 💕
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-3" className="border border-border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold [&>svg]:text-foreground">
+              <AccordionItem value="item-3" className="border border-border rounded-lg px-8 py-2">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold text-lg md:text-xl py-6 [&>svg]:text-foreground">
                   What other services do you provide?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pt-2 pb-4">
+                <AccordionContent className="pt-2 pb-6 text-base md:text-lg" style={{color: '#171717'}}>
                   At Everything Baby, we go beyond products. Our services include:<br />
                   🍼 Baby Shopping Assistance – We help you shop and organize all your newborn and baby essentials.<br />
                   🌸 New Mum Support – Guides, tips, and resources to make your journey lighter and filled with care.<br />
@@ -138,11 +141,11 @@ const Contact = () => {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-4" className="border border-border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold [&>svg]:text-foreground">
+              <AccordionItem value="item-4" className="border border-border rounded-lg px-8 py-2">
+                <AccordionTrigger className="text-left hover:no-underline text-foreground font-semibold text-lg md:text-xl py-6 [&>svg]:text-foreground">
                   Is Everything Baby only about products?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pt-2 pb-4">
+                <AccordionContent className="pt-2 pb-6 text-base md:text-lg" style={{color: '#171717'}}>
                   No. ✨ We are not just a business. Everything Baby is a movement built on love, ease, and care. Our goal is to support mothers and babies at every step, while creating a community that understands and celebrates your journey. 💕<br />
                   Follow on IG @Theeverythingbaby<br />
                   Website: www.Theeverythingbaby.com
