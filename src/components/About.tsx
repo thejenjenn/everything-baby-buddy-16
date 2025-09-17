@@ -28,45 +28,6 @@ const About = () => {
           </div>
         </Reveal>
 
-        <div className="mb-8 animate-fade-in max-w-4xl mx-auto">
-          <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-pink-200/10">
-            {/* Accordion inside the card */}
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="story" className="border-transparent">
-                <AccordionTrigger className="text-left py-3 hover:no-underline group [&[data-state=open]>div]:text-pink-300 [&>svg]:text-pink-300">
-                  <div className="text-lg font-heading font-semibold text-pink-300 transition-colors">
-                    Read My Full Story
-                  </div>
-                </AccordionTrigger>
-                
-                {/* Preview text */}
-                <p className="text-white/90 font-body leading-relaxed text-lg mb-6">
-                  I remember being 35 weeks pregnant heavy, exhausted, and completely clueless about what I needed as a first-time mum. The thought of preparing for my baby's arrival felt overwhelming. I had so many questions but no clear answers.
-                </p>
-                
-                <AccordionContent className="text-white/90 font-body leading-relaxed text-lg pt-2">
-                  <div className="space-y-4">
-                    <p>
-                      What was I supposed to pack for the hospital? What items did I actually need at home? Was I even doing any of it right?
-                    </p>
-                    <p>
-                      I found myself drowning in endless checklists, each one different from the last, and none of them seemed to truly speak to what I was going through. The advice online felt overwhelming, impersonal, and often contradictory.
-                    </p>
-                    <p>
-                      That's when it hit me. There had to be a better way.
-                    </p>
-                    <p>
-                      No mother should have to face this life-changing moment feeling confused, anxious, or unsupported. We deserve clarity. We deserve guidance. We deserve peace of mind.
-                    </p>
-                    <p>
-                      That inspired me to create Everything Baby, to make the path a little smoother for the next mum standing where I once stood.
-                    </p>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
       </div>
     </section>
   );
