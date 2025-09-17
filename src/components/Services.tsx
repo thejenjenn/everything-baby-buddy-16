@@ -23,6 +23,7 @@ import Reveal from "@/components/Reveal";
 
 const Services = () => {
   const [isRegistryDialogOpen, setIsRegistryDialogOpen] = useState(false);
+  const [isNewbornDialogOpen, setIsNewbornDialogOpen] = useState(false);
 
   // Force refresh to clear cache
 
@@ -47,7 +48,7 @@ const Services = () => {
       image: babyEssentials,
       features: ["Essential baby items", "Age-appropriate products", "Budget-friendly options", "Quality guaranteed"],
       cta: "View Package",
-      action: () => window.location.href = "https://tally.so/r/wz9K5k"
+      action: () => setIsNewbornDialogOpen(true)
     },
     {
       icon: UtensilsCrossed,
@@ -56,7 +57,8 @@ const Services = () => {
       description: "Nutritious, age-appropriate meal plans developed with certified nutritionists for healthy growth and development.",
       image: babyFood,
       features: ["Nutritionist-approved", "Age-appropriate portions", "Variety of flavors", "Growth-focused nutrition"],
-      cta: "Get Consultation"
+      cta: "Get Consultation",
+      action: () => window.open("https://wa.me/2347060867150", "_blank")
     },
     {
       icon: Gift,
@@ -79,9 +81,9 @@ const Services = () => {
     }
   ];
 
-  // Load Tally script when dialog opens
+  // Load Tally script when dialogs open
   useEffect(() => {
-    if (isRegistryDialogOpen) {
+    if (isRegistryDialogOpen || isNewbornDialogOpen) {
       const script = document.createElement('script');
       script.src = 'https://tally.so/widgets/embed.js';
       script.async = true;
@@ -96,7 +98,7 @@ const Services = () => {
         document.body.removeChild(script);
       };
     }
-  }, [isRegistryDialogOpen]);
+  }, [isRegistryDialogOpen, isNewbornDialogOpen]);
 
   return (
     <section id="services" className="py-20" style={{backgroundColor: "#FFFDF9"}}>
@@ -229,6 +231,31 @@ const Services = () => {
                 marginHeight={0}
                 marginWidth={0}
                 title="Create Your Baby Registry"
+                className="w-full min-h-[600px]"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Newborn Package Dialog */}
+        <Dialog open={isNewbornDialogOpen} onOpenChange={setIsNewbornDialogOpen}>
+          <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-hidden p-0">
+            <DialogHeader className="p-6 pb-0">
+              <DialogTitle className="text-2xl font-heading font-bold text-charcoal-text">
+                New Born Package 🍼🌸
+              </DialogTitle>
+            </DialogHeader>
+            
+            <div className="p-6 pt-0">
+              <iframe 
+                data-tally-src="https://tally.so/embed/wz9K5k?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" 
+                loading="lazy" 
+                width="100%" 
+                height="600" 
+                frameBorder="0" 
+                marginHeight={0}
+                marginWidth={0}
+                title="New Born Package 🍼🌸"
                 className="w-full min-h-[600px]"
               />
             </div>
