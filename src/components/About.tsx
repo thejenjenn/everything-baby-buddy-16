@@ -14,6 +14,20 @@ const About = () => {
           </Reveal>
         </div>
 
+        {/* YouTube Video Section */}
+        <Reveal as="div" delay={240} className="mb-12 w-full">
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+            <iframe
+              src="https://www.youtube.com/embed/6OfUBZ7Z7-M?autoplay=1&loop=1&mute=1&playlist=6OfUBZ7Z7-M&controls=0&showinfo=0&rel=0&modestbranding=1"
+              title="Everything Baby Story"
+              className="absolute inset-0 w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </Reveal>
+
         <div className="mb-8 animate-fade-in max-w-4xl mx-auto">
           <div className="p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-pink-200/10">
             {/* Accordion inside the card */}
