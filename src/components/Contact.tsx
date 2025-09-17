@@ -243,7 +243,6 @@ const Contact = () => {
                   <option value="meals" className="text-gray-900">Curated Meal Plans</option>
                   <option value="registry" className="text-gray-900">Baby Registry</option>
                   <option value="hospital" className="text-gray-900">Hospital List</option>
-                  <option value="party" className="text-gray-900">Party Packages</option>
                   <option value="consultation" className="text-gray-900">General Consultation</option>
                 </select>
 
