@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, CheckCircle, Baby, Store, HelpCircle, Sparkles, Star } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
 import Reveal from "@/components/Reveal";
