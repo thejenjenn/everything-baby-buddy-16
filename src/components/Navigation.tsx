@@ -33,7 +33,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
-            <img src={logoImage} alt="Everything Baby" className="h-12 w-12 object-contain" />
+            <img src={logoImage} alt="Everything Baby" className="h-16 w-16 object-contain" />
             <span className="font-bold text-lg text-foreground">Everything Baby</span>
           </div>
 
