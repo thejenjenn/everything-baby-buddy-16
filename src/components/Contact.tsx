@@ -11,7 +11,7 @@ import Reveal from "@/components/Reveal";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     phone: "",
     service: "",
@@ -20,17 +20,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [webhookUrl, setWebhookUrl] = useState("https://hooks.zapier.com/hooks/catch/24244927/utyim4l/");
   const { toast } = useToast();
-
-  // Persist Zapier webhook URL locally so you only set it once
-  useEffect(() => {
-    const saved = localStorage.getItem("zapierWebhookUrl");
-    if (saved) setWebhookUrl(saved);
-  }, []);
-  useEffect(() => {
-    if (webhookUrl) localStorage.setItem("zapierWebhookUrl", webhookUrl);
-  }, [webhookUrl]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -45,44 +35,34 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      if (!webhookUrl) {
-        toast({
-          title: "Email delivery not configured",
-          description: "Please paste your Zapier Webhook URL to receive submissions.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      await fetch(webhookUrl, {
+      const form = e.target as HTMLFormElement;
+      const formDataObj = new FormData(form);
+      
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "no-cors",
-        body: JSON.stringify({
-          ...formData,
-          timestamp: new Date().toISOString(),
-          source: window.location.href,
-        }),
+        body: formDataObj
       });
       
-      setIsSubmitted(true);
-      toast({
-        title: "Request sent with Love",
-        description: "Someone will reach out to you as soon as possible",
-      });
-      
-      setTimeout(() => {
-        setFormData({
-          fullName: "",
-          email: "",
-          phone: "",
-          service: "",
-          message: ""
+      if (response.ok) {
+        setIsSubmitted(true);
+        toast({
+          title: "Request sent with Love",
+          description: "Someone will reach out to you as soon as possible",
         });
-        setIsSubmitted(false);
-      }, 3000);
+        
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            service: "",
+            message: ""
+          });
+          setIsSubmitted(false);
+        }, 3000);
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
       console.error('Form submission error:', error);
       toast({
@@ -197,11 +177,13 @@ const Contact = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input type="hidden" name="access_key" value="11468f57-5acd-4e1a-90b3-9a244e57260e" />
+                
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <Input 
-                      name="fullName"
-                      value={formData.fullName}
+                      name="name"
+                      value={formData.name}
                       onChange={handleInputChange}
                       placeholder="Full name" 
                       className="bg-white/10 border-white/20 text-white placeholder:text-white/70 caret-sky-300 focus:outline-none focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
@@ -254,12 +236,6 @@ const Contact = () => {
                   rows={4}
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/70 caret-sky-300 focus:outline-none focus:border-sky-300 hover:border-sky-400 focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
                   required
-                />
-
-                {/* Hidden admin configuration for email delivery via Zapier */}
-                <input
-                  type="hidden"
-                  value={webhookUrl}
                 />
 
                 {isSubmitted ? (
