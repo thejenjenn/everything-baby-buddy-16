@@ -24,6 +24,8 @@ import Reveal from "@/components/Reveal";
 const Services = () => {
   const [isRegistryDialogOpen, setIsRegistryDialogOpen] = useState(false);
 
+  // Force refresh to clear cache
+
   interface Service {
     icon: any;
     title: string;
