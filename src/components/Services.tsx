@@ -1,10 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Baby, 
   UtensilsCrossed, 
@@ -14,7 +11,7 @@ import {
   MessageCircle,
   Heart
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import babyEssentials from "@/assets/baby-essentials.jpg";
 import babyFood from "@/assets/baby-food.jpg";
 import backToSchool from "@/assets/back-to-school.jpg";
@@ -26,16 +23,6 @@ import Reveal from "@/components/Reveal";
 
 const Services = () => {
   const [isRegistryDialogOpen, setIsRegistryDialogOpen] = useState(false);
-  const [registryForm, setRegistryForm] = useState({
-    title: "",
-    firstName: "",
-    lastName: "",
-    partnerFirstName: "",
-    partnerLastName: "",
-    email: "",
-    description: "",
-    eventDate: ""
-  });
 
   interface Service {
     icon: any;
@@ -90,22 +77,24 @@ const Services = () => {
     }
   ];
 
-  const handleRegistrySubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Registry form submitted:", registryForm);
-    // Here you would typically send the data to your backend
-    setIsRegistryDialogOpen(false);
-    setRegistryForm({
-      title: "",
-      firstName: "",
-      lastName: "",
-      partnerFirstName: "",
-      partnerLastName: "",
-      email: "",
-      description: "",
-      eventDate: ""
-    });
-  };
+  // Load Tally script when dialog opens
+  useEffect(() => {
+    if (isRegistryDialogOpen) {
+      const script = document.createElement('script');
+      script.src = 'https://tally.so/widgets/embed.js';
+      script.async = true;
+      script.onload = () => {
+        if (typeof (window as any).Tally !== 'undefined') {
+          (window as any).Tally.loadEmbeds();
+        }
+      };
+      document.body.appendChild(script);
+      
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
+  }, [isRegistryDialogOpen]);
 
   return (
     <section id="services" className="py-20" style={{backgroundColor: "#FFFDF9"}}>
@@ -221,129 +210,26 @@ const Services = () => {
 
         {/* Registry Form Dialog */}
         <Dialog open={isRegistryDialogOpen} onOpenChange={setIsRegistryDialogOpen}>
-          <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
-            <DialogHeader>
+          <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-hidden p-0">
+            <DialogHeader className="p-6 pb-0">
               <DialogTitle className="text-2xl font-heading font-bold text-charcoal-text">
-                Registry List
+                Create Your Baby Registry
               </DialogTitle>
-              <p className="text-sm text-gray-600 font-body mt-2">Add new</p>
             </DialogHeader>
-
-            <form onSubmit={handleRegistrySubmit} className="space-y-6">
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="title" className="text-sm font-medium text-charcoal-text">
-                    Title *
-                  </Label>
-                  <Input
-                    id="title"
-                    placeholder="Gift registry title"
-                    value={registryForm.title}
-                    onChange={(e) => setRegistryForm({ ...registryForm, title: e.target.value })}
-                    required
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="firstName" className="text-sm font-medium text-charcoal-text">
-                    First Name *
-                  </Label>
-                  <Input
-                    id="firstName"
-                    value={registryForm.firstName}
-                    onChange={(e) => setRegistryForm({ ...registryForm, firstName: e.target.value })}
-                    required
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="lastName" className="text-sm font-medium text-charcoal-text">
-                    Last Name *
-                  </Label>
-                  <Input
-                    id="lastName"
-                    value={registryForm.lastName}
-                    onChange={(e) => setRegistryForm({ ...registryForm, lastName: e.target.value })}
-                    required
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="partnerFirstName" className="text-sm font-medium text-charcoal-text">
-                    Partner First Name
-                  </Label>
-                  <Input
-                    id="partnerFirstName"
-                    value={registryForm.partnerFirstName}
-                    onChange={(e) => setRegistryForm({ ...registryForm, partnerFirstName: e.target.value })}
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="partnerLastName" className="text-sm font-medium text-charcoal-text">
-                    Partner Last Name
-                  </Label>
-                  <Input
-                    id="partnerLastName"
-                    value={registryForm.partnerLastName}
-                    onChange={(e) => setRegistryForm({ ...registryForm, partnerLastName: e.target.value })}
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="email" className="text-sm font-medium text-charcoal-text">
-                    Email *
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={registryForm.email}
-                    onChange={(e) => setRegistryForm({ ...registryForm, email: e.target.value })}
-                    required
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="description" className="text-sm font-medium text-charcoal-text">
-                    Description
-                  </Label>
-                  <Textarea
-                    id="description"
-                    placeholder="Describe your gift registry here, or write a message to your guests"
-                    value={registryForm.description}
-                    onChange={(e) => setRegistryForm({ ...registryForm, description: e.target.value })}
-                    rows={4}
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="eventDate" className="text-sm font-medium text-charcoal-text">
-                    Event Date
-                  </Label>
-                  <Input
-                    id="eventDate"
-                    type="date"
-                    value={registryForm.eventDate}
-                    onChange={(e) => setRegistryForm({ ...registryForm, eventDate: e.target.value })}
-                    className="mt-1"
-                  />
-                </div>
-              </div>
-
-              <Button 
-                type="submit" 
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 text-base"
-              >
-                Save Changes
-              </Button>
-            </form>
+            
+            <div className="p-6 pt-0">
+              <iframe 
+                data-tally-src="https://tally.so/embed/n09ER9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" 
+                loading="lazy" 
+                width="100%" 
+                height="600" 
+                frameBorder="0" 
+                marginHeight={0}
+                marginWidth={0}
+                title="Create Your Baby Registry"
+                className="w-full min-h-[600px]"
+              />
+            </div>
           </DialogContent>
         </Dialog>
       </div>
