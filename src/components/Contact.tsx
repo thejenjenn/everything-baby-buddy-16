@@ -97,20 +97,6 @@ const Contact = () => {
   return (
     <section id="contact" className="pt-8 pb-20 bg-gradient-to-b from-warm-cream to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* YouTube Video Section */}
-        <Reveal as="div" className="mb-16 w-full">
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
-            <iframe
-              src="https://www.youtube.com/embed/6OfUBZ7Z7-M?autoplay=1&mute=1&loop=1&playlist=6OfUBZ7Z7-M&controls=0&modestbranding=1&rel=0"
-              title="Everything Baby Video"
-              className="absolute inset-0 w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        </Reveal>
-
         <div className="text-center mb-16">
           <div className="flex justify-center mb-4">
             <Star className="w-8 h-8 text-pink-500 fill-pink-500" />
