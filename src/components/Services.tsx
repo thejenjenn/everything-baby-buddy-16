@@ -221,7 +221,7 @@ const Services = () => {
               </DialogTitle>
             </DialogHeader>
             
-            <div className="p-6 pt-0">
+            <div className="p-6 pt-0 overflow-y-auto max-h-[70vh]">
               <iframe 
                 data-tally-src="https://tally.so/embed/n09ER9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" 
                 loading="lazy" 
@@ -232,6 +232,7 @@ const Services = () => {
                 marginWidth={0}
                 title="Create Your Baby Registry"
                 className="w-full min-h-[600px]"
+                style={{ overflow: 'auto' }}
               />
             </div>
           </DialogContent>
@@ -246,7 +247,7 @@ const Services = () => {
               </DialogTitle>
             </DialogHeader>
             
-            <div className="p-6 pt-0">
+            <div className="p-6 pt-0 overflow-y-auto max-h-[70vh]">
               <iframe 
                 data-tally-src="https://tally.so/embed/wz9K5k?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" 
                 loading="lazy" 
@@ -257,6 +258,7 @@ const Services = () => {
                 marginWidth={0}
                 title="New Born Package 🍼🌸"
                 className="w-full min-h-[600px]"
+                style={{ overflow: 'auto' }}
               />
             </div>
           </DialogContent>
