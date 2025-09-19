@@ -203,7 +203,7 @@ const Services = () => {
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="gap-3 bg-white/90 backdrop-blur-sm font-body font-medium border-blue-500 text-blue-600 hover:bg-blue-50" asChild>
-                <a href="https://wa.me/2349036791181" className="flex items-center gap-3">
+                <a href="https://wa.me/2349036791181" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                   <MessageCircle className="h-5 w-5 text-blue-600" />
                   Chat with Us
                 </a>

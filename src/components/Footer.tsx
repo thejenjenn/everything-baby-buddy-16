@@ -56,7 +56,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-background/80">
                   <MessageCircle className="h-4 w-4 text-primary" />
-                  <a href="https://wa.me/2349036791181" target="_blank" rel="noopener" className="hover:text-primary transition-colors pointer-events-auto relative z-10">WhatsApp available</a>
+                  <a href="https://wa.me/2349036791181" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors pointer-events-auto relative z-10">WhatsApp available</a>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-background/80">
                   <Mail className="h-4 w-4 text-primary" />
