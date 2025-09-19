@@ -14,14 +14,14 @@ const FloatingWhatsAppButton = () => {
         onClick={handleWhatsAppClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="group relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 animate-pulse hover:animate-none"
+        className="group relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
         aria-label="Chat with us on WhatsApp"
       >
         {/* WhatsApp Icon */}
         <MessageCircle className="w-8 h-8 text-white drop-shadow-sm" />
         
-        {/* Ripple Effect */}
-        <div className="absolute inset-0 rounded-full bg-green-400 opacity-30 animate-ping"></div>
+        {/* Subtle glow effect instead of aggressive ripple */}
+        <div className="absolute inset-0 rounded-full bg-green-400 opacity-20 animate-ping" style={{ animationDuration: '2s' }}></div>
         
         {/* Hover Tooltip */}
         <div
