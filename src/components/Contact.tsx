@@ -167,25 +167,13 @@ const Contact = () => {
                     Fill out the form below and we'll get back to you as soon as possible (30mins to 1hour).
                   </p>
                 </div>
-                <div className="flex gap-2">
-                  <Button 
-                    variant="outline" 
-                    className="border-white/30 text-white hover:bg-white/10 bg-transparent"
-                    asChild
-                  >
-                    <a href="tel:+2349036791181">Quick Call</a>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="border-green-400/30 text-green-400 hover:bg-green-400/10 bg-transparent"
-                    asChild
-                  >
-                    <a href="https://wa.me/2349036791181?text=Hi,%20I%20need%20consultation%20about%20baby%20services" target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      WhatsApp
-                    </a>
-                  </Button>
-                </div>
+                <Button 
+                  variant="outline" 
+                  className="border-white/30 text-white hover:bg-white/10 bg-transparent"
+                  asChild
+                >
+                  <a href="tel:+2347060867150">Quick Call</a>
+                </Button>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
