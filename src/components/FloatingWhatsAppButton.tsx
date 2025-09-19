@@ -39,16 +39,6 @@ const FloatingWhatsAppButton = () => {
         
         {/* Subtle glow effect - made non-interactive */}
         <div className="pointer-events-none absolute inset-0 rounded-full bg-green-400 opacity-20 animate-ping" style={{ animationDuration: '2s' }}></div>
-        
-        {/* Hover Tooltip - made non-interactive */}
-        <div
-          className={`pointer-events-none absolute right-full mr-3 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg whitespace-nowrap transition-all duration-200 ${
-            isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2"
-          }`}
-        >
-          Chat with us!
-          <div className="absolute top-1/2 -translate-y-1/2 left-full w-0 h-0 border-l-[6px] border-l-gray-900 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent"></div>
-        </div>
       </button>
       
       {/* Floating notification badge */}
