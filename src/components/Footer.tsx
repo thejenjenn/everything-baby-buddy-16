@@ -1,5 +1,6 @@
-import { Baby, Heart, Phone, Mail, MessageCircle } from "lucide-react";
+import { Heart, Phone, Mail, MessageCircle } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import logoImage from "@/assets/everything-baby-logo.jpeg";
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Baby className="h-8 w-8 text-primary" />
+              <img src={logoImage} alt="Everything Baby" className="h-8 w-8 object-contain" />
               <span className="font-bold text-xl">Everything Baby</span>
             </div>
             <p className="text-background/80 text-sm leading-relaxed">
