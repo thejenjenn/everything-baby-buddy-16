@@ -1,14 +1,8 @@
 import { Heart, Phone, Mail, MessageCircle } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { useEffect, useState } from "react";
-import { getTransparentLogo } from "@/utils/processLogo";
+import logoImage from "@/assets/everything-baby-logo.jpeg";
 
 const Footer = () => {
-  const [logoSrc, setLogoSrc] = useState<string>("");
-
-  useEffect(() => {
-    getTransparentLogo().then(setLogoSrc);
-  }, []);
   return (
     <footer className="bg-black text-background">
       <Reveal as="div" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -16,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src={logoSrc} alt="Everything Baby" className="h-8 w-8 object-contain" />
+              <img src={logoImage} alt="Everything Baby" className="h-8 w-8 object-contain" />
               <span className="font-bold text-xl">Everything Baby</span>
             </div>
             <p className="text-background/80 text-sm leading-relaxed">
