@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
-import logoImage from "@/assets/everything-baby-logo.jpeg";
+import { getTransparentLogo } from "@/utils/processLogo";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [logoSrc, setLogoSrc] = useState<string>("");
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    getTransparentLogo().then(setLogoSrc);
+  }, []);
 
   const navItems = [
     { href: "#home", label: "Home" },
@@ -33,7 +38,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
-            <img src={logoImage} alt="Everything Baby" className="h-16 w-16 object-contain" />
+            <img src={logoSrc} alt="Everything Baby" className="h-16 w-16 object-contain" />
             <span className="font-bold text-lg text-foreground">Everything Baby</span>
           </div>
 
