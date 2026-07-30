@@ -221,7 +221,7 @@ const ShopAndServices = () => {
             <div className="mt-12 text-center">
               <Button asChild size="lg" className="font-body font-medium gap-2">
                 <Link to="/shop">
-                  Shop by Stage
+                  Shop
                   <ArrowRight className="h-5 w-5" />
                 </Link>
               </Button>
