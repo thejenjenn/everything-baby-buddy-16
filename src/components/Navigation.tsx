@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -34,10 +35,14 @@ const Navigation = () => {
     <nav className={`bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 transition-all duration-300 ease-in-out ${isHidden ? "-translate-y-3 opacity-90" : "translate-y-0 opacity-100"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
+          <Link
+            to="/"
+            aria-label="Everything Baby — home"
+            className="flex items-center space-x-2 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
             <img src={logoImage} alt="Everything Baby" className="h-16 w-16 object-contain" />
-            <span className="font-bold text-lg text-foreground">Everything Baby</span>
-          </div>
+            <span className="font-bold text-sm text-foreground">Everything Baby</span>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
