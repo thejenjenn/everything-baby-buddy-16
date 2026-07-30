@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 const ShopByStage = () => {
   useEffect(() => {
-    document.title = "Shop by Stage | The Everything Baby";
+    document.title = "Shop | The Everything Baby";
     const desc = document.querySelector('meta[name="description"]');
     if (desc) {
       desc.setAttribute(
@@ -27,7 +27,7 @@ const ShopByStage = () => {
             as="h1"
             className="font-heading text-3xl font-bold tracking-tight text-foreground md:text-5xl"
           >
-            Shop by Stage
+            Shop
           </Reveal>
           <Reveal
             as="p"
