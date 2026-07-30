@@ -9,10 +9,12 @@ const Navigation = () => {
   const { theme, setTheme } = useTheme();
 
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#home", label: "Home" },
+    { href: "/#about", label: "About" },
+    { href: "/shop", label: "Shop by Stage" },
+    { href: "/#contact", label: "Contact" },
   ];
+
 
   const lastYRef = useRef(0);
   const [isHidden, setIsHidden] = useState(false);
