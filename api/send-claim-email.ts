@@ -8,23 +8,19 @@
 //   2. Owner notification, respecting the anonymity flag
 //
 // Required Vercel env vars (server-only, do NOT prefix VITE_):
-//   SUPABASE_URL                 - https://<ref>.supabase.co
-//   SUPABASE_SERVICE_ROLE_KEY    - the service_role key from Supabase API settings
-//   RESEND_API_KEY               - re_...
-//   RESEND_FROM                  - e.g. "Everything Baby <onboarding@resend.dev>"
-//   SITE_URL                     - e.g. https://everything-baby-buddy-16.vercel.app
+//   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY, RESEND_FROM, SITE_URL
 //
-// NOTE: everything the function depends on is INLINED here on purpose.
-// Vercel's serverless bundler for the api/ directory does not reliably
-// resolve imports pointing outside api/ at runtime — a previous version
-// tried to import from ../supabase/functions/... and crashed with
-// ERR_MODULE_NOT_FOUND in production. Keep this self-contained.
+// NOTE: uses the Vercel Node request/response signature (VercelRequest /
+// VercelResponse), not the Web Standard Request/Response. The Fetch API
+// signature does not get invoked correctly by the default Node.js runtime
+// for functions in api/, so requests hang instead of returning.
+// Everything imported below is bundled by Vercel automatically; no cross-
+// directory imports so the runtime does not hit ERR_MODULE_NOT_FOUND.
 
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createClient } from "@supabase/supabase-js";
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
-
-export const config = { runtime: "nodejs" };
 
 type ClaimRow = {
   id: string;
@@ -52,12 +48,22 @@ interface Payload {
   html: string;
 }
 
-export default async function handler(req: Request): Promise<Response> {
+export default async function handler(
+  req: VercelRequest,
+  res: VercelResponse
+): Promise<void> {
+  // CORS for the browser POST from the site
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+
   if (req.method === "OPTIONS") {
-    return new Response(null, { status: 204, headers: corsHeaders() });
+    res.status(204).end();
+    return;
   }
   if (req.method !== "POST") {
-    return json({ error: "method_not_allowed" }, 405);
+    res.status(405).json({ error: "method_not_allowed" });
+    return;
   }
 
   const {
@@ -69,20 +75,20 @@ export default async function handler(req: Request): Promise<Response> {
   } = process.env;
 
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-    return json({ error: "server_not_configured" }, 500);
+    res.status(500).json({ error: "server_not_configured" });
+    return;
   }
   if (!RESEND_API_KEY || !RESEND_FROM) {
-    return json({ sent: false, reason: "email_not_configured" }, 200);
+    res.status(200).json({ sent: false, reason: "email_not_configured" });
+    return;
   }
 
-  let body: { claim_id?: string };
-  try {
-    body = await req.json();
-  } catch {
-    return json({ error: "invalid_json" }, 400);
-  }
+  const body = (req.body ?? {}) as { claim_id?: string };
   const claimId = body.claim_id;
-  if (!claimId) return json({ error: "missing_claim_id" }, 400);
+  if (!claimId) {
+    res.status(400).json({ error: "missing_claim_id" });
+    return;
+  }
 
   const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
     auth: { persistSession: false, autoRefreshToken: false },
@@ -98,7 +104,10 @@ export default async function handler(req: Request): Promise<Response> {
     .eq("id", claimId)
     .single<ClaimRow>();
 
-  if (error || !data) return json({ error: "claim_not_found", detail: error?.message }, 404);
+  if (error || !data) {
+    res.status(404).json({ error: "claim_not_found", detail: error?.message });
+    return;
+  }
 
   const siteUrl = SITE_URL ?? "https://example.com";
 
@@ -137,16 +146,15 @@ export default async function handler(req: Request): Promise<Response> {
       : Promise.resolve({ skipped: true } as const),
   ]);
 
-  return json({
+  res.status(200).json({
     guest: summarise(guestRes),
     owner: summarise(ownerRes),
   });
 }
 
 // -----------------------------------------------------------------------------
-// Email payload builders (previously in supabase/functions/.../payload.ts,
-// inlined so Vercel's serverless bundler does not need to follow a cross-
-// directory import at runtime).
+// Email payload builders — inlined so Vercel's serverless bundler does not
+// need to follow a cross-directory import at runtime.
 // -----------------------------------------------------------------------------
 
 function buildClaimEmail(input: {
@@ -247,10 +255,6 @@ function buildOwnerNotification(args: {
   };
 }
 
-// -----------------------------------------------------------------------------
-// Resend + helpers
-// -----------------------------------------------------------------------------
-
 async function sendResend(key: string, from: string, payload: Payload) {
   const res = await fetch(RESEND_ENDPOINT, {
     method: "POST",
@@ -274,19 +278,6 @@ function summarise(r: PromiseSettledResult<unknown>) {
   return { ok: false, error: String(r.reason) };
 }
 
-function corsHeaders(): Record<string, string> {
-  return {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "content-type",
-  };
-}
-function json(body: unknown, status = 200) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { "content-type": "application/json", ...corsHeaders() },
-  });
-}
 function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
