@@ -105,8 +105,13 @@ $$;
 -- Public view: everything from registries EXCEPT shipping_address
 -- ---------------------------------------------------------------------------
 
-create or replace view public_registries
-with (security_invoker = true) as
+-- IMPORTANT: NOT security_invoker. We want the view to run as its owner
+-- (superuser) so anon can read from it without needing SELECT on the base
+-- registries table. Safety comes from the view only exposing the non-private
+-- columns — shipping_address and owner_email are simply not selected here and
+-- are unreachable through this view. Combined with anon having no SELECT on
+-- the base table, this pins the exposed surface exactly where we want it.
+create or replace view public_registries as
 select
   id,
   slug,
