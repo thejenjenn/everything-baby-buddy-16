@@ -76,9 +76,9 @@ const Hero = () => {
                 className="text-lg px-10 py-4 font-medium shadow-warm animate-scale-in" 
                 style={{animationDelay: "0.6s"}}
                 onClick={() => {
-                  const servicesSection = document.getElementById('services');
-                  if (servicesSection) {
-                    servicesSection.scrollIntoView({ behavior: 'smooth' });
+                  const target = document.getElementById('shop-services');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }}
               >
