@@ -314,11 +314,7 @@ const ShopAndServices = () => {
           <div className="relative grid gap-10 p-8 md:p-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
             {/* LEFT: pitch + CTA */}
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-wider text-primary backdrop-blur-sm">
-                <Gift className="h-3.5 w-3.5" />
-                For parents-to-be
-              </span>
-              <h3 className="mt-5 font-heading text-3xl md:text-4xl font-bold tracking-tight text-charcoal-text">
+              <h3 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-charcoal-text">
                 Create your baby registry
               </h3>
               <p className="mt-4 max-w-xl font-body text-base md:text-lg leading-relaxed text-[#5c4436]">
@@ -335,9 +331,9 @@ const ShopAndServices = () => {
                   <ArrowRight className="h-4 w-4" />
                 </Button>
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="lg"
-                  className="font-body font-medium text-[#5c4436] hover:bg-white/60"
+                  className="font-body font-medium border-2 border-primary/40 bg-white/80 text-primary hover:bg-white hover:border-primary transition-transform active:scale-95"
                   onClick={() => navigate("/registry/login")}
                 >
                   I already have one
