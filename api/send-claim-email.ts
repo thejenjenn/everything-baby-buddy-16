@@ -13,9 +13,14 @@
 //   RESEND_API_KEY               - re_...
 //   RESEND_FROM                  - e.g. "Everything Baby <onboarding@resend.dev>"
 //   SITE_URL                     - e.g. https://everything-baby-buddy-16.vercel.app
+//
+// NOTE: everything the function depends on is INLINED here on purpose.
+// Vercel's serverless bundler for the api/ directory does not reliably
+// resolve imports pointing outside api/ at runtime — a previous version
+// tried to import from ../supabase/functions/... and crashed with
+// ERR_MODULE_NOT_FOUND in production. Keep this self-contained.
 
 import { createClient } from "@supabase/supabase-js";
-import { buildClaimEmail } from "../supabase/functions/send-claim-email/payload";
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
@@ -41,6 +46,12 @@ type ClaimRow = {
   };
 };
 
+interface Payload {
+  to: string;
+  subject: string;
+  html: string;
+}
+
 export default async function handler(req: Request): Promise<Response> {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders() });
@@ -61,7 +72,6 @@ export default async function handler(req: Request): Promise<Response> {
     return json({ error: "server_not_configured" }, 500);
   }
   if (!RESEND_API_KEY || !RESEND_FROM) {
-    // Not fatal — the claim succeeded, we just cannot send email.
     return json({ sent: false, reason: "email_not_configured" }, 200);
   }
 
@@ -88,15 +98,16 @@ export default async function handler(req: Request): Promise<Response> {
     .eq("id", claimId)
     .single<ClaimRow>();
 
-  if (error || !data) return json({ error: "claim_not_found" }, 404);
+  if (error || !data) return json({ error: "claim_not_found", detail: error?.message }, 404);
+
+  const siteUrl = SITE_URL ?? "https://example.com";
 
   const guestPayload = buildClaimEmail({
     guestName: data.guest_name,
     guestEmail: data.guest_email,
     quantityClaimed: data.quantity_claimed,
-    isAnonymous: data.is_anonymous,
     undoToken: data.undo_token,
-    siteUrl: SITE_URL ?? "https://example.com",
+    siteUrl,
     item: {
       title: data.item.title,
       source: data.item.source,
@@ -116,10 +127,9 @@ export default async function handler(req: Request): Promise<Response> {
     isAnonymous: data.is_anonymous,
     guestName: data.guest_name,
     registrySlug: data.item.registry.slug,
-    siteUrl: SITE_URL ?? "https://example.com",
+    siteUrl,
   });
 
-  // Send both in parallel. If one fails we still report the other.
   const [guestRes, ownerRes] = await Promise.allSettled([
     sendResend(RESEND_API_KEY, RESEND_FROM, guestPayload),
     ownerPayload
@@ -133,10 +143,70 @@ export default async function handler(req: Request): Promise<Response> {
   });
 }
 
-interface Payload {
-  to: string;
-  subject: string;
-  html: string;
+// -----------------------------------------------------------------------------
+// Email payload builders (previously in supabase/functions/.../payload.ts,
+// inlined so Vercel's serverless bundler does not need to follow a cross-
+// directory import at runtime).
+// -----------------------------------------------------------------------------
+
+function buildClaimEmail(input: {
+  guestName: string;
+  guestEmail: string;
+  quantityClaimed: number;
+  undoToken: string;
+  siteUrl: string;
+  item: {
+    title: string;
+    source: "internal" | "external";
+    externalUrl: string | null;
+  };
+  registry: {
+    ownerName: string;
+    shippingAddress: string;
+  };
+}): Payload {
+  const isExternal = input.item.source === "external";
+  const undoUrl =
+    input.siteUrl.replace(/\/$/, "") +
+    "/registry/claim/undo?token=" +
+    encodeURIComponent(input.undoToken);
+
+  const addressBlock = isExternal
+    ? `<div style="margin:16px 0;padding:12px 14px;background:#fdf3ec;border-radius:8px">
+         <p style="margin:0;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:#7a5a3f">
+           Ship to this address when you order from ${escapeHtml(
+             hostnameOf(input.item.externalUrl) ?? "the retailer"
+           )}
+         </p>
+         <p style="margin:6px 0 0;white-space:pre-line">${escapeHtml(
+           input.registry.shippingAddress
+         )}</p>
+       </div>`
+    : `<p>This item comes from Everything Baby directly. We will contact you shortly with next steps.</p>`;
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;color:#171717;max-width:520px;margin:0 auto;padding:24px">
+      <h1 style="font-size:20px;margin:0 0 12px">Thank you for claiming ${escapeHtml(
+        input.item.title
+      )}</h1>
+      <p>Hi ${escapeHtml(input.guestName)},</p>
+      <p>You have claimed <strong>${escapeHtml(input.item.title)}</strong>${
+    input.quantityClaimed > 1 ? ` (×${input.quantityClaimed})` : ""
+  } from ${escapeHtml(input.registry.ownerName)}'s registry.</p>
+      ${addressBlock}
+      <p>Plans changed? You can undo this claim within 24 hours using the link below.</p>
+      <p><a href="${undoUrl}" style="color:#c76a3f">Undo my claim</a></p>
+      <p style="margin-top:24px;color:#7a5a3f;font-size:12px">
+        Sent by Everything Baby. This link expires 24 hours after your claim.
+      </p>
+    </div>
+  `;
+
+  return {
+    to: input.guestEmail,
+    subject: `You've claimed ${input.item.title} from ${input.registry.ownerName}'s registry`,
+    html,
+  };
 }
 
 function buildOwnerNotification(args: {
@@ -155,28 +225,31 @@ function buildOwnerNotification(args: {
   const dashboardUrl = args.siteUrl.replace(/\/$/, "") + "/registry/dashboard";
   const publicUrl =
     args.siteUrl.replace(/\/$/, "") + "/registry/" + args.registrySlug;
-
   const qty = args.quantity > 1 ? ` (×${args.quantity})` : "";
 
   return {
     to: args.ownerEmail,
     subject: `${claimant} claimed ${args.itemTitle} from your registry`,
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 24px; color: #171717;">
-        <h1 style="font-size: 20px; margin: 0 0 12px;">Someone just claimed a gift</h1>
+      <div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;padding:24px;color:#171717">
+        <h1 style="font-size:20px;margin:0 0 12px">Someone just claimed a gift</h1>
         <p>Hi ${escapeHtml(args.ownerName)},</p>
         <p><strong>${escapeHtml(claimant)}</strong> just claimed
           <strong>${escapeHtml(args.itemTitle)}</strong>${qty} from your registry.</p>
-        <p style="margin-top: 20px;">
-          <a href="${dashboardUrl}" style="background:#c76a3f;color:#fff;text-decoration:none;padding:10px 20px;border-radius:8px;display:inline-block;font-weight:500;">Open your dashboard</a>
+        <p style="margin-top:20px">
+          <a href="${dashboardUrl}" style="background:#c76a3f;color:#fff;text-decoration:none;padding:10px 20px;border-radius:8px;display:inline-block;font-weight:500">Open your dashboard</a>
         </p>
-        <p style="margin-top: 20px; font-size: 12px; color: #7a5a3f;">
-          Public registry link: <a href="${publicUrl}" style="color:#c76a3f;">${publicUrl}</a>
+        <p style="margin-top:20px;font-size:12px;color:#7a5a3f">
+          Public registry link: <a href="${publicUrl}" style="color:#c76a3f">${publicUrl}</a>
         </p>
       </div>
     `,
   };
 }
+
+// -----------------------------------------------------------------------------
+// Resend + helpers
+// -----------------------------------------------------------------------------
 
 async function sendResend(key: string, from: string, payload: Payload) {
   const res = await fetch(RESEND_ENDPOINT, {
@@ -201,12 +274,12 @@ function summarise(r: PromiseSettledResult<unknown>) {
   return { ok: false, error: String(r.reason) };
 }
 
-function corsHeaders() {
+function corsHeaders(): Record<string, string> {
   return {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "content-type",
-  } as Record<string, string>;
+  };
 }
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -214,11 +287,19 @@ function json(body: unknown, status = 200) {
     headers: { "content-type": "application/json", ...corsHeaders() },
   });
 }
-function escapeHtml(s: string) {
+function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+function hostnameOf(url: string | null): string | null {
+  if (!url) return null;
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return null;
+  }
 }
