@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Star, Play, Baby } from "lucide-react";
+import { Star, Play } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 import { useEffect, useState } from "react";
 
@@ -99,24 +99,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Stats Section - Moved below hero content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 animate-fade-in" style={{animationDelay: "1s"}}>
-          <div className="group text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200 hover:-translate-y-1.5 hover:shadow-warm">
-            <Star className="h-8 w-8 text-primary mx-auto mb-3 fill-primary transition-colors duration-200 group-hover:text-warm-coral group-hover:fill-warm-coral" />
-            <div className="text-3xl font-bold text-primary font-heading transition-colors duration-200 group-hover:text-warm-coral">5.0</div>
-            <div className="text-sm font-body" style={{color: "#171717"}}>Customer Rating</div>
-          </div>
-          <div className="group text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200 hover:-translate-y-1.5 hover:shadow-warm">
-            <Heart className="h-8 w-8 text-primary mx-auto mb-3 transition-colors duration-200 group-hover:text-warm-coral" />
-            <div className="text-3xl font-bold text-primary font-heading transition-colors duration-200 group-hover:text-warm-coral">Trusted</div>
-            <div className="text-sm font-body" style={{color: "#171717"}}>Nationwide</div>
-          </div>
-          <div className="group text-center bg-white/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-gray-200 hover:-translate-y-1.5 hover:shadow-warm">
-            <Baby className="h-8 w-8 text-primary mx-auto mb-3 transition-colors duration-200 group-hover:text-warm-coral" />
-            <div className="text-3xl font-bold text-primary font-heading transition-colors duration-200 group-hover:text-warm-coral">0-3yrs</div>
-            <div className="text-sm font-body" style={{color: "#171717"}}>Age Range</div>
-          </div>
-        </div>
       </div>
     </section>
   );

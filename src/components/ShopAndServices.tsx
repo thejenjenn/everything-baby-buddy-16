@@ -20,6 +20,9 @@ import {
   ArrowRight,
   ShoppingBag,
   Sparkles,
+  ListPlus,
+  Share2,
+  Package,
 } from "lucide-react";
 import babyEssentials from "@/assets/baby-essentials.jpg";
 import babyFood from "@/assets/baby-food.jpg";
@@ -293,6 +296,101 @@ const ShopAndServices = () => {
             </div>
           </TabsContent>
         </Tabs>
+
+        {/* Registry CTA — a dedicated banner between shopping and consultation.
+            Nigerian parents may not know what a registry is, so we teach the
+            three steps and then invite the tap. Warm palette so it feels like
+            an extension of the section, not an ad. */}
+        <Reveal
+          as="div"
+          delay={80}
+          className="mt-16 relative overflow-hidden rounded-3xl border shadow-elegant bg-gradient-to-br from-[#fdf3ec] via-[#fde4d3] to-[#f5c8a5]"
+          style={{ borderColor: "#f0d4bb" }}
+        >
+          {/* Soft decorative shapes for warmth without noise */}
+          <div className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-white/40 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
+
+          <div className="relative grid gap-10 p-8 md:p-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+            {/* LEFT: pitch + CTA */}
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 font-body text-xs font-medium uppercase tracking-wider text-primary backdrop-blur-sm">
+                <Gift className="h-3.5 w-3.5" />
+                For parents-to-be
+              </span>
+              <h3 className="mt-5 font-heading text-3xl md:text-4xl font-bold tracking-tight text-charcoal-text">
+                Create your baby registry
+              </h3>
+              <p className="mt-4 max-w-xl font-body text-base md:text-lg leading-relaxed text-[#5c4436]">
+                Skip the guessing. Build a list of exactly what you need, share
+                one link with family and friends, and let the gifts come to you.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Button
+                  size="lg"
+                  className="font-body font-medium gap-2 shadow-warm transition-transform active:scale-95"
+                  onClick={() => navigate("/registry/login")}
+                >
+                  Create your registry
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  className="font-body font-medium text-[#5c4436] hover:bg-white/60"
+                  onClick={() => navigate("/registry/login")}
+                >
+                  I already have one
+                </Button>
+              </div>
+              <p className="mt-4 font-body text-xs text-[#7a5a3f]">
+                Free · No sign-up needed for guests · Ready in under a minute
+              </p>
+            </div>
+
+            {/* RIGHT: three-step how-it-works.
+                Not just decoration — teaches what a registry is at a glance. */}
+            <ol className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              {[
+                {
+                  icon: ListPlus,
+                  title: "Build your list",
+                  body: "Pick from our catalogue or paste any product link.",
+                },
+                {
+                  icon: Share2,
+                  title: "Share the link",
+                  body: "One private link for your baby shower or WhatsApp group.",
+                },
+                {
+                  icon: Package,
+                  title: "Receive the gifts",
+                  body: "Guests claim, we send you thank-you names for later.",
+                },
+              ].map((step, idx) => {
+                const Icon = step.icon;
+                return (
+                  <li
+                    key={idx}
+                    className="group flex items-start gap-3 rounded-2xl bg-white/70 p-4 backdrop-blur-sm transition-all hover:bg-white/90"
+                  >
+                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-heading text-sm font-bold text-charcoal-text">
+                        <span className="text-primary">{idx + 1}.</span> {step.title}
+                      </p>
+                      <p className="mt-0.5 font-body text-xs leading-relaxed text-[#5c4436]">
+                        {step.body}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </Reveal>
 
         {/* Shared consultation CTA — anchors both tabs */}
         <Reveal

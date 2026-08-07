@@ -28,7 +28,12 @@ Add all of these in Vercel → Project → Settings → Environment Variables (a
 
 ## 2. Database schema
 
-Apply `supabase/migrations/0001_registry.sql` in Supabase → SQL Editor. Creates:
+Apply the migrations in order in Supabase → SQL Editor:
+
+1. `supabase/migrations/0001_registry.sql`
+2. `supabase/migrations/0002_registry_storage.sql` — creates the `registry-images` storage bucket and its RLS policies (owners upload into a path prefixed with their user id; anyone can read).
+
+The first migration creates:
 - `registries`, `registry_items`, `claims` tables
 - `public_registries` view (omits `shipping_address` and `owner_email`)
 - Column-level grants so `anon` can only read the view
