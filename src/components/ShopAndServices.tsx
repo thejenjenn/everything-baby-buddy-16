@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -41,7 +41,7 @@ interface Service {
 }
 
 const ShopAndServices = () => {
-  const [isRegistryDialogOpen, setIsRegistryDialogOpen] = useState(false);
+  const navigate = useNavigate();
   const [isNewbornDialogOpen, setIsNewbornDialogOpen] = useState(false);
 
   const services: Service[] = [
@@ -86,7 +86,7 @@ const ShopAndServices = () => {
       image: babyRegistry,
       features: ["Easy sharing", "Direct delivery", "Gift tracking", "Thank you notes"],
       cta: "Create Registry",
-      action: () => setIsRegistryDialogOpen(true),
+      action: () => navigate("/registry/login"),
     },
     {
       icon: ClipboardList,
@@ -101,7 +101,7 @@ const ShopAndServices = () => {
   ];
 
   useEffect(() => {
-    if (isRegistryDialogOpen || isNewbornDialogOpen) {
+    if (isNewbornDialogOpen) {
       const script = document.createElement("script");
       script.src = "https://tally.so/widgets/embed.js";
       script.async = true;
@@ -116,7 +116,7 @@ const ShopAndServices = () => {
         document.body.removeChild(script);
       };
     }
-  }, [isRegistryDialogOpen, isNewbornDialogOpen]);
+  }, [isNewbornDialogOpen]);
 
   return (
     <section
@@ -347,32 +347,6 @@ const ShopAndServices = () => {
             </div>
           </div>
         </Reveal>
-
-        {/* Registry Form Dialog */}
-        <Dialog open={isRegistryDialogOpen} onOpenChange={setIsRegistryDialogOpen}>
-          <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-hidden p-0">
-            <DialogHeader className="p-6 pb-0">
-              <DialogTitle className="text-2xl font-heading font-bold text-charcoal-text">
-                Create Your Baby Registry
-              </DialogTitle>
-            </DialogHeader>
-
-            <div className="p-6 pt-0 overflow-y-auto max-h-[70vh]">
-              <iframe
-                data-tally-src="https://tally.so/embed/n09ER9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
-                loading="lazy"
-                width="100%"
-                height="600"
-                frameBorder="0"
-                marginHeight={0}
-                marginWidth={0}
-                title="Create Your Baby Registry"
-                className="w-full min-h-[600px]"
-                style={{ overflow: "auto" }}
-              />
-            </div>
-          </DialogContent>
-        </Dialog>
 
         {/* Newborn Package Dialog */}
         <Dialog open={isNewbornDialogOpen} onOpenChange={setIsNewbornDialogOpen}>
