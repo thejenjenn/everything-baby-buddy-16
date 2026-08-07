@@ -14,7 +14,10 @@
 
 set search_path = public;
 
-create extension if not exists pgcrypto;
+-- On Supabase, pgcrypto lives in the extensions schema. Reference it there so
+-- our SECURITY DEFINER functions can call gen_random_bytes without depending
+-- on the caller's search_path.
+create extension if not exists pgcrypto with schema extensions;
 
 -- ---------------------------------------------------------------------------
 -- Tables
@@ -78,6 +81,7 @@ create index if not exists claims_item_id_idx on claims (item_id);
 create or replace function generate_registry_slug()
 returns text
 language plpgsql
+set search_path = public, extensions
 as $$
 declare
   alphabet constant text := '0123456789abcdefghjkmnpqrstvwxyz';
@@ -205,7 +209,7 @@ create or replace function create_claim(
 returns jsonb
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   v_registry registries%rowtype;
@@ -278,7 +282,7 @@ create or replace function undo_claim(p_undo_token text)
 returns boolean
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   v_deleted integer;
@@ -311,7 +315,7 @@ returns table (
 )
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 begin
   if auth.uid() is null then
@@ -353,7 +357,7 @@ create or replace function create_registry(
 returns jsonb
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   v_slug text;

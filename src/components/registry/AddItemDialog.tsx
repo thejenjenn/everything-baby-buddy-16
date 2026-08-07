@@ -11,13 +11,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { addRegistryItem } from "@/lib/registryApi";
+import type { RegistryItem } from "@/lib/registryTypes";
 import { shopSections } from "@/data/shopProducts";
 
 interface Props {
   registryId: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onAdded: () => void;
+  onAdded: (item: RegistryItem) => void;
 }
 
 const catalogueOptions = shopSections.flatMap((section) =>
@@ -52,7 +53,7 @@ const AddItemDialog = ({ registryId, open, onOpenChange, onAdded }: Props) => {
     setSaving(true);
     setError(null);
     try {
-      await addRegistryItem({
+      const created = await addRegistryItem({
         registryId,
         title: opt.label.split(": ")[1] ?? opt.label,
         imageUrl: opt.image,
@@ -61,7 +62,7 @@ const AddItemDialog = ({ registryId, open, onOpenChange, onAdded }: Props) => {
         source: "internal",
         productId: opt.id,
       });
-      onAdded();
+      onAdded(created);
     } catch {
       setError("Could not add item. Please try again.");
     } finally {
@@ -74,7 +75,7 @@ const AddItemDialog = ({ registryId, open, onOpenChange, onAdded }: Props) => {
     setSaving(true);
     setError(null);
     try {
-      await addRegistryItem({
+      const created = await addRegistryItem({
         registryId,
         title: extTitle,
         description: extDescription.trim() || null,
@@ -84,7 +85,7 @@ const AddItemDialog = ({ registryId, open, onOpenChange, onAdded }: Props) => {
         source: "external",
         externalUrl: extUrl,
       });
-      onAdded();
+      onAdded(created);
       setExtTitle("");
       setExtUrl("");
       setExtImageUrl("");

@@ -78,13 +78,16 @@ export async function claimItem(args: {
   if (error) throw error;
 
   const result = data as CreateClaimResult;
-  // Fire-and-forget confirmation email. We do not fail the claim if the
-  // email service is misconfigured; the DB is the source of truth.
-  supabase.functions
-    .invoke("send-claim-email", { body: { claim_id: result.claim_id } })
-    .catch(() => {
-      /* swallow: user still saw the confirmation UI */
-    });
+  // Fire-and-forget: hit the Vercel serverless route that sends the guest
+  // confirmation and owner notification. Failure here does not affect the
+  // claim itself, which is already committed in the DB.
+  fetch("/api/send-claim-email", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ claim_id: result.claim_id }),
+  }).catch(() => {
+    /* swallow: the confirmation UI still shows on-screen */
+  });
 
   return result;
 }

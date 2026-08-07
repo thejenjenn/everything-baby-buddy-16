@@ -18,7 +18,7 @@ interface Props {
   item: RegistryItemWithRemaining;
   registrySlug: string;
   onOpenChange: (open: boolean) => void;
-  onClaimed: (result: CreateClaimResult) => void;
+  onClaimed: (result: CreateClaimResult, quantity: number) => void;
 }
 
 const ClaimDialog = ({ open, item, registrySlug, onOpenChange, onClaimed }: Props) => {
@@ -44,7 +44,7 @@ const ClaimDialog = ({ open, item, registrySlug, onOpenChange, onClaimed }: Prop
         quantity,
         isAnonymous,
       });
-      onClaimed(result);
+      onClaimed(result, quantity);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
       if (/already_claimed/i.test(message)) {
