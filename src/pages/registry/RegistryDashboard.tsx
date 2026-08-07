@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   ArrowDown,
   ArrowUp,
+  Check,
   Copy,
   ExternalLink,
   LogOut,
@@ -44,53 +46,60 @@ const RegistryDashboardPage = () => {
   const [items, setItems] = useState<RegistryItem[]>([]);
   const [claims, setClaims] = useState<Record<string, number>>({});
   const [thankYou, setThankYou] = useState<ThankYouRow[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [firstLoad, setFirstLoad] = useState(true);
   const [addOpen, setAddOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Editable header fields
+  // Editable header fields (kept in local state so typing does not re-fetch)
   const [nameField, setNameField] = useState("");
   const [dueField, setDueField] = useState("");
   const [messageField, setMessageField] = useState("");
   const [addressField, setAddressField] = useState("");
   const [savingHeader, setSavingHeader] = useState(false);
 
-  const load = useCallback(async () => {
-    setLoading(true);
-    try {
-      const reg = await fetchOwnRegistry();
-      if (!reg) {
-        navigate("/registry/new", { replace: true });
-        return;
+  const loadAll = useCallback(
+    async (opts?: { silent?: boolean }) => {
+      const silent = opts?.silent ?? false;
+      try {
+        const reg = await fetchOwnRegistry();
+        if (!reg) {
+          navigate("/registry/new", { replace: true });
+          return;
+        }
+        setRegistry(reg);
+        setNameField(reg.owner_name);
+        setDueField(reg.due_date ?? "");
+        setMessageField(reg.optional_message ?? "");
+        setAddressField(reg.shipping_address);
+
+        const { data: itemRows, error } = await supabase
+          .from("registry_items")
+          .select("*")
+          .eq("registry_id", reg.id)
+          .order("position", { ascending: true });
+        if (error) throw error;
+        const rows = (itemRows ?? []) as RegistryItem[];
+        setItems(rows);
+
+        const publicClaims = await fetchPublicClaimsForItems(rows.map((r) => r.id));
+        const map: Record<string, number> = {};
+        for (const c of publicClaims) {
+          map[c.item_id] = (map[c.item_id] ?? 0) + c.quantity_claimed;
+        }
+        setClaims(map);
+
+        const ty = await fetchThankYouList();
+        setThankYou(ty);
+      } catch (err) {
+        if (!silent) toast.error("Could not refresh the registry. Please try again.");
+        // eslint-disable-next-line no-console
+        console.error(err);
+      } finally {
+        setFirstLoad(false);
       }
-      setRegistry(reg);
-      setNameField(reg.owner_name);
-      setDueField(reg.due_date ?? "");
-      setMessageField(reg.optional_message ?? "");
-      setAddressField(reg.shipping_address);
-
-      const { data: itemRows, error } = await supabase
-        .from("registry_items")
-        .select("*")
-        .eq("registry_id", reg.id)
-        .order("position", { ascending: true });
-      if (error) throw error;
-      const rows = (itemRows ?? []) as RegistryItem[];
-      setItems(rows);
-
-      const publicClaims = await fetchPublicClaimsForItems(rows.map((r) => r.id));
-      const map: Record<string, number> = {};
-      for (const c of publicClaims) {
-        map[c.item_id] = (map[c.item_id] ?? 0) + c.quantity_claimed;
-      }
-      setClaims(map);
-
-      const ty = await fetchThankYouList();
-      setThankYou(ty);
-    } finally {
-      setLoading(false);
-    }
-  }, [navigate]);
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     document.title = "Your registry dashboard | Everything Baby";
@@ -99,8 +108,8 @@ const RegistryDashboardPage = () => {
       navigate("/registry/login", { replace: true });
       return;
     }
-    load();
-  }, [authLoading, session, navigate, load]);
+    loadAll();
+  }, [authLoading, session, navigate, loadAll]);
 
   const saveHeader = async () => {
     if (!registry) return;
@@ -113,25 +122,60 @@ const RegistryDashboardPage = () => {
         optionalMessage: messageField.trim() || null,
         shippingAddress: addressField,
       });
-      await load();
+      // Update in place; no full reload.
+      setRegistry((r) =>
+        r
+          ? {
+              ...r,
+              owner_name: nameField,
+              due_date: dueField || null,
+              optional_message: messageField.trim() || null,
+              shipping_address: addressField,
+            }
+          : r
+      );
+      toast.success("Details saved.");
+    } catch {
+      toast.error("Could not save. Please try again.");
     } finally {
       setSavingHeader(false);
     }
   };
 
   const removeItem = async (id: string) => {
-    await deleteRegistryItem(id);
-    load();
+    // Optimistic: remove from local state immediately, roll back on failure.
+    const prev = items;
+    setItems((rows) => rows.filter((r) => r.id !== id));
+    setClaims(({ [id]: _drop, ...rest }) => rest);
+    try {
+      await deleteRegistryItem(id);
+      toast.success("Item removed.");
+    } catch {
+      setItems(prev);
+      toast.error("Could not remove item.");
+    }
   };
 
   const move = async (index: number, direction: -1 | 1) => {
     const target = index + direction;
     if (target < 0 || target >= items.length) return;
+    const prev = items;
     const next = items.slice();
     const [row] = next.splice(index, 1);
     next.splice(target, 0, row);
     setItems(next);
-    await reorderItems(next.map((r) => r.id));
+    try {
+      await reorderItems(next.map((r) => r.id));
+    } catch {
+      setItems(prev);
+      toast.error("Could not reorder.");
+    }
+  };
+
+  const onItemAdded = (newItem: RegistryItem) => {
+    setItems((rows) => [...rows, newItem]);
+    setAddOpen(false);
+    toast.success("Item added.");
   };
 
   const shareLink = registry
@@ -142,15 +186,20 @@ const RegistryDashboardPage = () => {
     if (!shareLink) return;
     await navigator.clipboard.writeText(shareLink);
     setCopied(true);
+    toast.success("Link copied.");
     setTimeout(() => setCopied(false), 1600);
   };
 
-  if (loading || !registry) {
+  if (firstLoad || !registry) {
     return (
       <div className="min-h-screen bg-background">
         <Navigation />
-        <main className="mx-auto max-w-4xl px-4 py-16 font-body text-muted-foreground">
-          Loading...
+        <main className="mx-auto max-w-4xl px-4 py-16">
+          {/* Skeleton — avoids flashing a "Loading..." string in and out */}
+          <div className="h-8 w-64 rounded bg-muted animate-pulse" />
+          <div className="mt-4 h-4 w-96 rounded bg-muted animate-pulse" />
+          <div className="mt-8 h-40 w-full rounded-2xl bg-muted animate-pulse" />
+          <div className="mt-6 h-56 w-full rounded-2xl bg-muted animate-pulse" />
         </main>
         <Footer />
       </div>
@@ -187,12 +236,12 @@ const RegistryDashboardPage = () => {
         <Card className="mt-6 rounded-2xl border border-border">
           <CardContent className="p-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="font-body text-sm text-muted-foreground">Share link</p>
-                <p className="font-body text-sm text-foreground">{shareLink}</p>
+                <p className="font-body text-sm text-foreground truncate">{shareLink}</p>
               </div>
-              <Button onClick={copyShareLink} className="font-body gap-2">
-                <Copy className="h-4 w-4" />
+              <Button onClick={copyShareLink} className="font-body gap-2 transition-transform active:scale-95">
+                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                 {copied ? "Copied" : "Copy link"}
               </Button>
             </div>
@@ -204,7 +253,7 @@ const RegistryDashboardPage = () => {
                   </span>
                   <span>{progress}%</span>
                 </div>
-                <Progress value={progress} className="mt-2 h-2" />
+                <Progress value={progress} className="mt-2 h-2 transition-all" />
               </div>
             )}
           </CardContent>
@@ -235,7 +284,7 @@ const RegistryDashboardPage = () => {
               </p>
             </div>
             <div className="flex justify-end">
-              <Button onClick={saveHeader} disabled={savingHeader} className="font-body">
+              <Button onClick={saveHeader} disabled={savingHeader} className="font-body transition-transform active:scale-95">
                 {savingHeader ? "Saving..." : "Save changes"}
               </Button>
             </div>
@@ -244,7 +293,7 @@ const RegistryDashboardPage = () => {
 
         <div className="mt-10 flex items-center justify-between">
           <h2 className="font-heading text-2xl font-bold text-foreground">Items</h2>
-          <Button onClick={() => setAddOpen(true)} className="font-body gap-2">
+          <Button onClick={() => setAddOpen(true)} className="font-body gap-2 transition-transform active:scale-95">
             <Plus className="h-4 w-4" />
             Add item
           </Button>
@@ -261,7 +310,10 @@ const RegistryDashboardPage = () => {
             {items.map((item, index) => {
               const claimed = claims[item.id] ?? 0;
               return (
-                <Card key={item.id} className="rounded-2xl border border-border">
+                <Card
+                  key={item.id}
+                  className="rounded-2xl border border-border transition-all duration-200"
+                >
                   <CardContent className="flex items-center gap-4 p-4">
                     <img
                       src={itemImage(item.image_url)}
@@ -375,10 +427,7 @@ const RegistryDashboardPage = () => {
           registryId={registry.id}
           open={addOpen}
           onOpenChange={setAddOpen}
-          onAdded={() => {
-            setAddOpen(false);
-            load();
-          }}
+          onAdded={onItemAdded}
         />
       )}
     </div>

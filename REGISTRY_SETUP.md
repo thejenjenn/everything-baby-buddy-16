@@ -1,76 +1,78 @@
 # Registry setup
 
-The baby registry uses Supabase (Postgres + magic-link auth) plus Resend for transactional email. Everything is server-authoritative: the client only calls RPCs and the transactional email Edge Function.
+The baby registry uses Supabase (Postgres + magic-link auth) and Resend for email. Server logic runs in two places: SECURITY DEFINER Postgres functions (claiming, undo, thank-you list) and a Vercel serverless route (`api/send-claim-email.ts`) that sends the confirmation and owner-notification emails.
 
 ## Prerequisites
 - Supabase account and project
 - Resend account and API key
-- Node 20+
+- Node 20+ (only if running tests locally)
 
 ## 1. Environment variables
 
-Copy `.env.example` to `.env.local` and fill in:
+### Client (browser) — set in Vercel and locally
+| Name | Value |
+|---|---|
+| `VITE_SUPABASE_URL` | `https://<project-ref>.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY` | Supabase → Project Settings → API Keys → Publishable key |
 
-```
-VITE_SUPABASE_URL=https://<project-ref>.supabase.co
-VITE_SUPABASE_ANON_KEY=<anon key from Supabase dashboard>
-```
+### Server (Vercel only, never expose to the browser)
+| Name | Value |
+|---|---|
+| `SUPABASE_URL` | same URL as above |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API Keys → **Secret key** (`sb_secret_...`) |
+| `RESEND_API_KEY` | Resend → API Keys → `re_...` |
+| `RESEND_FROM` | e.g. `Everything Baby <onboarding@resend.dev>` or `<hello@yourdomain>` once verified |
+| `SITE_URL` | your public site origin, e.g. `https://everything-baby-buddy-16.vercel.app` |
+
+Add all of these in Vercel → Project → Settings → Environment Variables (all three environments ticked), then trigger a redeploy so the serverless function picks them up.
 
 ## 2. Database schema
 
-Apply the migration in `supabase/migrations/0001_registry.sql` using either the Supabase CLI (`supabase db push`) or by pasting the file into the SQL editor.
-
-The migration creates:
+Apply `supabase/migrations/0001_registry.sql` in Supabase → SQL Editor. Creates:
 - `registries`, `registry_items`, `claims` tables
 - `public_registries` view (omits `shipping_address` and `owner_email`)
-- Column-level grants: `anon` cannot select `registries` directly, only the view
-- RLS policies for owner writes
+- Column-level grants so `anon` can only read the view
 - `create_claim`, `undo_claim`, `create_registry`, `owner_thank_you_list`, `generate_registry_slug` functions
 - `create_claim` uses `SELECT ... FOR UPDATE` to serialise concurrent claims
 
+`pgcrypto` is installed into the `extensions` schema and every function has `search_path = public, extensions` so `gen_random_bytes` resolves.
+
 ## 3. Auth configuration
 
-In the Supabase dashboard under Auth > URL Configuration:
-- Site URL: your production origin (e.g. `https://theeverythingbaby.com`)
-- Additional redirect URLs: add `.../registry/auth/callback` for each environment (localhost, preview, prod)
+Supabase → Authentication → URL Configuration:
+- **Site URL**: your production origin (e.g. `https://everything-baby-buddy-16.vercel.app`)
+- **Redirect URLs**: add `<origin>/registry/auth/callback` for each environment
 
-Email templates: the default magic-link template is fine. You can customise it in Auth > Email Templates.
+For branded magic-link emails, use custom SMTP with Resend:
+- Supabase → Authentication → Emails → SMTP Settings
+- Host `smtp.resend.com`, port `465`, username `resend`, password = your Resend API key
+- Sender name `Everything Baby`, sender email `onboarding@resend.dev` (or your verified domain)
 
-## 4. Edge Function for confirmation emails
+Without a verified domain in Resend, emails only reach the address you signed up to Resend with. Verify your domain to send to any recipient.
 
-```
-supabase functions deploy send-claim-email
-supabase secrets set \
-  RESEND_API_KEY=re_... \
-  RESEND_FROM='Everything Baby <hello@yourdomain>' \
-  SITE_URL=https://theeverythingbaby.com
-```
+## 4. Transactional emails
 
-The client calls this function after every successful `create_claim`. If the function fails, the claim is still recorded; the guest just does not receive the email.
+The Vercel route at `api/send-claim-email.ts` is called by the client after every successful claim. It:
+- Fetches the claim server-side using the service role key (never trusts the client for anonymity or address)
+- Sends the guest a confirmation with an undo link, plus the shipping address if the item is external
+- Sends the owner a notification (respecting the anonymity flag — "Someone (anonymously)" if the guest opted out)
+
+If any env var is missing the route returns 200 with `reason: email_not_configured`, so a mis-configured account never blocks a claim.
 
 ## 5. Tests
 
-Registry-critical tests live in `tests/registry-db.test.ts`:
-- Concurrent claims: 8 parallel requests for the last unit, exactly one wins
-- Slug enumeration: 200 slugs, all match the expected shape; obvious guesses fail; `anon` cannot `SELECT` on `registries` at all; the public view never exposes `shipping_address` or `owner_email`
-- Anonymous privacy: an anonymous claimant's real name and email never appear in the owner's dashboard response
-
-To run them locally, start a Supabase database and point the test at it:
-
+`tests/registry-db.test.ts` needs a real Postgres. Locally:
 ```
 supabase start
 SUPABASE_DB_URL=postgres://postgres:postgres@127.0.0.1:54322/postgres npm run test
 ```
+Without the env var, DB tests skip so `npm run test` still passes on a fresh clone. In CI (`CI=true`), the tests fail loudly if `SUPABASE_DB_URL` is missing.
 
-Without `SUPABASE_DB_URL`, all DB tests skip (so `npm run test` still passes in CI without a database).
+Also runs on every `npm run test`:
+- `send-claim-email payload builder` — asserts internal claims never include the shipping address, external claims do, HTML injection is escaped
 
-## 6. Deployment
-
-Set the same `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in Vercel's project environment variables.
-
-Deploy as normal; nothing else needed on Vercel. Postgres and Resend live in Supabase and Resend respectively.
-
-## Roadmap notes
-- Auto-fetch an `og:image` from the pasted external URL so owners do not have to enter an image URL manually
+## Roadmap
+- Auto-fetch `og:image` from external URLs so owners don't have to paste an image URL
 - Multiple registries per owner
 - Payments / group gifting
+- BIMI / Google Workspace for the sender avatar in Gmail
