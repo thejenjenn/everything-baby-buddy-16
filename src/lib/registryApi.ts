@@ -111,6 +111,7 @@ export async function fetchOwnRegistry(): Promise<OwnerRegistry | null> {
 export async function createRegistry(args: {
   ownerName: string;
   ownerEmail: string;
+  title: string | null;
   dueDate: string | null;
   optionalMessage: string | null;
   shippingAddress: string;
@@ -118,6 +119,7 @@ export async function createRegistry(args: {
   const { data, error } = await supabase.rpc("create_registry", {
     p_owner_name: args.ownerName,
     p_owner_email: args.ownerEmail,
+    p_title: args.title,
     p_due_date: args.dueDate,
     p_optional_message: args.optionalMessage,
     p_shipping_address: args.shippingAddress,
@@ -129,12 +131,14 @@ export async function createRegistry(args: {
 export async function updateRegistry(args: {
   id: string;
   ownerName?: string;
+  title?: string | null;
   dueDate?: string | null;
   optionalMessage?: string | null;
   shippingAddress?: string;
 }): Promise<void> {
   const patch: Record<string, unknown> = {};
   if (args.ownerName !== undefined) patch.owner_name = args.ownerName;
+  if (args.title !== undefined) patch.title = args.title;
   if (args.dueDate !== undefined) patch.due_date = args.dueDate;
   if (args.optionalMessage !== undefined) patch.optional_message = args.optionalMessage;
   if (args.shippingAddress !== undefined) patch.shipping_address = args.shippingAddress;

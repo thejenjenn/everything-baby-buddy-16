@@ -100,14 +100,14 @@ const RegistryPublicPage = () => {
                 as="p"
                 className="font-body text-sm uppercase tracking-wider text-primary"
               >
-                Baby registry
+                {registry.owner_name}'s baby registry
               </Reveal>
               <Reveal
                 as="h1"
                 delay={80}
                 className="mt-3 font-heading text-3xl font-bold tracking-tight text-foreground md:text-5xl"
               >
-                {registry.owner_name}
+                {registry.title ?? registry.owner_name}
               </Reveal>
               {registry.due_date && (
                 <Reveal
