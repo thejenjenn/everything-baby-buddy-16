@@ -77,37 +77,51 @@ describeIfDb("registry Postgres contract", () => {
   it("only one of N concurrent claims wins on the last unit", async () => {
     const { registry, item } = await createRegistryWithItem(1);
 
-    // Fire 8 parallel create_claim calls, each on its own connection.
     const N = 8;
-    const results = await Promise.allSettled(
-      Array.from({ length: N }).map(async (_, i) => {
-        const c = new Client({ connectionString: DB_URL });
-        await c.connect();
-        try {
-          const r = await c.query(
-            `select create_claim($1, $2, $3, $4, 1, false) as result`,
-            [registry.slug, item.id, `Guest ${i}`, `guest${i}@example.com`]
-          );
-          return r.rows[0].result;
-        } finally {
-          await c.end();
-        }
-      })
-    );
+    // Step 1: open N independent connections and WAIT for all to be ready.
+    // This eliminates connection-time drift so the RPC calls in step 2 are
+    // genuinely in flight simultaneously, not staggered.
+    const clients = Array.from({ length: N }, () => new Client({ connectionString: DB_URL }));
+    await Promise.all(clients.map((c) => c.connect()));
 
-    const fulfilled = results.filter((r) => r.status === "fulfilled");
-    const rejected = results.filter((r) => r.status === "rejected") as PromiseRejectedResult[];
-    expect(fulfilled.length).toBe(1);
-    expect(rejected.length).toBe(N - 1);
-    for (const r of rejected) {
-      expect(String(r.reason)).toMatch(/already_claimed/);
+    try {
+      // Step 2: fire the create_claim RPC on every connection in the same
+      // event-loop tick. All N queries reach the DB before any of them
+      // returns; the DB row lock (SELECT ... FOR UPDATE inside create_claim)
+      // is what enforces serialisation.
+      const started = clients.map((c, i) =>
+        c.query(`select create_claim($1, $2, $3, $4, 1, false) as result`, [
+          registry.slug,
+          item.id,
+          `Guest ${i}`,
+          `guest${i}@example.com`,
+        ])
+      );
+      const results = await Promise.allSettled(started);
+
+      const fulfilled = results.filter((r) => r.status === "fulfilled");
+      const rejected = results.filter(
+        (r) => r.status === "rejected"
+      ) as PromiseRejectedResult[];
+
+      expect(fulfilled.length).toBe(1);
+      expect(rejected.length).toBe(N - 1);
+      for (const r of rejected) {
+        expect(String(r.reason)).toMatch(/already_claimed/);
+      }
+    } finally {
+      await Promise.all(clients.map((c) => c.end()));
     }
 
+    // The DB row count is the ultimate source of truth: exactly one claim,
+    // never zero (would mean nobody won), never more than one (would mean
+    // the lock did not serialise).
     const total = await pool.query(
-      `select coalesce(sum(quantity_claimed), 0)::int as t from claims where item_id = $1`,
+      `select coalesce(sum(quantity_claimed), 0)::int as t, count(*)::int as n from claims where item_id = $1`,
       [item.id]
     );
     expect(total.rows[0].t).toBe(1);
+    expect(total.rows[0].n).toBe(1);
   });
 
   // -------------------------------------------------------------------------
