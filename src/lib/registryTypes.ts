@@ -1,6 +1,7 @@
 export interface PublicRegistry {
   id: string;
   slug: string;
+  title: string | null;
   owner_name: string;
   due_date: string | null;
   optional_message: string | null;

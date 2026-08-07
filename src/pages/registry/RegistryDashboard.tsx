@@ -52,6 +52,7 @@ const RegistryDashboardPage = () => {
 
   // Editable header fields (kept in local state so typing does not re-fetch)
   const [nameField, setNameField] = useState("");
+  const [titleField, setTitleField] = useState("");
   const [dueField, setDueField] = useState("");
   const [messageField, setMessageField] = useState("");
   const [addressField, setAddressField] = useState("");
@@ -68,6 +69,7 @@ const RegistryDashboardPage = () => {
         }
         setRegistry(reg);
         setNameField(reg.owner_name);
+        setTitleField(reg.title ?? "");
         setDueField(reg.due_date ?? "");
         setMessageField(reg.optional_message ?? "");
         setAddressField(reg.shipping_address);
@@ -118,6 +120,7 @@ const RegistryDashboardPage = () => {
       await updateRegistry({
         id: registry.id,
         ownerName: nameField,
+        title: titleField.trim() || null,
         dueDate: dueField || null,
         optionalMessage: messageField.trim() || null,
         shippingAddress: addressField,
@@ -128,6 +131,7 @@ const RegistryDashboardPage = () => {
           ? {
               ...r,
               owner_name: nameField,
+              title: titleField.trim() || null,
               due_date: dueField || null,
               optional_message: messageField.trim() || null,
               shipping_address: addressField,
@@ -262,10 +266,14 @@ const RegistryDashboardPage = () => {
         <Card className="mt-6 rounded-2xl border border-border">
           <CardContent className="p-6 space-y-4">
             <h2 className="font-heading text-xl font-bold text-foreground">Registry details</h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <div className="space-y-2">
                 <Label htmlFor="d-name" className="font-body">Your name</Label>
                 <Input id="d-name" value={nameField} onChange={(e) => setNameField(e.target.value)} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="d-title" className="font-body">Registry title (optional)</Label>
+                <Input id="d-title" value={titleField} onChange={(e) => setTitleField(e.target.value)} placeholder="e.g. Jennifer's Baby" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="d-due" className="font-body">Due date</Label>

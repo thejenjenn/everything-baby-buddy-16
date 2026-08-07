@@ -14,6 +14,7 @@ const RegistryNewPage = () => {
   const { session, loading } = useAuth();
   const navigate = useNavigate();
   const [ownerName, setOwnerName] = useState("");
+  const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [message, setMessage] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
@@ -39,6 +40,7 @@ const RegistryNewPage = () => {
       await createRegistry({
         ownerName,
         ownerEmail: session?.user.email ?? "",
+        title: title.trim() || null,
         dueDate: dueDate || null,
         optionalMessage: message.trim() || null,
         shippingAddress,
@@ -80,6 +82,21 @@ const RegistryNewPage = () => {
                   onChange={(e) => setOwnerName(e.target.value)}
                   required
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="reg-title" className="font-body">
+                  Registry title (optional)
+                </Label>
+                <Input
+                  id="reg-title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="e.g. Jennifer's Baby"
+                />
+                <p className="text-xs text-muted-foreground font-body">
+                  Used in your shareable link so guests recognise it: e.g. <code className="font-mono">/registry/jennifers-baby-r7k9</code>. Leave blank for a short random link.
+                </p>
               </div>
 
               <div className="space-y-2">

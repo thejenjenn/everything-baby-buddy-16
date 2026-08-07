@@ -27,6 +27,7 @@ create table if not exists registries (
   id uuid primary key default gen_random_uuid(),
   owner_id uuid not null references auth.users(id) on delete cascade,
   slug text not null unique,
+  title text,
   owner_name text not null,
   owner_email text not null,
   due_date date,
@@ -78,7 +79,33 @@ create index if not exists claims_item_id_idx on claims (item_id);
 -- Slug generation: 16 random bytes, base32-crockford, no padding
 -- ---------------------------------------------------------------------------
 
-create or replace function generate_registry_slug()
+-- Slugify: lowercase, strip diacritics, replace runs of non-alphanumeric with
+-- a single hyphen, trim leading/trailing hyphens, cap length at 40.
+create or replace function slugify_title(input text)
+returns text
+language plpgsql
+immutable
+as $$
+declare
+  result text;
+begin
+  if input is null then return null; end if;
+  result := lower(trim(input));
+  result := regexp_replace(result, '[^a-z0-9]+', '-', 'g');
+  result := regexp_replace(result, '^-+|-+$', '', 'g');
+  if length(result) > 40 then
+    result := substr(result, 1, 40);
+    result := regexp_replace(result, '-+$', '', 'g');
+  end if;
+  if length(result) = 0 then return null; end if;
+  return result;
+end;
+$$;
+
+-- Short random suffix: 4 base32-crockford characters. 1M possibilities.
+-- Combined with the title prefix, links are recognisable AND not guessable
+-- from the title alone.
+create or replace function generate_registry_slug(p_title text default null)
 returns text
 language plpgsql
 set search_path = public, extensions
@@ -86,18 +113,24 @@ as $$
 declare
   alphabet constant text := '0123456789abcdefghjkmnpqrstvwxyz';
   bytes bytea;
-  result text := '';
   b int;
   i int;
+  suffix text := '';
+  prefix text;
 begin
-  bytes := gen_random_bytes(16);
-  for i in 0..15 loop
+  bytes := gen_random_bytes(4);
+  for i in 0..3 loop
     b := get_byte(bytes, i);
-    result := result
+    suffix := suffix
       || substr(alphabet, ((b >> 4) & 15) + 1, 1)
       || substr(alphabet, (b & 15) + 1, 1);
   end loop;
-  return result;
+  suffix := substr(suffix, 1, 4);
+  prefix := slugify_title(p_title);
+  if prefix is null then
+    return suffix;
+  end if;
+  return prefix || '-' || suffix;
 end;
 $$;
 
@@ -115,6 +148,7 @@ create or replace view public_registries as
 select
   id,
   slug,
+  title,
   owner_name,
   due_date,
   optional_message,
@@ -355,6 +389,7 @@ grant execute on function owner_thank_you_list() to authenticated;
 create or replace function create_registry(
   p_owner_name text,
   p_owner_email text,
+  p_title text,
   p_due_date date,
   p_optional_message text,
   p_shipping_address text
@@ -367,6 +402,7 @@ as $$
 declare
   v_slug text;
   v_id uuid;
+  v_title text;
 begin
   if auth.uid() is null then
     raise exception 'not_authenticated' using errcode = '42501';
@@ -378,12 +414,14 @@ begin
     raise exception 'missing_shipping_address' using errcode = '22023';
   end if;
 
-  -- Retry on the astronomically unlikely slug collision
-  for i in 1..5 loop
+  v_title := nullif(btrim(coalesce(p_title, '')), '');
+
+  -- Retry on slug collision. With 1M random suffixes per title, extremely rare.
+  for i in 1..8 loop
     begin
-      v_slug := generate_registry_slug();
-      insert into registries (owner_id, slug, owner_name, owner_email, due_date, optional_message, shipping_address)
-      values (auth.uid(), v_slug, btrim(p_owner_name), lower(btrim(coalesce(p_owner_email, ''))),
+      v_slug := generate_registry_slug(v_title);
+      insert into registries (owner_id, slug, title, owner_name, owner_email, due_date, optional_message, shipping_address)
+      values (auth.uid(), v_slug, v_title, btrim(p_owner_name), lower(btrim(coalesce(p_owner_email, ''))),
               p_due_date, p_optional_message, btrim(p_shipping_address))
       returning id into v_id;
       return jsonb_build_object('id', v_id, 'slug', v_slug);
@@ -399,5 +437,5 @@ begin
 end;
 $$;
 
-revoke all on function create_registry(text, text, date, text, text) from public;
-grant execute on function create_registry(text, text, date, text, text) to authenticated;
+revoke all on function create_registry(text, text, text, date, text, text) from public;
+grant execute on function create_registry(text, text, text, date, text, text) to authenticated;
